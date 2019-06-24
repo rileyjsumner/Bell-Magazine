@@ -1,0 +1,24 @@
+{
+  "name": "bell-magazine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-cli": "^2.9.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rileyjsumner/Bell-Magazine.git"
+  },
+  "author": "Riley Sumner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rileyjsumner/Bell-Magazine/issues"
+  },
+  "homepage": "https://github.com/rileyjsumner/Bell-Magazine#readme"
+}
