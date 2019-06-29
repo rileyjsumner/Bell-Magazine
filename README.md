@@ -1,4 +1,4 @@
-# bell-magazine
+# Bell Magazine
 
 ## Project setup
 ```
@@ -24,6 +24,10 @@ npm run test
 ```
 npm run lint
 ```
+
+### Getting Started
+
+Head to the [wiki](https://github.com/rileyjsumner/bell-magizine/wiki/)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
