@@ -27,7 +27,7 @@ npm run lint
 
 ### Getting Started
 
-Head to the [wiki](https://github.com/rileyjsumner/bell-magizine/wiki/)
+Head to the [wiki](https://github.com/rileyjsumner/bell-magizine/wiki/Getting-Started)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
