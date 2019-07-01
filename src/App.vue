@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div class="header">
+      <Header></Header>
+    </div>
     <h1>Bell</h1>
     <Article title="My Article"
              byline="Riley Sumner"
