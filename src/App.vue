@@ -3,7 +3,7 @@
     <div class="header">
       <Header></Header>
     </div>
-    <h1>Bell</h1>
+    <h1>Bell Magazine</h1>
     <Article title="My Article"
              byline="Riley Sumner"
              tagline="This article is about writing"
