@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "npm run build && git commit -am 'deploy' && git push",
+    "watch-scss": "node-sass -w src/assets/styles/ -o src/assets/css/"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -20,6 +22,8 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
