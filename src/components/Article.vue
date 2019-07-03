@@ -18,7 +18,9 @@
             title: String,
             byline: String,
             tagline: String,
-            img: String
+            img: String,
+            featured: Boolean,
+            category: String
         }
     }
 </script>
