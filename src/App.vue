@@ -12,16 +12,19 @@
     <Author name="Riley Sumner"
             bio="I am Riley">
     </Author>
+    <ArticleGrid></ArticleGrid>
   </div>
 </template>
 
 <script>
 import Article from './components/Article.vue'
 import Author from './components/Author.vue'
+import ArticleGrid from "./components/ArticleGrid";
 
 export default {
   name: 'app',
   components: {
+    ArticleGrid,
     Article,
     Author
   }
