@@ -29,5 +29,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "/dist/css/app.6af8ca07.css";
+  @import "/styles/global.scss";
 </style>
