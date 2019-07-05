@@ -3,8 +3,10 @@
 </template>
 
 <script>
-    const db = require("db.js");
+
+    import * as db from "../api/db.js";
     
+    // eslint-disable-next-line
     let stories = db.getAllStories();
 
     export default {
