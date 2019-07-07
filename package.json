@@ -11,12 +11,7 @@
     "watch-scss": "node-sass -w src/styles/ -o src/assets/css/"
   },
   "dependencies": {
-    "acorn": "^6.2.0",
     "core-js": "^2.6.5",
-    "dns": "^0.2.2",
-    "module": "^1.2.5",
-    "mongo": "^0.1.0",
-    "mongodb": "^3.2.7",
     "path": "^0.12.7",
     "server": "^1.0.19",
     "vue": "^2.6.10"
