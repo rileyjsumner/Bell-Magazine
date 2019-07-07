@@ -3,19 +3,14 @@
   width: 100%;
   background-color: $bell-yellow-primary;
   transition: height .5s ease-in-out;
-  position: absolute;
 
-  &.header-full {
-    height: 250px;
-  }
+  max-width: 1286px;
 
-  &.header-short {
-    height: 150px;
-  }
 }
 .logo {
   height: 100%;
   width: auto;
   padding-left: 40px;
+  margin-left: 1rem;
 
 }

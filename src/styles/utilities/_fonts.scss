@@ -17,12 +17,14 @@ li,
 span,
 td,
 tr,
-table {
+table,
+input {
   font-family: $content;
 }
 
 a,
 li > a,
-button {
+button,
+label {
   font-family: $action
 }

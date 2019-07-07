@@ -1,0 +1,36 @@
+@import "./utilities/_imports.scss";
+
+button {
+
+  padding: 1rem 1.5rem;
+  transition: all .5s ease-in-out;
+
+  background-color: $bell-black-accent;
+  color: $bell-yellow-primary;
+  box-shadow: 4px 4px 0 0 $bell-yellow-primary;
+
+  &:hover {
+    background-color: $bell-yellow-primary;
+    color: $bell-black-accent;
+    box-shadow: 4px 4px 0 0 $bell-black-accent;
+  }
+}
+
+.btn {
+
+  .btn-small {
+
+  }
+
+  .btn-large {
+
+  }
+
+  .btn-primary {
+
+  }
+
+  .btn-secondary {
+
+  }
+}

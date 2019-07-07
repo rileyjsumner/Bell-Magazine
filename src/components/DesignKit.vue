@@ -1,14 +1,17 @@
 <template>
     <div class="design-kit">
         <div class="section typography-section">
+            <h1>Headings:</h1>
+            <h2>Bell Magazine</h2>
+
+            <h6>Content:</h6>
+            <p>Bell Magazine</p>
 
         </div>
         <div class="section color-section">
 
         </div>
         <div class="section kitchen-sink-section">
-            <h1>Header</h1>
-            <p>Content</p>
             <button>Button</button>
             <a>Link</a>
             <ul>
@@ -27,8 +30,14 @@
 </template>
 
 <script>
+
+    import Header from "./Header";
+
     export default {
-        name: "DesignKit"
+        name: "DesignKit",
+        components: {
+            Header
+        }
     }
 </script>
 

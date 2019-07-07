@@ -7,7 +7,7 @@
 
 <script>
     import NavBar from "./NavBar";
-    
+
     export default {
         name: "Header",
         components: {
