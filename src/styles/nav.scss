@@ -1,0 +1,18 @@
+@import "./utilities/_imports.scss";
+nav.nav {
+
+  background-color: $bell-black-accent;
+
+  ul.nav-links {
+
+    list-style-type: none;
+    display: inline-flex;
+
+    li.link {
+
+      a {
+
+      }
+    }
+  }
+}

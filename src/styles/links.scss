@@ -2,11 +2,14 @@
 
 a {
 
+  color: $bell-blue-secondary;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+
+  transition: color .3s ease-in-out;
+
   &:hover {
-
-  }
-  &:visited {
-
+    color: $bell-accent-primary;
   }
 }
 
