@@ -1,8 +1,14 @@
 <template>
-    
+    <Article></Article>
 </template>
 
 <script>
+
+    // import * as db from "../api/db.js";
+
+    // eslint-disable-next-line
+    // let stories = db.getAllStories();
+
     export default {
         name: "ArticleGrid"
     }

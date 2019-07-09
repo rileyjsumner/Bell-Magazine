@@ -1,0 +1,15 @@
+@import "./utilities/_imports.scss";
+
+a {
+
+  color: $bell-blue-secondary;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+
+  transition: color .3s ease-in-out;
+
+  &:hover {
+    color: $bell-accent-primary;
+  }
+}
+

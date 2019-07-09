@@ -1,0 +1,30 @@
+$heading: 'Lemon/Milk', 'Helvetica', 'Arial', serif;
+$content: 'Quicksand', 'Arial', 'Georgia', serif;
+$action: 'Bebas Kai', 'Georgia', 'Helvetica', sans-serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading;
+}
+
+p,
+i,
+li,
+span,
+td,
+tr,
+table,
+input {
+  font-family: $content;
+}
+
+a,
+li > a,
+button,
+label {
+  font-family: $action
+}
