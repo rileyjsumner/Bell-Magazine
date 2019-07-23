@@ -11,10 +11,12 @@
     "watch-scss": "node-sass -w src/styles/ -o src/assets/css/"
   },
   "dependencies": {
+    "acorn": "^6.2.0",
     "core-js": "^2.6.5",
     "path": "^0.12.7",
     "server": "^1.0.19",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
