@@ -2,7 +2,9 @@
   <div id="app">
     <Header></Header>
     <div class="content">
-      <DesignKit></DesignKit>
+      <h1>Bell</h1>
+
+      <router-link to="/Design">Design</router-link>
     </div>
   </div>
 </template>
