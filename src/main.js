@@ -1,22 +1,14 @@
 import Vue from 'vue'
-
 import App from './App.vue'
-import DesignKit from './components/DesignKit.vue';
-
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
+import routes from './routes'
 
 Vue.config.productionTip = false;
-Vue.use(Router);
+Vue.use(VueRouter);
 
-const routes = [
-    { path: '/', component: { App } },
-    { path: '/Home', component: { App } },
-    { path: '/Design', component: { DesignKit } }
-];
-
-const router = new Router({routes});
+const router = new VueRouter({mode: 'history', routes});
 
 new Vue({
-    render: h => h(App),
-    router: router
+    router,
+    render: h => h(App)
 }).$mount('#app');
