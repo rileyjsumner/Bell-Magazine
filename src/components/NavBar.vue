@@ -1,8 +1,12 @@
 <template>
     <nav class="nav">
-        <ul class="nav-links">
-            <li class="link" v-for="link in links"><a :href="link">{{ link }}</a></li>
-        </ul>
+        <div class="container">
+            <ul class="nav-links">
+                <li class="link" v-bind:key="link" v-for="link in links">
+                    <router-link :to="{name: link}">{{ link }}</router-link>
+                </li>
+            </ul>
+        </div>
     </nav>
 </template>
 

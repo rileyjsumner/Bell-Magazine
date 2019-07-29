@@ -1,22 +1,20 @@
-import Vue from 'vue'
-
-import App from './App.vue'
-import DesignKit from './components/DesignKit.vue';
-
-import Router from 'vue-router';
+import Vue from 'vue';
+import App from './App'
+import VueRouter from "vue-router";
 
 Vue.config.productionTip = false;
-Vue.use(Router);
+Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: { App } },
-    { path: '/Home', component: { App } },
-    { path: '/Design', component: { DesignKit } }
+    { path: '/', component: require('./components/Home').default, name: 'Root' },
+    { path: '/Home', component: require('./components/Home').default, name: 'Home' },
+    { path: '/Design', component: require('./components/DesignKit').default, name: 'Design' },
+    { path: '/About', component: require('./components/About').default, name: 'About'},
+    { path: '/Contact', component: require('./components/Contact').default, name: 'Contact'}
 ];
-
-const router = new Router({routes});
+let router = new VueRouter({mode: 'history', routes});
 
 new Vue({
-    render: h => h(App),
-    router: router
+    router,
+    render: h => h(App)
 }).$mount('#app');
