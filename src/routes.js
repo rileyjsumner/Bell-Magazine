@@ -2,6 +2,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import DesignKit from './components/DesignKit';
 import Home from './components/Home'
+import VueRouter from "vue-router/types/router";
 
 const routes = [
     { path: '/', component: { Home }, name: 'Root' },
@@ -10,5 +11,4 @@ const routes = [
     { path: '/About', component: { About }, name: 'About'},
     { path: '/Contact', component: { Contact }, name: 'Contact'}
 ];
-
-export default routes;
+export default new VueRouter({mode: 'history', routes});
