@@ -8,9 +8,10 @@ Vue.use(VueRouter);
 const routes = [
     { path: '/', component: require('./components/Home').default, name: 'Root' },
     { path: '/Home', component: require('./components/Home').default, name: 'Home' },
-    { path: '/Design', component: require('./components/DesignKit').default, name: 'Design' },
     { path: '/About', component: require('./components/About').default, name: 'About'},
-    { path: '/Contact', component: require('./components/Contact').default, name: 'Contact'}
+    { path: '/Contact', component: require('./components/Contact').default, name: 'Contact'},
+    { path: '/Design', component: require('./components/DesignKit').default, name: 'Design' },
+    { path: '/Staff', component: require('./components/StaffDirectory').default, name: 'Staff' }
 ];
 let router = new VueRouter({mode: 'history', routes});
 

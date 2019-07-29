@@ -18,17 +18,23 @@
         $("#nav-toggle").click(function() {
             if($(this).html() === String.fromCharCode(215)) { // if close
                 $(this).html("&#8801;");
-                console.log("times");
                 $(".nav-mobile").addClass("nav-mobile-collapsed");
                 $(this).removeClass("open");
 
             } else { // else open
                 $(this).html("&times;");
-                console.log("hamburger");
                 $(".nav-mobile").removeClass("nav-mobile-collapsed");
                 $(this).addClass("open");
             }
         });
+
+        $(".link a").click(function() {
+            if(window.screen.width < 576) {
+                $("#nav-toggle").html("&#8801;");
+                $(".nav-mobile").addClass("nav-mobile-collapsed");
+                $("#nav-toggle").removeClass("open");
+            }
+        })
     });
 
     export default {

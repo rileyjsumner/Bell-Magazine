@@ -11,7 +11,7 @@ nav.nav {
 
   &.nav-mobile {
 
-    height: 150px;
+    height: 223px;
     overflow: hidden;
     transition: all .75s ease-in-out;
 
@@ -48,17 +48,27 @@ nav.nav {
     list-style-type: none;
     display: block;
     margin: 1.5rem 0;
-
-    @include sm {
-      display: inline-flex;
-      margin: 0;
-    }
+    padding: 0;
 
     li.link {
+
+      text-align: center;
+      padding: .25rem;
 
       a {
 
       }
+
+      @include sm {
+        text-align: left;
+        padding: 0;
+      }
+    }
+
+    @include sm {
+      display: inline-flex;
+      margin: 0;
+      padding: 0 0 0 2.5rem;
     }
   }
 }
