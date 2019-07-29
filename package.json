@@ -13,6 +13,7 @@
   "dependencies": {
     "acorn": "^6.2.0",
     "core-js": "^2.6.5",
+    "jquery": "^3.4.1",
     "path": "^0.12.7",
     "server": "^1.0.19",
     "vue": "^2.6.10",
