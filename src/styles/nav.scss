@@ -1,20 +1,74 @@
 @import "./utilities/_imports.scss";
+
+
+
 nav.nav {
 
   background-color: $bell-black-accent;
   position: relative;
   width: 100%;
+  padding: 1.5rem 0;
+
+  &.nav-mobile {
+
+    height: 223px;
+    overflow: hidden;
+    transition: all .75s ease-in-out;
+
+    #nav-toggle {
+      color: $bell-white-accent;
+      position: absolute;
+      top: .25rem;
+      right: .5rem;
+      font-size: 2.5rem;
+
+      &.open {
+        top: .5rem;
+      }
+
+      @include sm {
+        display: none;
+      }
+    }
+    &.nav-mobile-collapsed {
+      height: 0;
+
+      @include sm {
+        height: auto;
+      }
+    }
+  }
+
+  @include sm {
+    padding: .5rem 0;
+  }
 
   ul.nav-links {
 
     list-style-type: none;
-    display: inline-flex;
+    display: block;
+    margin: 1.5rem 0;
+    padding: 0;
 
     li.link {
+
+      text-align: center;
+      padding: .25rem;
 
       a {
 
       }
+
+      @include sm {
+        text-align: left;
+        padding: 0;
+      }
+    }
+
+    @include sm {
+      display: inline-flex;
+      margin: 0;
+      padding: 0 0 0 2.5rem;
     }
   }
 }

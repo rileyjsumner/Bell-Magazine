@@ -1,0 +1,27 @@
+@import "./utilities/_imports.scss";
+
+.form {
+
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  .form-label {
+
+    width: 30%;
+    align-self: flex-start;
+    margin: .25rem 0;
+  }
+  .text-input {
+
+    border: 1px solid $bell-black-accent;
+    align-self: flex-end;
+    width: 65%;
+    margin: .25rem 0;
+
+    &.long-input {
+      height: 150px;
+      padding: 1px;
+    }
+  }
+}
