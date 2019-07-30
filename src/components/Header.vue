@@ -3,7 +3,7 @@
         <div class="container">
             <img class="logo" alt="Bell Logo" src="../assets/pics/bell_logo.svg" />
         </div>
-        <NavBar :links="['Home', 'Staff', 'About', 'Contact', 'Design']"></NavBar>
+        <NavBar :links="['Home', 'About', 'Contact', 'Design']"></NavBar>
     </header>
 </template>
 

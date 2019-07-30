@@ -6,7 +6,7 @@
         </div>
         <div class="article-body">
             <p>{{ tagline }}</p>
-            <img :src=img />
+            <img :src=img :alt=alt />
         </div>
     </div>
 </template>
@@ -19,6 +19,7 @@
             byline: String,
             tagline: String,
             img: String,
+            alt: String,
             featured: Boolean,
             category: String
         }

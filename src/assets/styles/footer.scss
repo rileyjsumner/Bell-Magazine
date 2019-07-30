@@ -1,0 +1,38 @@
+@import "./utilities/_imports.scss";
+
+footer.footer {
+
+  background-color: $bell-accent-primary;
+  padding: 0 0 0 3.5rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+
+  div.footer-section {
+
+    width: 24%;
+
+    ul.footer-list {
+
+      list-style-type: none;
+      padding: 0;
+
+      li.footer-link a {
+
+        color: $bell-white-accent;
+        padding: 1rem 0;
+      }
+    }
+
+    img.footer-logo {
+      height: 150px;
+      width: auto;
+
+    }
+  }
+}
