@@ -24,25 +24,25 @@ import Header from "./components/Header";
 
   @font-face {
     font-family: Lemon/Milk;
-    src: url("/assets/fonts/LemonMilk.otf") format('opentype');
+    src: url("src/assets/fonts/LemonMilk.otf") format('opentype');
     font-weight:400;
   }
 
   @font-face {
     font-family: Quicksand;
-    src: url("/assets/fonts/Quicksand_Book.otf") format('opentype');
+    src: url("src/assets/fonts/Quicksand_Book.otf") format('opentype');
     font-weight:400;
   }
 
   @font-face {
     font-family: Bebas Kai;
-    src: url("/assets/fonts/BebasKai.otf") format('opentype');
+    src: url("src/assets/fonts/BebasKai.otf") format('opentype');
     font-weight:400;
   }
 
   @font-face {
     font-family: Satisfy;
-    src: url("/assets/fonts/Satisfy-Regular.ttf") format('truetype');
+    src: url("src/assets/fonts/Satisfy-Regular.ttf") format('truetype');
     font-weight:400;
   }
 </style>
