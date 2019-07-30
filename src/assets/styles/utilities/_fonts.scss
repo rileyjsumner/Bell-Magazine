@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'Lemon/Milk';
+  src: url("../../fonts/LemonMilk.otf");
+  font-weight:400;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url("../../fonts/Quicksand_Book.otf");
+  font-weight:400;
+}
+
+@font-face {
+  font-family: 'Bebas Kai';
+  src: url("../../fonts/BebasKai.otf");
+  font-weight:400;
+}
+
+@font-face {
+  font-family: 'Satisfy';
+  src: url("../../fonts/Satisfy-Regular.ttf");
+  font-weight:400;
+}
+
+$heading: 'Lemon/Milk', 'Helvetica', 'Arial', serif;
+$content: 'Quicksand', 'Arial', 'Georgia', serif;
+$action: 'Bebas Kai', 'Georgia', 'Helvetica', sans-serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading;
+}
+
+p,
+i,
+li,
+span,
+td,
+tr,
+table,
+input,
+textarea {
+  font-family: $content;
+}
+
+a,
+li > a,
+button,
+label {
+  font-family: $action
+}

@@ -20,5 +20,5 @@ import Header from "./components/Header";
 </script>
 
 <style lang="scss">
-  @import "/styles/global.scss";
+  @import "/assets/styles/global.scss";
 </style>

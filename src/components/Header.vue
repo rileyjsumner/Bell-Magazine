@@ -1,7 +1,7 @@
 <template>
     <header class="header header-full">
         <div class="container">
-            <img class="logo" alt="Bell Logo" src="../assets/bell_logo.svg" />
+            <img class="logo" alt="Bell Logo" src="../assets/pics/bell_logo.svg" />
         </div>
         <NavBar :links="['Home', 'Staff', 'About', 'Contact', 'Design']"></NavBar>
     </header>
