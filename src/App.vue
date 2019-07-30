@@ -22,23 +22,23 @@ import Header from "./components/Header";
 <style lang="scss">
   @font-face {
     font-family: Lemon;
-    src: url("assets/fonts/LemonMilk.otf") format('opentype');
+    src: url("./assets/fonts/LemonMilk.otf") format('opentype');
   }
 
   @font-face {
     font-family: Quicksand;
-    src: url("assets/fonts/Quicksand_Book.otf") format('opentype');
+    src: url("./assets/fonts/Quicksand_Book.otf") format('opentype');
   }
 
   @font-face {
     font-family: Bebas Kai;
-    src: url("assets/fonts/BebasKai.otf") format('opentype');
+    src: url("./assets/fonts/BebasKai.otf") format('opentype');
   }
 
   @font-face {
     font-family: Satisfy;
-    src: url("assets/fonts/Satisfy-Regular.ttf") format('truetype');
+    src: url("./assets/fonts/Satisfy-Regular.ttf") format('truetype');
   }
-  
+
   @import "assets/styles/global.scss";
 </style>
