@@ -1,12 +1,12 @@
 <template>
-    <div class="article">
-        <div class="article-heading">
-            <h1>{{ title }}</h1>
-            <p class="byline">{{ byline }}</p>
-        </div>
+    <div class="article" v-bind:class="[ featured ? 'article-featured' : '' ]">
         <div class="article-body">
-            <p>{{ tagline }}</p>
             <img :src=img :alt=alt />
+            <p>{{ tagline }}</p>
+        </div>
+        <div class="article-heading">
+            <h1 class="title">{{ title }}</h1>
+            <p class="byline">{{ byline }}</p>
         </div>
     </div>
 </template>

@@ -26,20 +26,20 @@ nav.nav {
         top: .5rem;
       }
 
-      @include sm {
+      @include md {
         display: none;
       }
     }
     &.nav-mobile-collapsed {
       height: 0;
 
-      @include sm {
+      @include md {
         height: auto;
       }
     }
   }
 
-  @include sm {
+  @include md {
     padding: .5rem 0;
   }
 
@@ -59,13 +59,13 @@ nav.nav {
 
       }
 
-      @include sm {
+      @include md {
         text-align: left;
         padding: 0;
       }
     }
 
-    @include sm {
+    @include md {
       display: inline-flex;
       margin: 0;
       padding: 0 0 0 2.5rem;
