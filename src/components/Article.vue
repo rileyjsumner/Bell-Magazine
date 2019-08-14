@@ -1,5 +1,5 @@
 <template>
-    <div class="article" v-bind:class="[ featured ? 'article-featured' : '' ]">
+    <div class="article shadow" v-bind:class="[ featured ? 'article-featured' : '' ]">
         <div class="article-body">
             <img :src=img :alt=alt />
             <p>{{ tagline }}</p>

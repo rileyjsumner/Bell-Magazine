@@ -18,3 +18,33 @@
     margin-left: 1rem;
   }
 }
+
+.admin-dropdown {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  .admin-dropdown-menu {
+    display: block;
+    background-color: $bell-white-accent;
+    max-height: 0;
+    transition: all .2s ease-in-out;
+    overflow: hidden;
+    top: 3rem;
+    right: 1rem;
+    position: absolute;
+
+    li {
+
+      list-style-type: none;
+    }
+
+    &.admin-dropdown-menu-active {
+
+      display: block;
+      position: absolute;
+      text-align: right;
+      right: 0;
+    }
+  }
+}

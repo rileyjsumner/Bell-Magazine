@@ -14,13 +14,6 @@ div.article-grid {
     flex-wrap: wrap;
     width: 30%;
     margin: 1rem;
-    box-shadow: 4px 4px 0 0 $bell-accent-primary;
-    transition: all .2s ease-in-out;
-
-    &:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 0 $bell-accent-primary;
-    }
 
     &.article-featured {
       width: 55%;
