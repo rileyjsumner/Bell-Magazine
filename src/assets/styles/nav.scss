@@ -70,5 +70,9 @@ nav.nav {
       margin: 0;
       padding: 0 0 0 2.5rem;
     }
+
+    @include xl {
+      padding: 0;
+    }
   }
 }

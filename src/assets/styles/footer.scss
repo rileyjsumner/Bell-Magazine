@@ -6,31 +6,40 @@ footer.footer {
   padding: 0 0 0 3.5rem;
   width: 100%;
 
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
 
+  div.container {
 
-  div.footer-section {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 
-    width: 24%;
+    div.footer-section {
 
-    ul.footer-list {
+      width: 24%;
 
-      list-style-type: none;
-      padding: 0;
+      ul.footer-list {
 
-      li.footer-link a {
+        list-style-type: none;
+        padding: 0;
 
-        color: $bell-white-accent;
-        padding: 1rem 0;
+        li.footer-link a {
+
+          color: $bell-white-accent;
+          padding: 1rem 0;
+        }
+      }
+
+      img.footer-logo {
+        height: 150px;
+        width: auto;
+
       }
     }
 
-    img.footer-logo {
-      height: 150px;
-      width: auto;
+    @include xl {
 
+      padding: 0;
     }
+
   }
 }

@@ -17,6 +17,10 @@
     padding-left: 40px;
     margin-left: 1rem;
   }
+  @include xl {
+    padding-left: 0;
+    margin-left: 0;
+  }
 }
 
 .admin-dropdown {

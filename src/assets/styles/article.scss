@@ -59,4 +59,9 @@ div.article-grid {
     }
   }
 
+  @include xl {
+
+    padding: 0;
+  }
+
 }

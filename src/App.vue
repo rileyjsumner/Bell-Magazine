@@ -25,7 +25,7 @@
             }
         },
         mounted() {
-            if(!this.authenticated) {
+            if(this.authenticated) { // logic broken rn
                 this.$router.replace({ name: "Login"});
             }
         },
