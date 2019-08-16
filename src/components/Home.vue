@@ -1,10 +1,14 @@
 <template>
-    <h1>Home</h1>
+    <div class="container">
+        <ArticleGrid></ArticleGrid>
+    </div>
 </template>
 
 <script>
+    import ArticleGrid from "./ArticleGrid";
     export default {
-        name: "Home"
+        name: "Home",
+        components: {ArticleGrid}
     }
 </script>
 

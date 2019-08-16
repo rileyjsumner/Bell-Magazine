@@ -1,0 +1,62 @@
+@import "./utilities/_imports.scss";
+
+
+div.article-grid {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+
+  div.article {
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    margin: 1rem;
+
+    &.article-featured {
+      width: 55%;
+    }
+
+    .article-heading,
+    .article-body {
+
+      width: 100%;
+    }
+
+    .article-body {
+
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      img {
+
+        width: 60%;
+        height: auto;
+      }
+
+      p {
+        width: 35%;
+        font-size: 1rem;
+      }
+    }
+
+    .article-heading {
+
+      .title {
+
+        font-weight: bolder;
+        font-size: 1.5rem;
+      }
+
+      .byline {
+
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+}
