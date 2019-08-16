@@ -12,7 +12,8 @@ const routes = [
     { path: '/Contact', component: require('./components/Contact').default, name: 'Contact'},
     { path: '/Design', component: require('./components/DesignKit').default, name: 'Design' },
     { path: '/Staff', component: require('./components/StaffDirectory').default, name: 'Staff' },
-    { path: '/Admin', component: require('./components/admin/AdminPanel').default, name: 'Admin'}
+    { path: '/Admin', component: require('./components/admin/AdminPanel').default, name: 'Admin'},
+    { path: '/Login', component: require('./components/admin/Login').default, name: 'Login'}
 ];
 let router = new VueRouter({mode: 'history', routes});
 
