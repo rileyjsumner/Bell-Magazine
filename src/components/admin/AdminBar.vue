@@ -14,7 +14,6 @@
 
     $(document).ready(function() {
         $("#dropdown-toggle").click(function() {
-            console.log("Dropdown");
             if($(".admin-dropdown-menu").hasClass("admin-dropdown-menu-active")) {
 
                 $(".admin-dropdown-menu").removeClass("admin-dropdown-menu-active");

@@ -6,14 +6,16 @@ div.article-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 1rem;
+  margin: 1rem 0;
 
   div.article {
 
     display: flex;
     flex-wrap: wrap;
     width: 30%;
-    margin: 1rem;
+    cursor: pointer;
+    margin: 1rem 0;
+    padding: .5rem;
 
     &.article-featured {
       width: 55%;

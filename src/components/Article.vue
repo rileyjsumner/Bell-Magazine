@@ -1,5 +1,5 @@
 <template>
-    <div class="article shadow" v-bind:class="[ featured ? 'article-featured' : '' ]">
+    <div class="article shadow" v-bind:class="[ featured ? 'article-featured' : '' ]" v-on:click="goToStory(url)">
         <div class="article-body">
             <img :src=img :alt=alt />
             <p>{{ tagline }}</p>
@@ -14,6 +14,11 @@
 <script>
     export default {
         name: "Article",
+        methods: {
+            goToStory(url) {
+                window.location.replace(url);
+            }
+        },
         props: {
             title: String,
             byline: String,
@@ -21,7 +26,8 @@
             img: String,
             alt: String,
             featured: Boolean,
-            category: String
+            category: String,
+            url: String
         }
     }
 </script>

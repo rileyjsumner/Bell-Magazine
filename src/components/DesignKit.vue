@@ -31,13 +31,8 @@
 
 <script>
 
-    import Header from "./Header";
-
     export default {
-        name: "DesignKit",
-        components: {
-            Header
-        }
+        name: "DesignKit"
     }
 </script>
 
