@@ -1,0 +1,55 @@
+@import "./utilities/_imports.scss";
+
+#app.light,
+.content.light {
+
+  background-color: $bell-white-accent;
+
+}
+
+.shadow.light {
+
+  box-shadow: 4px 4px 0 0 $bell-accent-primary;
+
+  &:hover {
+    box-shadow: 6px 6px 0 0 $bell-accent-primary;
+  }
+}
+
+footer.footer.light {
+
+  background-color: $bell-accent-primary;
+
+}
+
+div .article-grid div.article.light {
+
+  color: $bell-black-accent;
+}
+
+nav.nav.light {
+
+  background-color: $bell-black-accent;
+}
+
+a.light {
+
+  color: $bell-white-accent;
+
+  &:hover {
+    color: $bell-accent-primary;
+  }
+}
+
+.admin-dropdown-menu li a.light {
+  color: $bell-blue-secondary;
+
+  &:hover {
+    color: $bell-accent-primary;
+  }
+}
+
+.admin-dropdown .admin-dropdown-menu.light {
+
+  background-color: $bell-white-accent;
+}

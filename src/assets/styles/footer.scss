@@ -2,7 +2,7 @@
 
 footer.footer {
 
-  background-color: $bell-accent-primary;
+  background-color: $bell-blue-secondary;
   width: 100%;
 
   div.container {
@@ -30,6 +30,7 @@ footer.footer {
       img.footer-logo {
         height: 150px;
         width: auto;
+        float: right;
 
       }
     }

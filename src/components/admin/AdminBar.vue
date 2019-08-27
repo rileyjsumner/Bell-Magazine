@@ -3,6 +3,8 @@
         <i id="dropdown-toggle" class="fas fa-chevron-circle-down"></i>
         <ul class="admin-dropdown-menu shadow">
             <li><router-link to="/Login">Login</router-link></li>
+            <li id="light" v-on:click="light()"><a>Light Theme</a></li>
+            <li id="dark" v-on:click="dark()"><a>Dark Theme</a></li>
         </ul>
     </div>
 </template>
@@ -29,7 +31,34 @@
     });
 
     export default {
-        name: "AdminBar"
+        name: "AdminBar",
+        methods: {
+            light() {
+                $("#light").css("display", "none");
+                $("#dark").css("display", "block");
+
+                $("#app").addClass("light");
+                $(".content").addClass("light");
+                $(".shadow").addClass("light");
+                $(".footer").addClass("light");
+                $(".article").addClass("light");
+                $("a").addClass("light");
+                $(".admin-dropdown-menu").addClass("light");
+            },
+             dark() {
+                $("#light").css("display", "block");
+                $("#dark").css("display", "none");
+
+                $("#app").removeClass("light");
+                $(".content").removeClass("light");
+                $(".shadow").removeClass("light");
+                $(".footer").removeClass("light");
+                $(".article").removeClass("light");
+                $("a").removeClass("light");
+                $(".admin-dropdown-menu").removeClass("light");
+
+            }
+        }
     }
 </script>
 
@@ -42,6 +71,10 @@
         position: absolute;
         top: 1rem;
         right: 1rem;
+    }
+
+    #dark {
+        display: none;
     }
 
 </style>
