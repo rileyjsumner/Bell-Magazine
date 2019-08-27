@@ -5,6 +5,7 @@
                  tagline="Check out this article about news"
                  img="https://cdn.pixabay.com/photo/2018/10/30/16/06/water-lily-3784022__340.jpg"
                  alt="Sample Image"
+                 url="/About"
                  :featured="true"
         ></Article>
         <Article title="Sample Article"

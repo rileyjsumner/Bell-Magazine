@@ -4,7 +4,7 @@
 
 nav.nav {
 
-  background-color: $bell-black-accent;
+  background-color: $bell-blue-secondary;
   position: relative;
   width: 100%;
   padding: 1.5rem 0;
@@ -69,6 +69,10 @@ nav.nav {
       display: inline-flex;
       margin: 0;
       padding: 0 0 0 2.5rem;
+    }
+
+    @include xl {
+      padding: 0;
     }
   }
 }

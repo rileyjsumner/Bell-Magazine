@@ -6,7 +6,10 @@
 
 <script>
     export default {
-        name: "AdminPanel"
+        name: "AdminPanel",
+        data() {
+            return {};
+        }
     }
 </script>
 

@@ -17,26 +17,36 @@
     padding-left: 40px;
     margin-left: 1rem;
   }
+  @include xl {
+    padding-left: 0;
+    margin-left: 0;
+  }
 }
 
 .admin-dropdown {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  width: 200px;
 
   .admin-dropdown-menu {
     display: block;
-    background-color: $bell-white-accent;
+    background-color: $bell-black-accent;
     max-height: 0;
     transition: all .2s ease-in-out;
     overflow: hidden;
     top: 3rem;
     right: 1rem;
     position: absolute;
+    padding: 0 1rem;
 
     li {
 
       list-style-type: none;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     &.admin-dropdown-menu-active {

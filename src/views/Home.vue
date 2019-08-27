@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import ArticleGrid from "./ArticleGrid";
+    import ArticleGrid from "../components/ArticleGrid";
     export default {
         name: "Home",
         components: {ArticleGrid}
