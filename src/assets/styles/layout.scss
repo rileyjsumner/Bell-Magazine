@@ -19,6 +19,25 @@
   margin: 0 auto;
 }
 
+.row {
+  display: flex;
+  justify-content: flex-start;
+
+  .col {
+    align-self: flex-start;
+
+    &.col-wide {
+      width: 65%;
+    }
+    &.col-narrow {
+      width: 35%;
+    }
+    &.col-no-header {
+      margin-top: 6rem;
+    }
+  }
+}
+
 #app {
 
   background-color: $bell-white-accent;
