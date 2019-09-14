@@ -37,25 +37,27 @@
                 $("#light").css("display", "none");
                 $("#dark").css("display", "block");
 
-                $("#app").addClass("light");
-                $(".content").addClass("light");
-                $(".shadow").addClass("light");
-                $(".footer").addClass("light");
-                $(".article").addClass("light");
-                $("a").addClass("light");
-                $(".admin-dropdown-menu").addClass("light");
+                $("#app").removeClass("dark");
+                $(".content").removeClass("dark");
+                $(".shadow").removeClass("dark");
+                $(".footer").removeClass("dark");
+                $(".article").removeClass("dark");
+                $("a").removeClass("dark");
+                $(".admin-dropdown-menu").removeClass("dark");
+                $(".nav").removeClass("dark");
             },
              dark() {
                 $("#light").css("display", "block");
                 $("#dark").css("display", "none");
 
-                $("#app").removeClass("light");
-                $(".content").removeClass("light");
-                $(".shadow").removeClass("light");
-                $(".footer").removeClass("light");
-                $(".article").removeClass("light");
-                $("a").removeClass("light");
-                $(".admin-dropdown-menu").removeClass("light");
+                $("#app").addClass("dark");
+                $(".content").addClass("dark");
+                $(".shadow").addClass("dark");
+                $(".footer").addClass("dark");
+                $(".article").addClass("dark");
+                $("a").addClass("dark");
+                $(".admin-dropdown-menu").addClass("dark");
+                $(".nav").addClass("dark");
 
             }
         }
@@ -73,7 +75,7 @@
         right: 1rem;
     }
 
-    #dark {
+    #light {
         display: none;
     }
 
