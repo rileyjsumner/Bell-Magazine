@@ -1,6 +1,6 @@
 <template>
     <div class="admin-dropdown">
-        <i id="dropdown-toggle" class="fas fa-chevron-circle-down"></i>
+        <i id="dropdown-toggle" class="fas fa-chevron-circle-down">V</i>
         <ul class="admin-dropdown-menu shadow">
             <li><router-link to="/Login">Login</router-link></li>
             <li id="light" v-on:click="light()"><a>Light Theme</a></li>
