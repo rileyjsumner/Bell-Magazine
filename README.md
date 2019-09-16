@@ -1,33 +1,7 @@
 # Bell Magazine
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+Welcome to the repository home for Bell's Website. Head over to (bellmagazine.herokuapp.com)[bellmagazine.herokuapp.com] to see the live site. 
 
 ### Getting Started
-
 Head to the [wiki](https://github.com/rileyjsumner/Bell-Magazine/wiki/Getting-Started)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
