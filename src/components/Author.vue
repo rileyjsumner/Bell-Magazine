@@ -1,7 +1,7 @@
 <template>
     <div class="author">
         <div class="intro">
-            <img class="" :src=img />
+            <img alt="{{ name }}" class="" :src=img />
             <h1>{{ name }}</h1>
             <p>{{ bio }}</p>
         </div>

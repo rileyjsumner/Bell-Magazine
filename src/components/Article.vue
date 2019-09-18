@@ -12,11 +12,23 @@
 </template>
 
 <script>
+
+    import JQuery from 'jquery'
+    let $ = JQuery;
+
     export default {
         name: "Article",
         methods: {
             goToStory(url) {
                 window.location.replace(url);
+            },
+            isDark() {
+                if($("#app").hasClass("dark")) {
+                    if(!$(".article").hasClass()) {
+                        $(".article").addClass("dark")
+                    }
+                }
+
             }
         },
         props: {
@@ -28,6 +40,11 @@
             featured: Boolean,
             category: String,
             url: String
+        },
+        mounted: function() {
+            this.$nextTick(function() {
+                this.isDark();
+            });
         }
     }
 </script>

@@ -1,0 +1,59 @@
+@import "./utilities/_imports.scss";
+
+#app.dark,
+.content.dark {
+
+  background-color: $bell-black-accent;
+
+}
+
+.shadow.dark {
+
+  box-shadow: 4px 4px 0 0 $bell-blue-secondary;
+
+  &:hover {
+    box-shadow: 6px 6px 0 0 $bell-blue-secondary;
+  }
+}
+
+footer.footer.dark {
+
+  background-color: $bell-blue-secondary;
+
+}
+
+div .article-grid div.article.dark {
+
+  color: $bell-white-accent;
+}
+
+nav.nav.dark {
+
+  background-color: $bell-blue-secondary;
+}
+
+a.dark {
+
+  color: $bell-white-accent;
+
+  &:hover {
+    color: $bell-accent-primary;
+  }
+}
+
+.admin-dropdown-menu li a {
+
+  color: $bell-blue-secondary;
+
+  &.dark {
+    color: $bell-white-accent;
+  }
+  &:hover {
+    color: $bell-accent-primary;
+  }
+}
+
+.admin-dropdown .admin-dropdown-menu.dark {
+
+  background-color: $bell-black-accent;
+}

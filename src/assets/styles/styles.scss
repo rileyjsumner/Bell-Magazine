@@ -53,11 +53,11 @@ textarea {
 
 .shadow {
 
-  box-shadow: 4px 4px 0 0 $bell-blue-secondary;
+  box-shadow: 4px 4px 0 0 $bell-accent-primary;
   transition: all .2s ease-in-out;
 
   &:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 0 $bell-blue-secondary;
+    box-shadow: 6px 6px 0 0 $bell-accent-primary;
   }
 }
