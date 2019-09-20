@@ -1,0 +1,11 @@
+.modal {
+  display: none;
+
+  &.isActive {
+    display: block;
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+  }
+}
