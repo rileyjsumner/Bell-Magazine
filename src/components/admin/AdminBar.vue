@@ -28,6 +28,17 @@
                 $(this).css("transform", "rotate(180deg)");
                 $(".admin-dropdown-menu").css("max-height", "150px");
             }
+        });
+        $('html').click(function(e) {
+            if(e.target.id !== "dropdown-toggle") {
+                if($(".admin-dropdown-menu").hasClass("admin-dropdown-menu-active")) {
+
+                    $(".admin-dropdown-menu").removeClass("admin-dropdown-menu-active");
+                    $("#dropdown-toggle").css("transform", "rotate(360deg)");
+                    $(".admin-dropdown-menu").css("max-height", "0px");
+
+                }
+            }
         })
     });
 
