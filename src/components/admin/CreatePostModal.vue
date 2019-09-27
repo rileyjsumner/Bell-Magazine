@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="modal" :class="{ 'is-active': isActive }">
+            <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
                     Add Note
@@ -23,7 +24,7 @@
                     <button @click="create" class="button">Post</button>
                 </section>
             </div>
-            <button @click="toggle" class="modal-close" aria-label="close"></button>
+            <button @click="toggle" class="modal-close button-close" aria-label="close"></button>
         </div>
         <button @click="toggle" class="button">Create Post</button>
     </div>
@@ -44,7 +45,7 @@
         },
         methods: {
             create() {
-                let data = {title: this.title, body: this.body }
+                let data = {title: this.title, body: this.body };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
