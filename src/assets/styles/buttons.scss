@@ -34,3 +34,23 @@ button {
 
   }
 }
+
+.btn-close {
+
+  box-shadow: none;
+  background-color: unset;
+  color: $bell-black-accent;
+  border: none;
+
+  &:before {
+
+    content: "X";
+
+  }
+  &:hover {
+
+    box-shadow: none;
+    background-color: unset;
+    color: $bell-yellow-primary;
+  }
+}

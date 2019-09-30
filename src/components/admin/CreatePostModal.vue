@@ -16,15 +16,13 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label>Body:
-                                <textarea v-model="body" class="textarea"  placeholder="enter content"></textarea>
-                            </label>
+                            <div id="story"></div>
                         </div>
                     </div>
                     <button @click="create" class="button">Post</button>
                 </section>
             </div>
-            <button @click="toggle" class="modal-close button-close" aria-label="close"></button>
+            <button @click="toggle" class="modal-close btn-close" aria-label="close"></button>
         </div>
         <button @click="toggle" class="button">Create Post</button>
     </div>
@@ -33,6 +31,20 @@
 <script>
 
     import { createPost } from "../../repository";
+    import EditorJS from '@editorjs/editorjs';
+    import Header from '@editorjs/header';
+    import List from '@editorjs/list';
+
+    const editor = new EditorJS({
+        /**
+         * Id of Element that should contain the Editor
+         */
+        holderId: 'story',
+        tools: {
+            header: Header,
+            list: List
+        },
+    });
 
     export default {
         name: "CreatePostModal",
@@ -63,4 +75,9 @@
 
 <style scoped>
 
+    #story {
+        border: 1px solid black;
+        width: 85%;
+        margin: 0 auto;
+    }
 </style>

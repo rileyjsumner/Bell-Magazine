@@ -21,7 +21,8 @@
         components: { Post, CreatePostModal },
         data() {
             return {
-                posts: []
+                posts: [],
+                authenticated: false
             }
         },
         methods: {
@@ -37,9 +38,13 @@
             },
         },
         mounted() {
-            getPosts()
-                .then(data => this.posts = data.posts)
-                .catch((err => alert(err)));
+            if(!this.authenticated) { // logic broken rn
+                this.$router.replace({ name: "Admin"});
+            } else {
+                getPosts()
+                    .then(data => this.posts = data.posts)
+                    .catch((err => alert(err)));
+            }
         }
     }
 </script>
