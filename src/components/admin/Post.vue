@@ -2,10 +2,10 @@
     <article class="message">
         <div class="message-header">
             <p>{{ post.title }}</p>
-            <button @click="deletePost" class="delete" aria-label="delete"></button>
+            <button @click="deletePost" class="delete btn-close" aria-label="delete"></button>
         </div>
         <div class="message-body">
-            {{ post.body }}
+            {{ sanitizeBlocks(post.body) }}
             <br>
             <br>
             <span class="has-text-grey-light">Created at: {{ post.createdAt | moment }}</span>
@@ -30,11 +30,15 @@
             deletePost(e) {
                 e.preventDefault();
                 deletePost(this.post._id)
-                    .then(() => this.$emite('deletePost', this.post._id))
+                    .then(() => this.$emit('deletePost', this.post._id))
                     .catch(err => alert(err))
             },
             updatePost(post) {
                 this.$emit('updatePost', post);
+            },
+            sanitizeBlocks(body) {
+                let blocks = JSON.parse(body);
+                console.log(blocks);
             }
         },
         filters: {

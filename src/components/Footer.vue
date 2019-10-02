@@ -10,6 +10,12 @@
                 </ul>
             </div>
             <div class="footer-section">
+                <ul class="footer-list">
+                    <li class="footer-link"><a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a></li>
+                    <li class="footer-link"><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
                 <img class="footer-logo" src="../assets/pics/bell_logo_white.svg" alt="logo"/>
             </div>
         </div>

@@ -34,17 +34,7 @@
     import EditorJS from '@editorjs/editorjs';
     import Header from '@editorjs/header';
     import List from '@editorjs/list';
-
-    const editor = new EditorJS({
-        /**
-         * Id of Element that should contain the Editor
-         */
-        holderId: 'story',
-        tools: {
-            header: Header,
-            list: List
-        },
-    });
+    import Quote from '@editorjs/quote';
 
     export default {
         name: "CreatePostModal",
@@ -57,7 +47,14 @@
         },
         methods: {
             create() {
-                let data = {title: this.title, body: this.body };
+                let body = "";
+                editor.save().then((outputData) => {
+                    body = outputData;
+                    console.log('Article data: ', JSON.stringify(body))
+                }).catch((error) => {
+                    console.log('Saving failed: ', error)
+                });
+                let data = {title: this.title, body: JSON.stringify(body) };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
@@ -70,6 +67,19 @@
                 this.isActive = !this.isActive;
             },
         },
+        mounted() {
+            const editor = new EditorJS({
+                /**
+                 * Id of Element that should contain the Editor
+                 */
+                holder: 'story',
+                tools: {
+                    header: Header,
+                    list: List,
+                    quote: Quote,
+                },
+            });
+        }
     }
 </script>
 
