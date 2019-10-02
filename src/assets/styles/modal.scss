@@ -1,11 +1,40 @@
+@import "utilities/_imports.scss";
+
 .modal {
   display: none;
+  z-index: 2;
 
-  &.isActive {
+  &.is-active {
     display: block;
+    width: 100%;
+    height: 100%;
     position: fixed;
-    width: 50%;
-    height: 50%;
+    background-color: rgba(120, 120, 120, .5);
+    top: 0;
+    left: 0;
     text-align: center;
+  }
+
+  .modal-card {
+    z-index: 2;
+    top: 20%;
+    position: relative;
+  }
+
+  .modal-background {
+    background-color: $bell-white-accent;
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    z-index: -1;
+  }
+
+  .modal-close {
+
+    position: absolute;
+    top: 10%;
+    right: 10%;
   }
 }

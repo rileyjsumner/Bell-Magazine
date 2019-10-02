@@ -11,6 +11,8 @@
     "watch-scss": "node-sass -w src/assets/styles/ -o src/assets/css/"
   },
   "dependencies": {
+    "@editorjs/header": "latest",
+    "@editorjs/list": "latest",
     "acorn": "^6.2.0",
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
@@ -24,9 +26,12 @@
     "path": "^0.12.7",
     "server": "^1.0.19",
     "vue": "^2.6.10",
+    "vue-editor-js": "^0.4.0",
     "vue-router": "^3.0.7"
   },
   "devDependencies": {
+    "@editorjs/editorjs": "^2.15.1",
+    "@editorjs/quote": "^2.3.0",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-service": "^3.8.0",

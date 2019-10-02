@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="modal" :class="{ 'is-active': isActive }">
+            <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
                     Add Note
@@ -15,15 +16,13 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label>Body:
-                                <textarea v-model="body" class="textarea"  placeholder="enter content"></textarea>
-                            </label>
+                            <div id="story"></div>
                         </div>
                     </div>
                     <button @click="create" class="button">Post</button>
                 </section>
             </div>
-            <button @click="toggle" class="modal-close" aria-label="close"></button>
+            <button @click="toggle" class="modal-close btn-close" aria-label="close"></button>
         </div>
         <button @click="toggle" class="button">Create Post</button>
     </div>
@@ -32,6 +31,10 @@
 <script>
 
     import { createPost } from "../../repository";
+    import EditorJS from '@editorjs/editorjs';
+    import Header from '@editorjs/header';
+    import List from '@editorjs/list';
+    import Quote from '@editorjs/quote';
 
     export default {
         name: "CreatePostModal",
@@ -44,7 +47,14 @@
         },
         methods: {
             create() {
-                let data = {title: this.title, body: this.body }
+                let body = "";
+                editor.save().then((outputData) => {
+                    body = outputData;
+                    console.log('Article data: ', JSON.stringify(body))
+                }).catch((error) => {
+                    console.log('Saving failed: ', error)
+                });
+                let data = {title: this.title, body: JSON.stringify(body) };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
@@ -57,9 +67,27 @@
                 this.isActive = !this.isActive;
             },
         },
+        mounted() {
+            const editor = new EditorJS({
+                /**
+                 * Id of Element that should contain the Editor
+                 */
+                holder: 'story',
+                tools: {
+                    header: Header,
+                    list: List,
+                    quote: Quote,
+                },
+            });
+        }
     }
 </script>
 
 <style scoped>
 
+    #story {
+        border: 1px solid black;
+        width: 85%;
+        margin: 0 auto;
+    }
 </style>
