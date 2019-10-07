@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div id="editor"></div>
         <div class="modal" :class="{ 'is-active': isActive }">
             <div class="modal-background"></div>
             <div class="modal-card">
@@ -16,7 +17,6 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <div id="story"></div>
                         </div>
                     </div>
                     <button @click="create" class="button">Post</button>
@@ -31,10 +31,9 @@
 <script>
 
     import { createPost } from "../../repository";
-    import EditorJS from '@editorjs/editorjs';
-    import Header from '@editorjs/header';
-    import List from '@editorjs/list';
-    import Quote from '@editorjs/quote';
+    import Quill from 'quill';
+
+    let editor;
 
     export default {
         name: "CreatePostModal",
@@ -48,13 +47,7 @@
         methods: {
             create() {
                 let body = "";
-                editor.save().then((outputData) => {
-                    body = outputData;
-                    console.log('Article data: ', JSON.stringify(body))
-                }).catch((error) => {
-                    console.log('Saving failed: ', error)
-                });
-                let data = {title: this.title, body: JSON.stringify(body) };
+                let data = {title: this.title, body: body };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
@@ -68,16 +61,9 @@
             },
         },
         mounted() {
-            const editor = new EditorJS({
-                /**
-                 * Id of Element that should contain the Editor
-                 */
-                holder: 'story',
-                tools: {
-                    header: Header,
-                    list: List,
-                    quote: Quote,
-                },
+            editor = new Quill('#editor', {
+                modules: { toolbar: true },
+                theme: 'snow'
             });
         }
     }
@@ -85,7 +71,7 @@
 
 <style scoped>
 
-    #story {
+    #editor {
         border: 1px solid black;
         width: 85%;
         margin: 0 auto;
