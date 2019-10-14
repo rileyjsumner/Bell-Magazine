@@ -1,6 +1,5 @@
 <template>
     <div>
-        <div id="editor"></div>
         <div class="modal" :class="{ 'is-active': isActive }">
             <div class="modal-background"></div>
             <div class="modal-card">
@@ -17,6 +16,7 @@
                     </div>
                     <div class="field">
                         <div class="control">
+                            <div id="editor"></div>
                         </div>
                     </div>
                     <button @click="create" class="button">Post</button>
@@ -46,7 +46,8 @@
         },
         methods: {
             create() {
-                let body = "";
+                console.log(JSON.stringify(editor.getContents()));
+                let body = editor.root.innerHTML;
                 let data = {title: this.title, body: body };
                 createPost(data)
                     .then(data => {

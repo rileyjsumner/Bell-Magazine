@@ -5,7 +5,7 @@
             <button @click="deletePost" class="delete btn-close" aria-label="delete"></button>
         </div>
         <div class="message-body">
-            {{ sanitizeBlocks(post.body) }}
+            <div v-html="post.body"></div>
             <br>
             <br>
             <span class="has-text-grey-light">Created at: {{ post.createdAt | moment }}</span>
@@ -35,10 +35,6 @@
             },
             updatePost(post) {
                 this.$emit('updatePost', post);
-            },
-            sanitizeBlocks(body) {
-                let blocks = JSON.parse(body);
-                console.log(blocks);
             }
         },
         filters: {
