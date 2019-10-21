@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" class="app">
         <Header></Header>
         <div class="content">
             <router-view @authenticated="setAuthenticated" />
