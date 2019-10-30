@@ -4,13 +4,20 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    Add Note
+                    Add Post
                 </header>
                 <section class="modal-card-body">
                     <div class="field">
                         <div class="control">
                             <label>Title:
-                                <input v-model="title" class="input" type="text" placeholder="title">
+                                <input v-model="title" class="input" type="text" placeholder="title"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Author:
+                                <input v-model="author" class="input" type="text" placeholder="author"/>
                             </label>
                         </div>
                     </div>
@@ -41,18 +48,18 @@
             return {
                 title: "",
                 body: "",
+                author: "",
                 isActive: false
             }
         },
         methods: {
             create() {
-                console.log(JSON.stringify(editor.getContents()));
                 let body = editor.root.innerHTML;
-                let data = {title: this.title, body: body };
+                let data = {title: this.title, body: body, author: this.author };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
-                        this.title = this.body = '';
+                        this.title = this.body = this.author = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));

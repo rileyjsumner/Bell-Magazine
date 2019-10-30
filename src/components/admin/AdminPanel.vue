@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <h1>Admin Panel</h1>
-        <div v-if="posts">
+        <div class="post-list" v-if="posts">
             <CreatePostModal @createPost="createPost"></CreatePostModal>
-            <div>
+            <div class="posts">
                 <Post v-for="(post, index) in posts" :post="post" :key="index" @deletePost="deletePost" @updatePost="updatePost"></Post>
             </div>
         </div>
