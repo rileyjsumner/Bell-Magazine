@@ -7,21 +7,30 @@
                 <Post v-for="(post, index) in posts" :post="post" :key="index" @deletePost="deletePost" @updatePost="updatePost"></Post>
             </div>
         </div>
+        <div class="author-list" v-if="authors">
+            <CreateAuthorModal @createAuthor="createAuthor"></CreateAuthorModal>
+            <div class="authors">
+                <Author v-for="(author, index) in authors" :author="author" :key="index" @deleteAuthor="deleteAuthor" @updateAuthor="updateAuthor"></Author>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 
     import Post from './Post.vue'
+    import Author from './Author.vue';
     import CreatePostModal from './CreatePostModal.vue'
-    import {getPosts} from '../../repository'
+    import CreateAuthorModal from './CreateAuthorModal.vue'
+    import { getPosts, getAuthors } from '../../repository'
 
     export default {
         name: "AdminPanel",
-        components: { Post, CreatePostModal },
+        components: { Post, Author, CreatePostModal, CreateAuthorModal },
         data() {
             return {
                 posts: [],
+                authors: [],
                 authenticated: false
             }
         },
@@ -36,6 +45,16 @@
             createPost(post) {
                 this.posts = [post, ...this.posts];
             },
+            deleteAuthor(id) {
+                this.authors = this.authors.filter(author => author._id !== id);
+            },
+            updateAuthor(author) {
+                this.deleteAuthor(author._id);
+                this.createAuthor(author);
+            },
+            createAuthor(author) {
+                this.authors = [author, ...this.authors];
+            }
         },
         mounted() {
             if(!this.authenticated) { // logic broken rn
@@ -43,6 +62,9 @@
             } else {
                 getPosts()
                     .then(data => this.posts = data.posts)
+                    .catch((err => alert(err)));
+                getAuthors()
+                    .then(data => this.authors = data.authors)
                     .catch((err => alert(err)));
             }
         }

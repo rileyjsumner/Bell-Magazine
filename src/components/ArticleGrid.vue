@@ -1,5 +1,6 @@
 <template>
     <div class="article-grid">
+        <ArticleList></ArticleList>
         <Article title="Sample Article"
                  byline="Author McAuthorson"
                  tagline="Check out this article about news"
@@ -47,10 +48,11 @@
     // let stories = db.getAllStories();
 
     import Article from "./Article";
+    import ArticleList from './ArticleList';
 
     export default {
         name: "ArticleGrid",
-        components: {Article}
+        components: { Article, ArticleList }
     }
 </script>
 
