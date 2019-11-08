@@ -34,8 +34,19 @@
                 $(".nav-mobile").addClass("nav-mobile-collapsed");
                 $("#nav-toggle").removeClass("open");
             }
-        })
+        });
     });
+
+    window.onscroll = function() {
+        let sticky = 150;
+        if (window.pageYOffset > sticky) {
+            $(".nav").addClass("sticky");
+            $(".content").css("padding-top", "50px");
+        } else {
+            $(".nav").removeClass("sticky");
+            $(".content").css("padding-top", "0px");
+        }
+    };
 
     export default {
         name: "NavBar",
@@ -46,5 +57,12 @@
 </script>
 
 <style scoped>
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+    }
 
 </style>
