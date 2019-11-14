@@ -12,7 +12,8 @@ export default new Router({
         { path: '/Design', component: require('../components/DesignKit').default, name: 'Design' },
         { path: '/Staff', component: require('../components/StaffDirectory').default, name: 'Staff' },
         { path: '/Admin', component: require('../components/admin/AdminPanel').default, name: 'Admin'},
-        { path: '/Login', component: require('../views/admin/Login').default, name: 'Login'}
+        { path: '/Login', component: require('../views/admin/Login').default, name: 'Login'},
+        { path: '/Story', component: require('../views/Story').default, name: 'Story' }
     ],
     mode: 'history'
 });
