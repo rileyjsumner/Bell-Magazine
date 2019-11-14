@@ -1,6 +1,7 @@
 <template>
     <nav class="nav nav-mobile nav-mobile-collapsed">
         <div class="container">
+            <img class="nav-logo" src="../assets/pics/bell_logo_small.svg" height="29" alt="small logo"/>
             <ul class="nav-links">
                 <li class="link" v-bind:key="link" v-for="link in links">
                     <router-link :to="{name: link}">{{ link }}</router-link>
@@ -34,8 +35,21 @@
                 $(".nav-mobile").addClass("nav-mobile-collapsed");
                 $("#nav-toggle").removeClass("open");
             }
-        })
+        });
     });
+
+    window.onscroll = function() {
+        let sticky = 150;
+        if (window.pageYOffset > sticky) {
+            $(".nav").addClass("sticky");
+            $(".content").css("padding-top", "45px");
+            $(".nav-logo").css("transform", "translateX(0%)");
+        } else {
+            $(".nav").removeClass("sticky");
+            $(".content").css("padding-top", "0px");
+            $(".nav-logo").css("transform", "translateX(-200%)");
+        }
+    };
 
     export default {
         name: "NavBar",
@@ -46,5 +60,19 @@
 </script>
 
 <style scoped>
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .nav-logo {
+        left: 1rem;
+        transform: translateX(-200%);
+        transition: transform .5s ease-in-out;
+        position: absolute;
+    }
 
 </style>

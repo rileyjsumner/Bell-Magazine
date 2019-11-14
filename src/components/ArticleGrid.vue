@@ -1,13 +1,16 @@
 <template>
     <div class="article-grid">
+        <ArticleList></ArticleList>
         <Article title="Sample Article"
                  byline="Author McAuthorson"
                  tagline="Check out this article about news"
                  img="https://cdn.pixabay.com/photo/2018/10/30/16/06/water-lily-3784022__340.jpg"
                  alt="Sample Image"
-                 url="/About"
+                 url="/Story"
                  :featured="true"
         ></Article>
+        <AuthorList></AuthorList>
+        <ArticleList isShort="true"></ArticleList>
         <Article title="Sample Article"
                  byline="Author McAuthorson"
                  tagline="Check out this article about news"
@@ -46,11 +49,13 @@
     // eslint-disable-next-line
     // let stories = db.getAllStories();
 
-    import Article from "./Article";
+    import Article from "./articles/Article";
+    import ArticleList from './ArticleList';
+    import AuthorList from './AuthorList';
 
     export default {
         name: "ArticleGrid",
-        components: {Article}
+        components: { Article, ArticleList, AuthorList }
     }
 </script>
 

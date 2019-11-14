@@ -51,6 +51,10 @@ textarea {
   text-align: left;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .shadow {
 
   box-shadow: 4px 4px 0 0 $bell-accent-primary;
@@ -60,4 +64,7 @@ textarea {
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0 0 $bell-accent-primary;
   }
+}
+.ql-snow .ql-picker.ql-header {
+  width: 113px;
 }

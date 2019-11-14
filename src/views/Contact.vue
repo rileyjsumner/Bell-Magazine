@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Contact</h1>
+        <h1 class="heading">Contact</h1>
 
         <form class="form contact-form">
             <label class="form-label" for="name">Name</label>

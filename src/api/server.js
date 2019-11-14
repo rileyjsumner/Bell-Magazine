@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt');
 
 // models
 const Post = require('./Post');
+const Author = require('./Author');
 
 //connect server to mongoDB
 
@@ -29,12 +30,25 @@ app.get('/api/post/list', (req, res) => {
         return res.send({posts})
     });
 });
+app.get('/api/author/list', (req, res) => {
+    Author.find({}).sort({updatedAt: 'descending'}).exec((err, authors) => {
+        if (err) return res.status(404).send('Error while getting authors!');
+        return res.send({authors})
+    });
+});
 
 app.post('/api/post/create', (req, res) => {
-    const post = new Post({ body: req.body.body, title: req.body.title});
+    const post = new Post({ body: req.body.body, title: req.body.title, author: req.body.author});
     post.save( (err) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ post });
+    });
+});
+app.post('/api/author/create', (req, res) => {
+    const author = new Author({ body: req.body.body, title: req.body.title, author: req.body.author});
+    author.save( (err) => {
+        if (err) return res.status(404).send({message: err.message});
+        return res.send({ author });
     });
 });
 
@@ -45,11 +59,24 @@ app.post('/api/post/update/:id', (req, res) => {
         return res.send({ message: 'post updated! ', post});
     })
 });
+app.post('/api/author/update/:id', (req, res) => {
+    let options = { new: true};
+    Author.findByIdAndUpdate(req.params.id, req.body.data, options, (err, author) => {
+        if (err) return res.status(404).send({message: err.message});
+        return res.send({ message: 'author updated! ', author});
+    })
+});
 
 app.post('/api/post/delete/:id', (req, res) => {
     Post.findByIdAndRemove(req.params.id, (err) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ message: 'post deleted!'});
+    });
+});
+app.post('/api/author/delete/:id', (req, res) => {
+    Author.findByIdAndRemove(req.params.id, (err) => {
+        if (err) return res.status(404).send({message: err.message});
+        return res.send({ message: 'author deleted!'});
     });
 });
 

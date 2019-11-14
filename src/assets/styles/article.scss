@@ -19,11 +19,12 @@ div.article-grid {
     color: $bell-black-accent;
 
     &.article-featured {
-      width: 55%;
+      width: 45%;
     }
 
     .article-heading,
-    .article-body {
+    .article-body,
+    .article-content {
 
       width: 100%;
     }
@@ -46,7 +47,23 @@ div.article-grid {
       }
     }
 
-    .article-heading {
+    .article-heading,
+    .article-content {
+
+      &.author-content {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+
+        .author-profile {
+          display: flex;
+          align-items: center;
+          width: 30%;
+        }
+        .author-body {
+          width: 65%;
+        }
+      }
 
       .title {
 
@@ -59,6 +76,27 @@ div.article-grid {
         font-weight: bold;
         font-size: 1.25rem;
       }
+
+      .description {
+        font-size: 1rem;
+      }
+
+      .profile {
+        width: 64px;
+      }
+    }
+
+  }
+
+  div.article-list,
+  div.author-list {
+    width: 25%;
+
+    & div.list-article,
+    & div.author-article{
+      width: 100%;
+      margin: .25rem 0;
+      padding: .25rem .5rem;
     }
   }
 

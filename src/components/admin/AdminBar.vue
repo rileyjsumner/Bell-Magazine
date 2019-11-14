@@ -54,7 +54,13 @@
                 $(".shadow").removeClass("dark");
                 $(".footer").removeClass("dark");
                 $(".article").removeClass("dark");
-                $("a").removeClass("dark");
+                $(" a ").removeClass("dark");
+                $(" h1 ").removeClass("dark");
+                $(" h2 ").removeClass("dark");
+                $(" h3 ").removeClass("dark");
+                $(" h4 ").removeClass("dark");
+                $(" h5 ").removeClass("dark");
+                $(" h6 ").removeClass("dark");
                 $(".admin-dropdown-menu").removeClass("dark");
                 $(".nav").removeClass("dark");
             },
@@ -67,7 +73,13 @@
                 $(".shadow").addClass("dark");
                 $(".footer").addClass("dark");
                 $(".article").addClass("dark");
-                $("a").addClass("dark");
+                $(" a ").addClass("dark");
+                $(" h1 ").addClass("dark");
+                $(" h2 ").addClass("dark");
+                $(" h3 ").addClass("dark");
+                $(" h4 ").addClass("dark");
+                $(" h5 ").addClass("dark");
+                $(" h6 ").addClass("dark");
                 $(".admin-dropdown-menu").addClass("dark");
                 $(".nav").addClass("dark");
 

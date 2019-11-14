@@ -1,19 +1,19 @@
 <template>
     <article class="post">
         <div class="post-header">
-            <h2>{{ post.title }}</h2>
+            <h2>{{ author.title }}</h2>
             <div>
                 <button @click="deletePost" class="delete btn-close" aria-label="delete"></button>
             </div>
         </div>
         <div class="post-body">
-            <div v-if="post.body.length < 500">{{ post.body }}</div>
-            <div v-if="post.body.length >= 500">{{ post.body.substring(0,500) + "... " }}</div>
+            <div v-if="author.body.length < 500">{{ author.body }}</div>
+            <div v-if="author.body.length >= 500">{{ author.body.substring(0,500) + "... " }}</div>
 <!--            <p>Created: {{ post.createdAt | moment }}</p>-->
 <!--            <p>Updated: {{ post.updatedAt | moment }}</p>-->
         </div><div class="post-details">
             <div class="post-author">
-                <strong>Author:</strong><p>{{ post.author }}</p>
+                <strong>Author:</strong><p>{{ author.author }}</p>
             </div>
             <UpdatePostModal :post="post" @updatePost="updatePost" :key="post._id"></UpdatePostModal>
         </div>
@@ -22,23 +22,23 @@
 
 <script>
 
-    import { deletePost } from '../../repository';
+    import { deleteAuthor } from '../../repository';
     import UpdatePostModal from './UpdatePostModal.vue';
     import Moment from 'moment';
 
     export default {
-        name: "Post",
-        props: [ 'post' ],
+        name: "Author",
+        props: [ 'author' ],
         components: { UpdatePostModal },
         methods: {
-            deletePost(e) {
+            deleteAuthor(e) {
                 e.preventDefault();
-                deletePost(this.post._id)
-                    .then(() => this.$emit('deletePost', this.post._id))
+                deleteAuthor(this.author._id)
+                    .then(() => this.$emit('deleteAuthor', this.author._id))
                     .catch(err => alert(err))
             },
-            updatePost(post) {
-                this.$emit('updatePost', post);
+            updateAuthor(author) {
+                this.$emit('updateAuthor', author);
             }
         },
         filters: {

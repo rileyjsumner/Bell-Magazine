@@ -4,6 +4,9 @@ const PostSchema = Schema(
     {
         title: {type: String, required: true},
         body: {type: String, required: true},
+        author_id: {type: String, required: true},
+        permalink: {type: String, required: true},
+
     },
     { timestamps: true }
 );

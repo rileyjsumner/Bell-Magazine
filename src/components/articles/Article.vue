@@ -5,7 +5,7 @@
             <p>{{ tagline }}</p>
         </div>
         <div class="article-heading">
-            <h1 class="title">{{ title }}</h1>
+            <h2 class="title">{{ title }}</h2>
             <p class="byline">{{ byline }}</p>
         </div>
     </div>

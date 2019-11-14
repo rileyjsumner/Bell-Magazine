@@ -26,39 +26,21 @@
                             <div id="editor"></div>
                         </div>
                     </div>
-                    <div class="field">
-                        <div class="control">
-                            <upload-image is="upload-image"
-                                          :url="'/Admin'"
-                                          :max_files="1"
-                                          name="files[]"
-                                          :resize_enabled="true"
-                                          :resize_max_width="640"
-                                          :button_html="'Upload'"
-                                          :button_class="'button is-primary'"
-                            ></upload-image>
-                        </div>
-                    </div>
                     <button @click="create" class="button">Post</button>
                 </section>
             </div>
             <button @click="toggle" class="modal-close btn-close" aria-label="close"></button>
         </div>
-        <button @click="toggle" class="button">Create Post</button>
+        <button @click="toggle" class="button">Create Author</button>
     </div>
 </template>
 
 <script>
 
-    import { createPost } from "../../repository";
-    import UploadImage from 'vue-upload-image';
-    import Quill from 'quill';
-
-    let editor;
+    import { createAuthor } from "../../repository";
 
     export default {
-        name: "CreatePostModal",
-        components: { UploadImage },
+        name: "CreateAuthorModal",
         data() {
             return {
                 title: "",
@@ -69,11 +51,10 @@
         },
         methods: {
             create() {
-                let body = editor.root.innerHTML;
-                let data = {title: this.title, body: body, author: this.author };
-                createPost(data)
+                let data = {title: this.title, body: this.body, author: this.author };
+                createAuthor(data)
                     .then(data => {
-                        this.$emit('createPost', data.post);
+                        this.$emit('createAuthor', data.author);
                         this.title = this.body = this.author = '';
                         this.toggle();
                     })
@@ -84,10 +65,6 @@
             },
         },
         mounted() {
-            editor = new Quill('#editor', {
-                modules: { toolbar: true },
-                theme: 'snow'
-            });
         }
     }
 </script>
