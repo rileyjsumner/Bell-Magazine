@@ -9,7 +9,8 @@
     "api": "node src/api/server.js",
     "deploy": "npm run build && git commit -am 'deploy' && git push",
     "watch-scss": "node-sass -w src/assets/styles/ -o src/assets/css/",
-    "start": "npm run serve"
+    "start": "node src/api/server.js",
+    "postinstall": "npm run build"
   },
   "engines": {
     "node": "10.16.0"
