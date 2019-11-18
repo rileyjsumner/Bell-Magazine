@@ -16,6 +16,13 @@
                     </div>
                     <div class="field">
                         <div class="control">
+                            <label>Permalink: https://www.bell.com/story/
+                                <input v-model="link" class="input" type="text" placeholder="permalink"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
                             <label>Author:
                                 <input v-model="author" class="input" type="text" placeholder="author"/>
                             </label>
@@ -50,11 +57,12 @@
 
 <script>
 
-    import { createPost } from "../../repository";
+    import {createPost, getAuthors} from "../../repository";
     import UploadImage from 'vue-upload-image';
     import Quill from 'quill';
 
     let editor;
+    let authorList = [];
 
     export default {
         name: "CreatePostModal",
@@ -88,6 +96,9 @@
                 modules: { toolbar: true },
                 theme: 'snow'
             });
+
+            authorList = getAuthors();
+
         }
     }
 </script>

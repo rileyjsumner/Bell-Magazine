@@ -1,5 +1,5 @@
 <template>
-    <div class="article author-article">
+    <div class="article author-article" v-bind:class="[ isShort ? 'hidden' : '' ]">
         <div class="article-content author-content">
             <div class="author-profile">
                 <img class="profile" alt="profile" :src=img />
@@ -19,6 +19,7 @@
             img: String,
             title: String,
             author: String,
+            isShort: Boolean,
         }
     }
 </script>

@@ -88,6 +88,12 @@ div.article-grid {
 
   }
 
+  div.article-row,
+  div.author-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
   div.article-list,
   div.author-list {
     width: 25%;

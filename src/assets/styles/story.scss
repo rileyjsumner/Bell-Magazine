@@ -1,5 +1,41 @@
 @import "utilities/_imports.scss";
 
+
+.story {
+  width: 40%;
+  margin: 0 auto;
+
+  .byline {
+
+    font-style: italic;
+    &:before {
+      content: "By: ";
+    }
+  }
+
+  .img {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .story-content {
+    p {
+      font-size: 1.25rem;
+    }
+  }
+
+  .author-bio {
+    border-top: 2px solid $bell-black-accent;
+
+    strong {
+      font-size: 1.25rem;
+      text-decoration: underline;
+    }
+    p {
+      font-size: 1.25rem;
+    }
+  }
+}
 .pull-quote {
 
   padding: 2rem;

@@ -6,6 +6,10 @@
 
 <script>
     import ArticleGrid from "../components/ArticleGrid";
+    import {getPosts} from "../repository";
+
+    let stories;
+
     export default {
         name: "Home",
         components: {ArticleGrid}
