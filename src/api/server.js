@@ -1,5 +1,6 @@
 // server.js
 'use strict';
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -37,16 +38,32 @@ app.get('/api/author/list', (req, res) => {
     });
 });
 
+app.get('/api/author/:id', (req, res) => {
+    Author.findOne({_id: new mongodb.ObjectID( req.params.id)}).exec((err, author) => {
+        if (err) return res.status(404).send("Author not found");
+        return res.send({author})
+    });
+});
+app.get('/api/author/search/:name', (req, res) => {
+    console.log(req.params.name);
+    Author.find({ name: req.params.name }).exec((err, author) => {
+        if (err) return res.status(404).send("Author not found");
+        return res.send({author})
+    });
+});
+
 app.post('/api/post/create', (req, res) => {
-    const post = new Post({ body: req.body.body, title: req.body.title, author: req.body.author});
+    const post = new Post({ body: req.body.body, title: req.body.title, author: req.body.author, permalink: req.body.permalink });
     post.save( (err) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ post });
     });
 });
 app.post('/api/author/create', (req, res) => {
-    const author = new Author({ body: req.body.body, title: req.body.title, author: req.body.author});
+    console.log(req.body);
+    const author = new Author({ name: req.body.name });
     author.save( (err) => {
+        console.log(err);
         if (err) return res.status(404).send({message: err.message});
         return res.send({ author });
     });

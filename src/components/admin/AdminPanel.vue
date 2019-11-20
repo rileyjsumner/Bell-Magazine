@@ -3,13 +3,13 @@
         <h1>Admin Panel</h1>
         <div class="post-list" v-if="posts">
             <CreatePostModal @createPost="createPost"></CreatePostModal>
-            <div class="posts">
+            <div class="listings">
                 <Post v-for="(post, index) in posts" :post="post" :key="index" @deletePost="deletePost" @updatePost="updatePost"></Post>
             </div>
         </div>
         <div class="author-list" v-if="authors">
             <CreateAuthorModal @createAuthor="createAuthor"></CreateAuthorModal>
-            <div class="authors">
+            <div class="listings">
                 <Author v-for="(author, index) in authors" :author="author" :key="index" @deleteAuthor="deleteAuthor" @updateAuthor="updateAuthor"></Author>
             </div>
         </div>
@@ -29,8 +29,8 @@
         components: { Post, Author, CreatePostModal, CreateAuthorModal },
         data() {
             return {
-                posts: [],
-                authors: [],
+                posts: {},
+                authors: {},
                 authenticated: false
             }
         },
@@ -57,16 +57,16 @@
             }
         },
         mounted() {
-            if(!this.authenticated) { // logic broken rn
-                this.$router.replace({ name: "Admin"});
-            } else {
+            // if(!this.authenticated) { // logic broken rn
+                // this.$router.replace({ name: "Admin"});
+            // } else {
                 getPosts()
                     .then(data => this.posts = data.posts)
                     .catch((err => alert(err)));
                 getAuthors()
                     .then(data => this.authors = data.authors)
                     .catch((err => alert(err)));
-            }
+            // }
         }
     }
 </script>

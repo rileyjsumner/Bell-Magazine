@@ -6,7 +6,6 @@
 
 <script>
     import ArticleGrid from "../components/ArticleGrid";
-    import {getPosts} from "../repository";
 
     let stories;
 

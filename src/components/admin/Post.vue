@@ -1,20 +1,19 @@
 <template>
-    <article class="post">
-        <div class="post-header">
+    <article class="data">
+        <div class="data-header">
             <h2>{{ post.title }}</h2>
             <div>
                 <button @click="deletePost" class="delete btn-close" aria-label="delete"></button>
             </div>
         </div>
-        <div class="post-body">
+        <div class="data-body">
+            <p><strong>Author:</strong> {{ post.author }}</p>
             <div v-if="post.body.length < 500">{{ post.body }}</div>
             <div v-if="post.body.length >= 500">{{ post.body.substring(0,500) + "... " }}</div>
 <!--            <p>Created: {{ post.createdAt | moment }}</p>-->
 <!--            <p>Updated: {{ post.updatedAt | moment }}</p>-->
-        </div><div class="post-details">
-            <div class="post-author">
-                <strong>Author:</strong><p>{{ post.author }}</p>
-            </div>
+        </div>
+        <div class="data-details">
             <UpdatePostModal :post="post" @updatePost="updatePost" :key="post._id"></UpdatePostModal>
         </div>
     </article>

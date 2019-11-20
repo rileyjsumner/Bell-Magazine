@@ -17,7 +17,7 @@
                     <div class="field">
                         <div class="control">
                             <label>Permalink: https://www.bell.com/story/
-                                <input v-model="link" class="input" type="text" placeholder="permalink"/>
+                                <input v-model="permalink" class="input" type="text" placeholder="permalink"/>
                             </label>
                         </div>
                     </div>
@@ -35,15 +35,7 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <upload-image is="upload-image"
-                                          :url="'/Admin'"
-                                          :max_files="1"
-                                          name="files[]"
-                                          :resize_enabled="true"
-                                          :resize_max_width="640"
-                                          :button_html="'Upload'"
-                                          :button_class="'button is-primary'"
-                            ></upload-image>
+
                         </div>
                     </div>
                     <button @click="create" class="button">Post</button>
@@ -57,8 +49,7 @@
 
 <script>
 
-    import {createPost, getAuthors} from "../../repository";
-    import UploadImage from 'vue-upload-image';
+    import {createPost, getAuthorByName, getAuthors} from "../../repository";
     import Quill from 'quill';
 
     let editor;
@@ -66,23 +57,24 @@
 
     export default {
         name: "CreatePostModal",
-        components: { UploadImage },
+        components: {  },
         data() {
             return {
                 title: "",
                 body: "",
                 author: "",
+                permalink: "",
                 isActive: false
             }
         },
         methods: {
             create() {
                 let body = editor.root.innerHTML;
-                let data = {title: this.title, body: body, author: this.author };
+                let data = {title: this.title, body: body, author: this.author, permalink: this.permalink };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
-                        this.title = this.body = this.author = '';
+                        this.title = this.body = this.author = this.permalink = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));
@@ -90,6 +82,10 @@
             toggle() {
                 this.isActive = !this.isActive;
             },
+            handleChange() {
+                let id = getAuthorByName(this.author);
+                console.log(id);
+            }
         },
         mounted() {
             editor = new Quill('#editor', {

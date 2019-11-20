@@ -2,11 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const AuthorSchema = Schema(
     {
-        first: {type: String, required: true},
-        last: {type: String, required: true},
-        staff_bio: {type: String, required: true},
-        email: {type: String, required: true},
-        long_bio: {type: String, required: true},
+        name: {type: String, required: true},
+        staff_bio: {type: String, required: false},
+        email: {type: String, required: false},
+        long_bio: {type: String, required: false},
         photo_link: {type: String, required: false},
         plug: {type: String, required: false},
 

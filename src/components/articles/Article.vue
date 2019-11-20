@@ -2,11 +2,11 @@
     <div class="article shadow" v-bind:class="[ featured ? 'article-featured' : '' ]" v-on:click="goToStory(url)">
         <div class="article-body">
             <img :src=img :alt=alt />
-            <p>{{ tagline }}</p>
         </div>
         <div class="article-heading">
             <h2 class="title">{{ title }}</h2>
             <p class="byline">{{ byline }}</p>
+            <p v-if="featured">{{ tagline }}</p>
         </div>
     </div>
 </template>

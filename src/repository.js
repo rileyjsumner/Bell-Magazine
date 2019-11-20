@@ -10,6 +10,14 @@ export function getAuthors() {
         .then(response => response.data);
 }
 
+export function getAuthorById(id) {
+    return axios.get(`${BASE_URL}/api/author/${id}`)
+        .then(response => response.data);
+}
+export function getAuthorByName(name) {
+    return axios.get(`${BASE_URL}/api/author/search/${name}`)
+        .then(response => response.data);
+}
 export function deletePost(id) {
     return axios.post(`${BASE_URL}/api/post/delete/${id}`)
         .then(response => response.data)
@@ -26,19 +34,20 @@ export function createPost(data) {
         {
             title: data.title,
             body: data.body,
-            author_id: data.author,
+            author: data.author,
+            permalink: data.permalink
         })
         .then(response => {
+            console.log("then");
             return response.data
         })
         .catch(err => Promise.reject(err.message));
 }
 export function createAuthor(data) {
+    console.log(data);
     return axios.post(`${BASE_URL}/api/author/create`,
         {
-            title: data.title,
-            body: data.body,
-            author_id: data.author,
+            name: data.name
         })
         .then(response => {
             return response.data

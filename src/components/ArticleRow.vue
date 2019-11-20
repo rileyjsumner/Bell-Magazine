@@ -1,24 +1,24 @@
 <template>
     <div class="article-row">
         <ListArticle
-                title="Sample Article"
-                author="Author McAuthorson"
-                description="Check out this article about news"
+            :title="articles[0].title"
+            :author="articles[0].author"
+            description="Check out this article about news"
         ></ListArticle>
         <ListArticle
-                title="Sample Article"
-                author="Author McAuthorson"
-                description="Check out this article about news"
+            :title="articles[1].title"
+            :author="articles[1].author"
+            description="Check out this article about news"
         ></ListArticle>
         <ListArticle
-                title="Sample Article"
-                author="Author McAuthorson"
-                description="Check out this article about news"
+            :title="articles[2].title"
+            :author="articles[2].author"
+            description="Check out this article about news"
         ></ListArticle>
         <ListArticle
-                title="Sample Article"
-                author="Author McAuthorson"
-                description="Check out this article about news"
+            :title="articles[3].title"
+            :author="articles[3].author"
+            description="Check out this article about news"
         ></ListArticle>
     </div>
 </template>
@@ -29,7 +29,10 @@
 
     export default {
         name: "ArticleRow",
-        components: { ListArticle }
+        components: { ListArticle },
+        props : {
+            articles: Array,
+        }
     }
 </script>
 

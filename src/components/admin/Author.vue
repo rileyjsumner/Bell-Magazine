@@ -1,21 +1,16 @@
 <template>
-    <article class="post">
-        <div class="post-header">
-            <h2>{{ author.title }}</h2>
+    <article class="data">
+        <div class="data-header">
+            <h2>{{ author.name }}</h2>
             <div>
-                <button @click="deletePost" class="delete btn-close" aria-label="delete"></button>
+                <button @click="deleteAuthor" class="delete btn-close" aria-label="delete"></button>
             </div>
         </div>
-        <div class="post-body">
-            <div v-if="author.body.length < 500">{{ author.body }}</div>
-            <div v-if="author.body.length >= 500">{{ author.body.substring(0,500) + "... " }}</div>
-<!--            <p>Created: {{ post.createdAt | moment }}</p>-->
-<!--            <p>Updated: {{ post.updatedAt | moment }}</p>-->
-        </div><div class="post-details">
-            <div class="post-author">
-                <strong>Author:</strong><p>{{ author.author }}</p>
-            </div>
-            <UpdatePostModal :post="post" @updatePost="updatePost" :key="post._id"></UpdatePostModal>
+        <div class="data-body">
+
+        </div>
+        <div class="data-details">
+            <UpdateAuthorModal :author="author" @updateAuthor="updateAuthor" :key="author._id"></UpdateAuthorModal>
         </div>
     </article>
 </template>
@@ -23,13 +18,13 @@
 <script>
 
     import { deleteAuthor } from '../../repository';
-    import UpdatePostModal from './UpdatePostModal.vue';
+    import UpdateAuthorModal from './UpdateAuthorModal.vue';
     import Moment from 'moment';
 
     export default {
         name: "Author",
         props: [ 'author' ],
-        components: { UpdatePostModal },
+        components: { UpdateAuthorModal },
         methods: {
             deleteAuthor(e) {
                 e.preventDefault();
