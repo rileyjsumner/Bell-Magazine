@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const AuthorSchema = Schema(
     {
         name: {type: String, required: true},
+        url: {type: String, required: true},
         staff_bio: {type: String, required: false},
         email: {type: String, required: false},
         long_bio: {type: String, required: false},

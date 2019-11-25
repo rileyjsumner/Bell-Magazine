@@ -16,11 +16,19 @@ export function getArticleFromUrl(link) {
 }
 
 export function getAuthorById(id) {
-    return axios.get(`${BASE_URL}/api/author/${id}`)
+    return axios.get(`${BASE_URL}/api/author/search/${id}`)
         .then(response => response.data);
 }
 export function getAuthorByName(name) {
-    return axios.get(`${BASE_URL}/api/author/search/${name}`)
+    return axios.get(`${BASE_URL}/api/author/search/name/${name}`)
+        .then(response => response.data);
+}
+export function getAuthorByUrl(url) {
+    return axios.get(`${BASE_URL}/api/author/search/url/${url}`)
+        .then(response => response.data);
+}
+export function getAuthorStories(name) {
+    return axios.get(`${BASE_URL}/api/author/search/posts/${name}`)
         .then(response => response.data);
 }
 export function deletePost(id) {
@@ -42,19 +50,19 @@ export function createPost(data) {
             category: data.category,
             author: data.author,
             description: data.description,
+            photo: data.photo,
             permalink: data.permalink
         })
         .then(response => {
-            console.log("then");
             return response.data
         })
         .catch(err => Promise.reject(err.message));
 }
 export function createAuthor(data) {
-    console.log(data);
     return axios.post(`${BASE_URL}/api/author/create`,
         {
             name: data.name,
+            url: data.url,
             staff_bio: data.staff_bio,
             long_bio: data.long_bio,
             social_handle: data.social_handle,

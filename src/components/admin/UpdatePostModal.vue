@@ -43,6 +43,13 @@
                         </div>
                     </div>
                     <div class="field">
+                        <div class="control">
+                            <label>Description:
+                                <input v-model="photo" class="input" type="text" placeholder="photo link"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
                         <textarea v-model="body">{{ body }}</textarea>
                     </div>
                     <button @click="update" class="button is-primary">Post</button>
@@ -70,13 +77,20 @@
                 category: this.post.category,
                 permalink: this.post.permalink,
                 description: this.post.description,
+                photo: this.post.photo,
                 isActive: false
             }
         },
         props: [ 'post' ],
         methods: {
             update() {
-                let data = { title: this.title, body: this.body, author: this.author, permalink: this.permalink, category: this.category, description: this.description };
+                let data = { title: this.title,
+                    body: this.body,
+                    author: this.author,
+                    permalink: this.permalink,
+                    category: this.category,
+                    photo: this.photo,
+                    description: this.description };
                 updatePost(data, this.post._id)
                     .then(data => {
                         this.$emit('updatePost', data.post);

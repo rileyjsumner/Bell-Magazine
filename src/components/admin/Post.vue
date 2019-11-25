@@ -8,8 +8,8 @@
         </div>
         <div class="data-body">
             <p><strong>Author:</strong> {{ post.author }}</p>
-            <div v-if="post.body.length < 500">{{ post.body }}</div>
-            <div v-if="post.body.length >= 500">{{ post.body.substring(0,500) + "... " }}</div>
+            <p class="article-html" v-if="post.body.length < 500">{{ post.body }}</p>
+            <p class="article-html" v-else>{{ post.body.substring(0,500).trim() + "... " }}</p>
 <!--            <p>Created: {{ post.createdAt | moment }}</p>-->
 <!--            <p>Updated: {{ post.updatedAt | moment }}</p>-->
         </div>
@@ -49,5 +49,7 @@
 </script>
 
 <style scoped>
-
+    .article-html {
+        font-size: 1rem;
+    }
 </style>

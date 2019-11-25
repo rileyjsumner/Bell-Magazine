@@ -1,10 +1,15 @@
 <template>
     <div class="story">
         <h2 class="title">{{ post.title }}</h2>
-        <p class="byline">{{ post.author }}</p>
-        <p>{{ $route.params.article }}</p>
-        <img class="img" alt="story" src="https://images.unsplash.com/photo-1430116267665-e7f6b3dafce3?ixlib=rb-1.2.1&w=1000&q=80"/>
-
+        <img class="img" alt="story" :src="post.photo"/>
+        <div class="author-story-details">
+            <img :src="author.photo" :alt="post.author"/>
+            <p class="byline">
+                <router-link :to="'/author/' + this.author.url">
+                    {{ post.author }}
+                </router-link>
+            </p>
+        </div>
         <div class="story-content" v-html="post.body"></div>
 
         <div class="author-bio">

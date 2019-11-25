@@ -1,12 +1,12 @@
 <template>
-    <div class="article author-article" v-on:click="goToStory(url)">
+    <div class="article author-article">
         <div class="article-content author-content">
             <div class="author-profile">
-                <img class="profile" alt="profile" :src=this.getPhotoLink(author) />
+                <img class="profile" alt="profile" :src="data_photo" v-on:click="goToStory('/author/' + data_author_url)" />
             </div>
             <div class="author-body">
-                <h2 class="title author-title">{{ author }}</h2>
-                <p class="byline author-byline">{{ title }}</p>
+                <h2 class="title author-title" v-on:click="goToStory(url)">{{ author }}</h2>
+                <p class="byline author-byline" v-on:click="goToStory(url)">{{ title }}</p>
             </div>
         </div>
     </div>
@@ -22,16 +22,25 @@
             author: String,
             url: String,
         },
+        data() {
+            return {
+                data_title: this.title,
+                data_author: this.author,
+                data_url: this.url,
+                data_author_url: "",
+                data_photo: this.photo
+            }
+        },
         methods: {
             goToStory(url) {
                 window.location.replace(url);
-            },
-            getPhotoLink(author) {
-                getAuthorByName(author).then(author_data => {
-                    console.log(author_data.author.photo);
-                    return author_data.author.photo;
-                });
             }
+        },
+        mounted() {
+            getAuthorByName(this.data_author).then(author_data => {
+                this.data_photo = author_data.author.photo;
+                this.data_author_url = author_data.author.url;
+            });
         }
     }
 </script>

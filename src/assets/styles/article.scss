@@ -100,6 +100,11 @@ div.article-grid {
         }
       }
 
+      .tagline {
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+
       p {
         margin: 0;
       }
@@ -110,7 +115,8 @@ div.article-grid {
       }
 
       .profile {
-        width: 64px;
+        width: 80px;
+        border-radius: 50%;
       }
     }
 

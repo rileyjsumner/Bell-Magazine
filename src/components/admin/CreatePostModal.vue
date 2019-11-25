@@ -44,6 +44,13 @@
                     </div>
                     <div class="field">
                         <div class="control">
+                            <label>Description:
+                                <input v-model="photo" class="input" type="text" placeholder="photo link"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
                             <div id="editor"></div>
                         </div>
                     </div>
@@ -74,6 +81,7 @@
                 author: "",
                 category: "",
                 permalink: "",
+                photo: "",
                 description: "",
                 isActive: false
             }
@@ -81,11 +89,18 @@
         methods: {
             create() {
                 let body = editor.root.innerHTML;
-                let data = {title: this.title, body: body, author: this.author, permalink: this.permalink, category: this.category, description: this.description };
+                let data = {
+                    title: this.title,
+                    body: body,
+                    author: this.author,
+                    permalink: this.permalink,
+                    category: this.category,
+                    photo: this.photo,
+                    description: this.description };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
-                        this.title = this.body = this.author = this.permalink = this.category = this.description = '';
+                        this.title = this.body = this.author = this.permalink = this.category = this.description = this.photo = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));

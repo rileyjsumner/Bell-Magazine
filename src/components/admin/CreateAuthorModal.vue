@@ -19,6 +19,13 @@
                     </div>
                     <div class="field">
                         <div class="control">
+                            <label>www.bell.com/author/:
+                                <input v-model="url" class="input" type="text" placeholder="url">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
                             <label>Short Bio:
                                 <input v-model="staff_bio" class="input" type="text" placeholder="staff bio"/>
                             </label>
@@ -71,6 +78,7 @@
         data() {
             return {
                 name: "",
+                url: "",
                 staff_bio: "",
                 long_bio: "",
                 social_handle: "",
@@ -83,6 +91,7 @@
             create() {
                 let data = {
                     name: this.name,
+                    url: this.url,
                     staff_bio: this.staff_bio,
                     long_bio: this.long_bio,
                     social_handle: this.social_handle,
@@ -93,7 +102,7 @@
                     .then(data => {
                         console.log(data.author);
                         this.$emit('createAuthor', data.author);
-                        this.name = this.staff_bio = this.long_bio = this.social_handle = this.email = this.photo = '';
+                        this.name = this.url = this.staff_bio = this.long_bio = this.social_handle = this.email = this.photo = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));
