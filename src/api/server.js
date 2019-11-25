@@ -16,7 +16,7 @@ const Author = require('./Author');
 
 +mongoose.connect(
     'mongodb://localhost:27017/bell_local',
-    { useNewUrlParser: true, useCreateIndex: true, }
+    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
@@ -39,21 +39,32 @@ app.get('/api/author/list', (req, res) => {
 });
 
 app.get('/api/author/:id', (req, res) => {
-    Author.findOne({_id: new mongodb.ObjectID( req.params.id)}).exec((err, author) => {
+    Author.findById(req.params.id).exec((err, author) => {
         if (err) return res.status(404).send("Author not found");
         return res.send({author})
     });
 });
 app.get('/api/author/search/:name', (req, res) => {
-    console.log(req.params.name);
-    Author.find({ name: req.params.name }).exec((err, author) => {
+    Author.findOne({ name: req.params.name }).exec((err, author) => {
         if (err) return res.status(404).send("Author not found");
         return res.send({author})
     });
 });
+app.get('/api/post/search/:link', (req, res) => {
+    Post.findOne({ permalink: req.params.link }).exec((err, post) => {
+        if (err) return res.status(404).send("Post not found");
+        return res.send({post})
+    })
+});
 
 app.post('/api/post/create', (req, res) => {
-    const post = new Post({ body: req.body.body, title: req.body.title, author: req.body.author, permalink: req.body.permalink });
+    const post = new Post({
+        body: req.body.body,
+        title: req.body.title,
+        category: req.body.category,
+        author: req.body.author,
+        description: req.body.description,
+        permalink: req.body.permalink });
     post.save( (err) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ post });
@@ -61,7 +72,13 @@ app.post('/api/post/create', (req, res) => {
 });
 app.post('/api/author/create', (req, res) => {
     console.log(req.body);
-    const author = new Author({ name: req.body.name });
+    const author = new Author({
+        name: req.body.name,
+        staff_bio: req.body.staff_bio,
+        long_bio: req.body.long_bio,
+        social_handle: req.body.social_handle,
+        email: req.body.email,
+        photo: req.body.photo });
     author.save( (err) => {
         console.log(err);
         if (err) return res.status(404).send({message: err.message});

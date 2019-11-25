@@ -1,9 +1,9 @@
 <template>
-    <div class="article list-article" v-bind:class="[ isShort ? 'hidden' : '' ]">
+    <div class="article list-article">
         <div class="article-content">
             <h2 class="title">{{ title }}</h2>
             <p class="byline">{{ author }}</p>
-            <p class="description">{{ description }}</p>
+            <p class="description">{{ tagline }}</p>
         </div>
     </div>
 </template>
@@ -13,9 +13,8 @@
         name: "ListArticle",
         props: {
             title: String,
-            description: String,
-            author: String,
-            isShort: Boolean,
+            tagline: String,
+            author: String
         }
     }
 </script>

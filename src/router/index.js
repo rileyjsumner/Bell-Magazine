@@ -13,7 +13,15 @@ export default new Router({
         { path: '/Staff', component: require('../components/StaffDirectory').default, name: 'Staff' },
         { path: '/Admin', component: require('../components/admin/AdminPanel').default, name: 'Admin'},
         { path: '/Login', component: require('../views/admin/Login').default, name: 'Login'},
-        { path: '/Story', component: require('../views/Story').default, name: 'Story' }
+        { path: '/author/:name', component: require('../components/Author').default, name: 'Author'},
+        { path: '/:category', component: require('../components/Category').default, name: 'Category',
+            children: [
+                {
+                    path: ':article',
+                    component: require('../components/Story').default, name: 'Article'
+                }
+            ]
+        },
     ],
     mode: 'history'
 });

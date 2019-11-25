@@ -6,7 +6,6 @@
         <div class="article-heading">
             <h2 class="title">{{ title }}</h2>
             <p class="byline">{{ byline }}</p>
-            <p v-if="featured">{{ tagline }}</p>
         </div>
     </div>
 </template>

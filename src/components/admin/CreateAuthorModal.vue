@@ -17,18 +17,42 @@
                             </div>
                         </div>
                     </div>
-<!--                    <div class="field">-->
-<!--                        <div class="control">-->
-<!--                            <label>Email:-->
-<!--                                <input v-model="email" class="input" type="email" placeholder="email"/>-->
-<!--                            </label>-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="field">
                         <div class="control">
-
+                            <label>Short Bio:
+                                <input v-model="staff_bio" class="input" type="text" placeholder="staff bio"/>
+                            </label>
                         </div>
                     </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Long Bio:
+                                <input v-model="long_bio" class="input" type="text" placeholder="long bio"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Social Handle:
+                                <input v-model="social_handle" class="input" type="text" placeholder="social handle"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Email:
+                                <input v-model="email" class="input" type="email" placeholder="email"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Photo:
+                                <input v-model="photo" class="input" type="text" placeholder="photo url"/>
+                            </label>
+                        </div>
+                    </div>
+
                     <button @click="create" class="button">Post</button>
                 </section>
             </div>
@@ -47,7 +71,7 @@
         data() {
             return {
                 name: "",
-                short_bio: "",
+                staff_bio: "",
                 long_bio: "",
                 social_handle: "",
                 email: "",
@@ -58,19 +82,18 @@
         methods: {
             create() {
                 let data = {
-                    name: this.name
-                    // short_bio: this.short_bio,
-                    // long_bio: this.long_bio,
-                    // social_handle: this.social_handle,
-                    // email: this.email,
-                    // photo: this.photo
+                    name: this.name,
+                    staff_bio: this.staff_bio,
+                    long_bio: this.long_bio,
+                    social_handle: this.social_handle,
+                    email: this.email,
+                    photo: this.photo
                 };
                 createAuthor(data)
                     .then(data => {
                         console.log(data.author);
                         this.$emit('createAuthor', data.author);
-                        this.name = '';
-                        // this.name = this.short_bio = this.long_bio = this.social_handle = this.email = this.photo = '';
+                        this.name = this.staff_bio = this.long_bio = this.social_handle = this.email = this.photo = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));
@@ -86,9 +109,4 @@
 
 <style scoped>
 
-    #editor {
-        border: 1px solid black;
-        width: 85%;
-        margin: 0 auto;
-    }
 </style>

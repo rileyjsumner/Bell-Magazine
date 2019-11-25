@@ -16,6 +16,13 @@
                     </div>
                     <div class="field">
                         <div class="control">
+                            <label>Category:
+                                <input v-model="category" class="input" type="text" placeholder="category"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
                             <label>Permalink: https://www.bell.com/story/
                                 <input v-model="permalink" class="input" type="text" placeholder="permalink"/>
                             </label>
@@ -25,6 +32,13 @@
                         <div class="control">
                             <label>Author:
                                 <input v-model="author" class="input" type="text" placeholder="author"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Category:
+                                <input v-model="description" class="input" type="text" placeholder="description"/>
                             </label>
                         </div>
                     </div>
@@ -53,14 +67,16 @@
                 title: this.post.title,
                 body: this.post.body,
                 author: this.post.author,
+                category: this.post.category,
                 permalink: this.post.permalink,
+                description: this.post.description,
                 isActive: false
             }
         },
         props: [ 'post' ],
         methods: {
             update() {
-                let data = { title: this.title, body: this.body, author: this.author, permalink: this.permalink };
+                let data = { title: this.title, body: this.body, author: this.author, permalink: this.permalink, category: this.category, description: this.description };
                 updatePost(data, this.post._id)
                     .then(data => {
                         this.$emit('updatePost', data.post);

@@ -7,7 +7,11 @@
             </div>
         </div>
         <div class="data-body">
-
+            <img :src="author.photo"/>
+            <p><strong>Staff Bio: </strong>{{ author.staff_bio }}</p>
+            <p><strong>Long Bio: </strong>{{ author.long_bio }}</p>
+            <p><strong>Handle: </strong>@{{ author.social_handle }}</p>
+            <p><strong>Email: </strong>{{ author.email }}</p>
         </div>
         <div class="data-details">
             <UpdateAuthorModal :author="author" @updateAuthor="updateAuthor" :key="author._id"></UpdateAuthorModal>

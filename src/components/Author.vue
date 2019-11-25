@@ -1,10 +1,6 @@
 <template>
     <div class="author">
-        <div class="intro">
-            <img alt="{{ name }}" class="" :src=img />
-            <h1>{{ name }}</h1>
-            <p>{{ bio }}</p>
-        </div>
+        <p>{{ $route.params.name }}</p>
     </div>
 </template>
 

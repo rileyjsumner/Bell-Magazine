@@ -3,18 +3,17 @@
         <ListArticle
             :title="articles[0].title"
             :author="articles[0].author"
-            description="Check out this article about news"
+            :tagline="articles[0].description"
         ></ListArticle>
         <ListArticle
             :title="articles[1].title"
             :author="articles[1].author"
-            description="Check out this article about news"
+            :tagline="articles[1].description"
         ></ListArticle>
-        <ListArticle
-            :title="articles[2].title"
-            :author="articles[2].author"
-            description="Check out this article about news"
-            :isShort=isShort
+        <ListArticle v-if="!isShort"
+             :title="articles[2].title"
+             :author="articles[2].author"
+             :tagline="articles[2].description"
         ></ListArticle>
     </div>
 </template>

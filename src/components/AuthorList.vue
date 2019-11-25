@@ -3,18 +3,17 @@
         <AuthorArticle
             :title="articles[0].title"
             :author="articles[0].author"
-            img="https://www.thetrace.org/wp-content/uploads/2019/06/warren.png"
+            :url="articles[0].category + '/' + articles[0].permalink"
         ></AuthorArticle>
         <AuthorArticle
             :title="articles[1].title"
             :author="articles[1].author"
-            img="https://www.thetrace.org/wp-content/uploads/2019/06/warren.png"
+            :url="articles[1].category + '/' + articles[1].permalink"
         ></AuthorArticle>
-        <AuthorArticle
+        <AuthorArticle v-if="!isShort"
             :title="articles[2].title"
             :author="articles[2].author"
-            img="https://www.thetrace.org/wp-content/uploads/2019/06/warren.png"
-            :isShort=isShort
+            :url="articles[2].category + '/' + articles[2].permalink"
         ></AuthorArticle>
     </div>
 </template>

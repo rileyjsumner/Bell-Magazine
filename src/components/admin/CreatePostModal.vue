@@ -16,7 +16,14 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label>Permalink: https://www.bell.com/story/
+                            <label>Category:
+                                <input v-model="category" class="input" type="text" placeholder="category"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Permalink: https://www.bell.com/
                                 <input v-model="permalink" class="input" type="text" placeholder="permalink"/>
                             </label>
                         </div>
@@ -30,12 +37,14 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <div id="editor"></div>
+                            <label>Description:
+                                <input v-model="description" class="input" type="text" placeholder="description"/>
+                            </label>
                         </div>
                     </div>
                     <div class="field">
                         <div class="control">
-
+                            <div id="editor"></div>
                         </div>
                     </div>
                     <button @click="create" class="button">Post</button>
@@ -63,18 +72,20 @@
                 title: "",
                 body: "",
                 author: "",
+                category: "",
                 permalink: "",
+                description: "",
                 isActive: false
             }
         },
         methods: {
             create() {
                 let body = editor.root.innerHTML;
-                let data = {title: this.title, body: body, author: this.author, permalink: this.permalink };
+                let data = {title: this.title, body: body, author: this.author, permalink: this.permalink, category: this.category, description: this.description };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
-                        this.title = this.body = this.author = this.permalink = '';
+                        this.title = this.body = this.author = this.permalink = this.category = this.description = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));

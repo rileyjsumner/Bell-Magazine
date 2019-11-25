@@ -6,8 +6,8 @@ const AuthorSchema = Schema(
         staff_bio: {type: String, required: false},
         email: {type: String, required: false},
         long_bio: {type: String, required: false},
-        photo_link: {type: String, required: false},
-        plug: {type: String, required: false},
+        photo: {type: String, required: false},
+        social_handle: {type: String, required: false},
 
     },
     { timestamps: true }
