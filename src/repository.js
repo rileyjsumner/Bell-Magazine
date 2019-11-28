@@ -89,3 +89,27 @@ export function updateAuthor(data, id) {
         })
         .catch(err => Promise.reject(err.message));
 }
+
+export function uploadAuthorImage(formData) {
+    axios.post( `${BASE_URL}/api/author/upload/profile`, { formData },
+        {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            } }
+    ).then(function(){
+
+        console.log('SUCCESS!!');
+    })
+    .catch(function(){ console.log('FAILURE!!'); });
+}
+
+export function uploadArticleImages(formData) {
+    axios.post( `${BASE_URL}/api/post/upload/images`, formData,
+        {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            } }
+    ).then(function(){ console.log('SUCCESS!!');
+    })
+        .catch(function(){ console.log('FAILURE!!'); });
+}

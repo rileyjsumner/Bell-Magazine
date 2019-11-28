@@ -59,7 +59,7 @@
                             </label>
                         </div>
                     </div>
-
+                    <FileUpload></FileUpload>
                     <button @click="create" class="button">Post</button>
                 </section>
             </div>
@@ -72,9 +72,11 @@
 <script>
 
     import {createAuthor, getAuthorByName} from "../../repository";
+    import FileUpload from "../FileUpload";
 
     export default {
         name: "CreateAuthorModal",
+        components: {FileUpload},
         data() {
             return {
                 name: "",

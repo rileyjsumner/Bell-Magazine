@@ -81,7 +81,6 @@ div.article-grid {
 
         font-weight: bold;
         font-size: 1rem;
-        color: $bell-dark-grey;
         font-style: italic;
         margin: 0;
 
@@ -91,7 +90,6 @@ div.article-grid {
 
         &.author-byline {
           font-size: 1rem;
-          color: $bell-black-accent;
           font-style: normal;
 
           &::before {

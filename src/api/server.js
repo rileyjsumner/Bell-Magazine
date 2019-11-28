@@ -121,6 +121,10 @@ app.post('/api/author/delete/:id', (req, res) => {
     });
 });
 
+app.post('/api/author/upload/profile', (req, res) => {
+    console.log(req.body);
+});
+
 const PORT = 5000;
 app.listen(PORT);
 console.log('api running on port ' + PORT);
