@@ -1,5 +1,5 @@
 <template>
-    <div class="article list-article">
+    <div class="article list-article article-shadow">
         <div class="article-content">
             <h2 class="title" v-on:click="goToStory(url)">{{ title }}</h2>
             <p class="byline" v-on:click="goToStory('/author/' + author_link)">{{ author }}</p>

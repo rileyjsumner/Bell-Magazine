@@ -64,6 +64,29 @@ nav.nav {
         text-align: left;
         padding: 0;
       }
+
+      &.link-search {
+        position: absolute;
+        right: .25rem;
+
+        transition: right .5s ease-in-out;
+      }
+
+      &.link-search-input {
+        position: absolute;
+        right: 0;
+
+        input {
+          
+          height: 1.5rem;
+          width: 0;
+          margin-right: 3rem;
+          border: none;
+          background-color: $bell-black-accent;
+
+          transition: width .5s ease-in-out, background-color .5s ease-in-out;
+        }
+      }
     }
 
     @include md {
@@ -76,4 +99,17 @@ nav.nav {
       padding: 0;
     }
   }
+}
+
+.nav-links {
+  width: 100%;
+}
+.nav-logo {
+  left: 1rem;
+  transform: translateX(-200%);
+  transition: transform .5s ease-in-out;
+  position: absolute;
+}
+#search-bar {
+  cursor: pointer;
 }

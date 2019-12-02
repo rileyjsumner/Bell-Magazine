@@ -7,10 +7,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const fs = require('fs');
+const multer = require('multer');
 
 // models
 const Post = require('./Post');
 const Author = require('./Author');
+const Image = require('./Image');
 
 //connect server to mongoDB
 
@@ -23,6 +26,11 @@ mongoose.connection.on('error', console.error.bind(console, 'connection error:')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(multer({ dest: './uploads/',
+rename: function (fieldname, filename) {
+    return filename;
+},
+}));
 
 // get all posts
 app.get('/api/post/list', (req, res) => {
@@ -122,7 +130,10 @@ app.post('/api/author/delete/:id', (req, res) => {
 });
 
 app.post('/api/author/upload/profile', (req, res) => {
-    console.log(req.body);
+    let newItem = new Image();
+    newItem.img.data = fs.readFileSync(req.files.userPhoto.path);
+    newItem.img.contentType = 'image/png';
+    newItem.save();
 });
 
 const PORT = 5000;

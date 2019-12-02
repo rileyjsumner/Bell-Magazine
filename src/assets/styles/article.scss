@@ -24,6 +24,13 @@ div.article-grid {
     padding: .5rem;
     color: $bell-black-accent;
 
+    transition: all .3s ease-in-out;
+
+    &.article-shadow:hover {
+      box-shadow: 2px 2px 0 0 $bell-grey-accent;
+      transform: translate(-2px, -2px);
+    }
+
     &.article-featured {
       width: 45%;
     }

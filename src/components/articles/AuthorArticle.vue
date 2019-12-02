@@ -1,5 +1,5 @@
 <template>
-    <div class="article author-article">
+    <div class="article author-article article-shadow">
         <div class="article-content author-content">
             <div class="author-profile">
                 <img class="profile" alt="profile" :src="data_photo" v-on:click="goToStory('/author/' + data_author_url)" />
