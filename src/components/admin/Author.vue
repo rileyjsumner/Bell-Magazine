@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="data-body">
-            <img :src="author.photo"/>
+            <img :src="author.photo" alt=""/>
             <p><strong>Staff Bio: </strong>{{ author.staff_bio }}</p>
             <p><strong>Long Bio: </strong>{{ author.long_bio }}</p>
             <p><strong>Handle: </strong>@{{ author.social_handle }}</p>

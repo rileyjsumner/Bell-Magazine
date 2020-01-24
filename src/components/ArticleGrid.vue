@@ -11,7 +11,7 @@
         ></Article>
         <AuthorList :articles="[posts[4], posts[5], posts[6]]"></AuthorList>
         <ArticleRow :articles="[posts[7], posts[8], posts[9], posts[10]]"></ArticleRow>
-        <ArticleList :articles="[posts[13], posts[14], posts[0]]" :isShort="true"></ArticleList>
+        <ArticleList :articles="[posts[13], posts[14]]" :isShort="true"></ArticleList>
         <Article :title="posts[11].title"
                  :byline="posts[11].author"
                  :img="posts[11].photo"
@@ -45,7 +45,7 @@
                  :tagline="posts[20].description"
                  :featured="false"
         ></Article>
-        <AuthorList :articles="[posts[21], posts[22], posts[0]]" :isShort="true"/>
+        <AuthorList :articles="[posts[21], posts[22]]" :isShort="true"/>
     </div>
 </template>
 
@@ -81,6 +81,7 @@
                 stories = getPosts();
                 stories.then(response => {
                     this.posts = response.posts;
+                    console.log(this.posts);
                 });
 
             },

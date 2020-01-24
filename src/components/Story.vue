@@ -3,7 +3,9 @@
         <h2 class="title">{{ post.title }}</h2>
         <img class="img" alt="story" :src="post.photo"/>
         <div class="author-story-details">
-            <img :src="author.photo" :alt="post.author"/>
+            <router-link :to="'/author/' + this.author.url">
+                <img :src="author.photo" :alt="post.author"/>
+            </router-link>
             <p class="byline">
                 <router-link :to="'/author/' + this.author.url">
                     {{ post.author }}

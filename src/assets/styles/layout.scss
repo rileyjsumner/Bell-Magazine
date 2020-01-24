@@ -19,6 +19,41 @@
   margin: 0 auto;
 }
 
+.top-story-line {
+
+  width: 100%;
+  position: relative;
+
+  &::before,
+  &::after {
+    border-top: 8px solid $bell-blue-secondary;
+    width: 40%;
+    height: 80px;
+    position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    z-index: 0;
+    content: '';
+  }
+  &::before {
+
+    border-left: 8px solid $bell-blue-secondary;
+    left: 0;
+  }
+  &::after {
+
+    border-right: 8px solid $bell-blue-secondary;
+    right: 0;
+  }
+
+  h1 {
+    text-align: center;
+    z-index: 10;
+    font-size: 2rem;
+    margin: 1rem 0 0 0;
+  }
+}
+
 .row {
   display: flex;
   justify-content: flex-start;

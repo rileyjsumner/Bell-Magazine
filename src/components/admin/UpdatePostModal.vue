@@ -1,69 +1,55 @@
 <template>
-    <div>
-        <div class="modal" :class="{ 'is-active': isActive }">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    Update Post
-                </header>
-                <section class="modal-card-body">
-                    <div class="field">
-                        <div class="control">
-                            <label>Title:
-                                <input v-model="title" class="input" type="text" placeholder="title"/>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label>Category:
-                                <input v-model="category" class="input" type="text" placeholder="category"/>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label>Permalink: https://www.bell.com/story/
-                                <input v-model="permalink" class="input" type="text" placeholder="permalink"/>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label>Author:
-                                <input v-model="author" class="input" type="text" placeholder="author"/>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label>Category:
-                                <input v-model="description" class="input" type="text" placeholder="description"/>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <label>Description:
-                                <input v-model="photo" class="input" type="text" placeholder="photo link"/>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <textarea v-model="body">{{ body }}</textarea>
-                    </div>
-                    <button @click="update" class="button is-primary">Post</button>
-                </section>
+    <div class="modal-card-body-inner">
+        <div class="field">
+            <div class="control">
+                <label for="update-title">Title:</label>
+                <input id="update-title" v-model="title" class="input" type="text" placeholder="title"/>
             </div>
-            <button @click="toggle" class="modal-close btn-close" aria-label="close"></button>
         </div>
-        <button @click="toggle" class="button">Update</button>
+        <div class="field">
+            <div class="control">
+                <label for="update-category">Category:</label>
+                <input id="update-category" v-model="category" class="input" type="text" placeholder="category"/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <label for="update-link">Permalink:</label>
+                <input id="update-link" v-model="permalink" class="input" type="text" placeholder="permalink"/>
+                <p class="permalink">https://www.bell.com/</p>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <label for="update-author">Author:</label>
+                <input id="update-author" v-model="author" class="input" type="text" placeholder="author"/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <label for="update-description">Description:</label>
+                <input id="update-description" v-model="description" class="input" type="text" placeholder="description"/>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <label for="update-photo">Description:</label>
+                <input id="update-photo" v-model="photo" class="input" type="text" placeholder="photo link"/>
+            </div>
+        </div>
+        <div class="field full">
+            <div :id="'modal-editor-' + updateId" class="control">
+                <div class='update-editor' id="update-editor"></div>
+            </div>
+        </div>
+        <button @click="update" class="button">Update</button>
     </div>
 </template>
 
 <script>
 
     import { updatePost } from "../../repository";
+    import $ from 'jquery';
 
     let editor;
 
@@ -81,11 +67,12 @@
                 isActive: false
             }
         },
-        props: [ 'post' ],
+        props: [ 'post', 'updateId' ],
         methods: {
             update() {
+                let body = $(".ql-editor").html();
                 let data = { title: this.title,
-                    body: this.body,
+                    body: body,
                     author: this.author,
                     permalink: this.permalink,
                     category: this.category,
@@ -107,10 +94,10 @@
 
 <style scoped>
 
-    .updateEditor {
-        border: 1px solid black;
-        width: 85%;
-        margin: 0 auto;
+    .permalink {
+        margin: 0;
+        font-size: 1rem;
+        color: #8D8D8D;
     }
 
 </style>

@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div class="top-story-line">
+            <h1>Top Stories</h1>
+        </div>
         <ArticleGrid></ArticleGrid>
     </div>
 </template>

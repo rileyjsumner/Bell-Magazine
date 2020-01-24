@@ -14,7 +14,7 @@
 <!--            <p>Updated: {{ post.updatedAt | moment }}</p>-->
         </div>
         <div class="data-details">
-            <UpdatePostModal :post="post" @updatePost="updatePost" :key="post._id"></UpdatePostModal>
+            <PostModal :post="post" :key="post._id" :isPostCreate="false"></PostModal>
         </div>
     </article>
 </template>
@@ -22,13 +22,13 @@
 <script>
 
     import { deletePost } from '../../repository';
-    import UpdatePostModal from './UpdatePostModal.vue';
+    import PostModal from './PostModal.vue';
     import Moment from 'moment';
 
     export default {
         name: "Post",
         props: [ 'post' ],
-        components: { UpdatePostModal },
+        components: { PostModal },
         methods: {
             deletePost(e) {
                 e.preventDefault();

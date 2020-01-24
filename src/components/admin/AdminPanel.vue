@@ -1,13 +1,13 @@
 <template>
     <div class="container">
-        <h1>Admin Panel</h1>
-        <div class="post-list" v-if="posts">
-            <CreatePostModal @createPost="createPost"></CreatePostModal>
+        <AdminTabBar></AdminTabBar>
+        <div id="tab-post" class="tab tab-active post-list" v-if="posts">
+            <PostModal :isPostCreate=true @createPost="createPost"></PostModal>
             <div class="listings">
                 <Post v-for="(post, index) in posts" :post="post" :key="index" @deletePost="deletePost" @updatePost="updatePost"></Post>
             </div>
         </div>
-        <div class="author-list" v-if="authors">
+        <div id="tab-author" class="tab author-list" v-if="authors">
             <CreateAuthorModal @createAuthor="createAuthor"></CreateAuthorModal>
             <div class="listings">
                 <Author v-for="(author, index) in authors" :author="author" :key="index" @deleteAuthor="deleteAuthor" @updateAuthor="updateAuthor"></Author>
@@ -20,13 +20,14 @@
 
     import Post from './Post.vue'
     import Author from './Author.vue';
-    import CreatePostModal from './CreatePostModal.vue'
+    import PostModal from './PostModal.vue'
     import CreateAuthorModal from './CreateAuthorModal.vue'
     import { getPosts, getAuthors } from '../../repository'
+    import AdminTabBar from "./AdminTabBar";
 
     export default {
         name: "AdminPanel",
-        components: { Post, Author, CreatePostModal, CreateAuthorModal },
+        components: {AdminTabBar, Post, Author, PostModal, CreateAuthorModal },
         data() {
             return {
                 posts: {},

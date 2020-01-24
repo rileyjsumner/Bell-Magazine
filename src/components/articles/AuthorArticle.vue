@@ -2,7 +2,7 @@
     <div class="article author-article article-shadow">
         <div class="article-content author-content">
             <div class="author-profile">
-                <img class="profile" alt="profile" :src="data_photo" v-on:click="goToStory('/author/' + data_author_url)" />
+                <img class="profile" alt="profile" :src="data_photo" v-on:click="goToStory(url)" />
             </div>
             <div class="author-body">
                 <h2 class="title author-title" v-on:click="goToStory(url)">{{ author }}</h2>
