@@ -63,11 +63,11 @@ textarea {
 .shadow {
 
   box-shadow: 4px 4px 0 0 $bell-accent-primary;
-  transition: all .2s ease-in-out;
+  transition: all .3s ease-in-out;
 
   &:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 0 $bell-accent-primary;
+    box-shadow: 6px 6px 8px 6px $bell-accent-primary;
   }
 }
 .ql-snow .ql-picker.ql-header {

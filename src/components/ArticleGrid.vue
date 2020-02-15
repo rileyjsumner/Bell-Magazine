@@ -81,7 +81,6 @@
                 stories = getPosts();
                 stories.then(response => {
                     this.posts = response.posts;
-                    console.log(this.posts);
                 });
 
             },

@@ -27,7 +27,7 @@ div.article-grid {
     transition: all .3s ease-in-out;
 
     &.article-shadow:hover {
-      box-shadow: 2px 2px 0 0 $bell-grey-accent;
+      box-shadow: 2px 2px 4px 2px $bell-grey-accent;
       transform: translate(-2px, -2px);
     }
 

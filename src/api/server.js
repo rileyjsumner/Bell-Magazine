@@ -7,12 +7,35 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const multer = require('multer');
+const sharp = require('sharp');
+const path = require('path');
 
 // models
 const Post = require('./Post');
 const Author = require('./Author');
 const Image = require('./Image');
 
+const fileFilter = function(req, file, cb) {
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+
+
+    if(!allowedTypes.includes(file.mimeType)) {
+        const error = new Error("Wrong file type");
+        error.code = "LIMIT_FILE_TYPES";
+        return cb(error, false);
+    }
+
+    cb(null, true);
+};
+
+const upload = multer({
+        dest: './uploads/',
+        fileFilter,
+        limits: {
+            fileSize: 1000000
+        }
+    });
 //connect server to mongoDB
 
 +mongoose.connect(
@@ -25,6 +48,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+app.use(function(err, req, res, next) {
+    if(err.code === "LIMIT_FILE_TYPES") {
+        res.status(422).json({ error: "only images are allowed"});
+    }
+
+    if(err.code === "LIMIT_FILE_SIZE") {
+        res.status(422).json({ error: "too big"});
+    }
+});
+
+app.use("/static", express.static(path.join(__dirname, "static")));
 // get all posts
 app.get('/api/post/list', (req, res) => {
     Post.find({}).sort({updatedAt: 'descending'}).exec((err, posts) => {
@@ -122,11 +156,38 @@ app.post('/api/author/delete/:id', (req, res) => {
     });
 });
 
-app.post('/api/author/upload/profile', (req, res) => {
-    let newItem = new Image();
-    newItem.img.data = fs.readFileSync(req.files.userPhoto.path);
-    newItem.img.contentType = 'image/png';
-    newItem.save();
+app.post('/api/author/upload/photo', upload.single('file'), async (req, res) => {
+    try {
+        await sharp(req.file.path)
+            .resize(300)
+            .background('white')
+            .embed()
+            .toFile(`./static/${req.file.originalname}`);
+
+        fs.unlink(req.file.path, () => {
+            res.json({ file: `./static/${req.file.originalname}`})
+        })
+    } catch(err) {
+        res.status(422).json({ err });
+    }
+    res.json({file: req.file});
+});
+
+app.post('/api/author/upload/images', upload.array('files'), async (req, res) => {
+    try {
+        await sharp(req.file.path)
+            .resize(300)
+            .background('white')
+            .embed()
+            .toFile(`./static/${req.file.originalname}`);
+
+        fs.unlink(req.file.path, () => {
+            res.json({ file: `./static/${req.file.originalname}`})
+        })
+    } catch(err) {
+        res.status(422).json({ err });
+    }
+    res.json({files: req.files});
 });
 
 const PORT = 5000;

@@ -8,7 +8,7 @@
             </div>
         </div>
         <div id="tab-author" class="tab author-list" v-if="authors">
-            <CreateAuthorModal @createAuthor="createAuthor"></CreateAuthorModal>
+            <AuthorModal :isAuthorCreate=true @createAuthor="createAuthor"></AuthorModal>
             <div class="listings">
                 <Author v-for="(author, index) in authors" :author="author" :key="index" @deleteAuthor="deleteAuthor" @updateAuthor="updateAuthor"></Author>
             </div>
@@ -21,13 +21,13 @@
     import Post from './Post.vue'
     import Author from './Author.vue';
     import PostModal from './PostModal.vue'
-    import CreateAuthorModal from './CreateAuthorModal.vue'
+    import AuthorModal from './AuthorModal.vue'
     import { getPosts, getAuthors } from '../../repository'
     import AdminTabBar from "./AdminTabBar";
 
     export default {
         name: "AdminPanel",
-        components: {AdminTabBar, Post, Author, PostModal, CreateAuthorModal },
+        components: {AdminTabBar, Post, Author, PostModal, AuthorModal },
         data() {
             return {
                 posts: {},

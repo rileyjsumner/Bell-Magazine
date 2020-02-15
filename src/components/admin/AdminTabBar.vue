@@ -20,7 +20,6 @@
                 $(".tab").each(function() {
                     $(this).removeClass("tab-active");
                 });
-                console.log($("#tab-" + tab));
                 $("#tab-" + tab).addClass("tab-active");
 
             }

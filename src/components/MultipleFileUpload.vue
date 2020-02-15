@@ -1,57 +1,73 @@
 <template>
     <div class="field">
         <div class="control">
-            <div v-for="(file, key) in files" class="file-listing">{{ file.name }} <span v-on:click="removeFile(key)">Delete</span></div>
-            <label>Upload Image
-                <input type="file" id="files" ref="files" multiple v-on:change="handleFileUpload()"/>
-            </label>
-            <button v-on:click="addFiles()">Add Files</button>
-            <button v-on:click="submitFile()">Submit</button>
+            <p v-if="error">{{ message }}</p>
+            <form @submit.prevent="submitFiles()" enctype="multipart/form-data">
+                <label for="files">Upload Image</label>
+                <input id="files" type="file" ref="files" multiple @change="handleFileUploads()"/>
+                <button>Submit</button>
+            </form>
         </div>
     </div>
 </template>
 
 <script>
     import {uploadArticleImages} from "../repository";
+    import _ from 'lodash';
 
     export default {
-        name: "FileUpload",
+        name: "MultipleFileUpload",
         data() {
             return {
-                files: []
+                files: [],
+                error: false,
+                uploadFiles: [],
+                message: ""
             }
         },
         methods: {
-            submitFile() {
-                let formData = new FormData();
-                for( let i = 0; i < this.files.length; i++ ){
-                    let file = this.files[i];
-                    formData.append('files[' + i + ']', file); }
-                // insert validation here
+            async submitFiles() {
+                const formData = new FormData();
+                _.forEach(this.uploadFiles, file => {
+                    if(this.validate(file) === "") {
+                        formData.append('files', file);
+                    }
+                });
+
                 uploadArticleImages(formData);
             },
-            handleFileUpload() {
-                this.files = this.$refs.files.files;
+            validate(file) {
+                const MAX_SIZE = 1000000;
+                const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
 
-                let uploadedFiles = this.$refs.files.files;
-
-                for( let i = 0; i < uploadedFiles.length; i++ ){
-                    this.files.push( uploadedFiles[i] );
+                if(file.size > MAX_SIZE) {
+                    return `Max size: ${MAX_SIZE/1000}Kb`;
                 }
+
+                if(!allowedTypes.includes(file.type)) {
+                    return "Allowed file types: .jpg, .png, .gif";
+                }
+
+                return "";
             },
-            addFiles() {
-                this.$refs.files.click();
-            },
-            removeFile( key ){
-                this.files.splice( key, 1 );
+            handleFileUploads() {
+                const files = this.$refs.files.files;
+                this.uploadFiles = [ ...this.files, ...files];
+
+                this.files = [
+                    ...this.files,
+                    ..._.map(files, file => ({
+                        name: file.name,
+                        size: file.size,
+                        type: file.type,
+                        invalidMessage: this.validate(file)
+                    }))
+                ];
             }
         }
     }
 </script>
 
 <style scoped>
-    input[type="file"]{
-        position: absolute;
-        top: -500px;
-    }
+
 </style>

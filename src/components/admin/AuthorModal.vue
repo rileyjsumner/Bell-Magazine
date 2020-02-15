@@ -7,8 +7,8 @@
                     <h1>Create Article</h1>
                 </header>
                 <section class="modal-card-body">
-                    <CreatePostModal v-if="isPostCreate"></CreatePostModal>
-                    <UpdatePostModal :post="post" :updateId="post._id" v-if="!isPostCreate"></UpdatePostModal>
+                    <CreateAuthorModal v-if="isAuthorCreate"></CreateAuthorModal>
+                    <UpdateAuthorModal :author="author" :updateId="author._id" v-if="!isAuthorCreate"></UpdateAuthorModal>
                     <div class="field full">
                         <div id="modal-editor" class="control">
                             <div id="editor"></div>
@@ -18,34 +18,32 @@
             </div>
             <button @click="toggle" class="modal-close btn-close" aria-label="close"></button>
         </div>
-        <button v-if="isPostCreate" @click="toggle" class="button">Create Post</button>
-        <button v-if="!isPostCreate" @click="toggle" class="button">Update</button>
+        <button v-if="isAuthorCreate" @click="toggle" class="button">Create Author</button>
+        <button v-if="!isAuthorCreate" @click="toggle" class="button">Update</button>
     </div>
 </template>
 
 <script>
 
-    import {createPost, getAuthorByName, getAuthors, updatePost} from "../../repository";
-    import Quill from 'quill';
+    import {createAuthor, getAuthorByName, getAuthors, updateAuthor} from "../../repository";
     import $ from 'jquery';
-    import CreatePostModal from "./CreatePostModal";
-    import UpdatePostModal from "./UpdatePostModal";
+    import CreateAuthorModal from "./CreateAuthorModal";
+    import UpdateAuthorModal from "./UpdateAuthorModal";
 
-    let editor;
     let authorList = [];
 
     export default {
-        name: "PostModal",
-        components: {UpdatePostModal, CreatePostModal  },
+        name: "AuthorModal",
+        components: {UpdateAuthorModal, CreateAuthorModal  },
         props: {
-            isPostCreate: Boolean,
-            post: '',
+            isAuthorCreate: Boolean,
+            author: '',
         },
         data() {
             return {
                 title: "",
                 body: "",
-                author: "",
+                byline: "",
                 category: "",
                 permalink: "",
                 photo: "",
@@ -55,20 +53,18 @@
         },
         methods: {
             create() {
-                let body = editor.root.innerHTML;
                 let data = {
                     title: this.title,
-                    body: body,
-                    author: this.author,
+                    byline: this.byline,
                     permalink: this.permalink,
                     category: this.category,
                     photo: this.photo,
                     description: this.description
                 };
-                createPost(data)
+                createAuthor(data)
                     .then(data => {
-                        this.$emit('createPost', data.post);
-                        this.title = this.body = this.author = this.permalink = this.category = this.description = this.photo = '';
+                        this.$emit('createAuthor', data.byline);
+                        this.title = this.body = this.byline = this.permalink = this.category = this.description = this.photo = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));
@@ -76,14 +72,14 @@
             update() {
                 let data = { title: this.title,
                     body: this.body,
-                    author: this.author,
+                    byline: this.byline,
                     permalink: this.permalink,
                     category: this.category,
                     photo: this.photo,
                     description: this.description };
-                updatePost(data, this.post._id)
+                updateAuthor(data, this.author._id)
                     .then(data => {
-                        this.$emit('updatePost', data.post);
+                        this.$emit('updateAuthor', data.byline);
                         this.toggle();
                     })
                     .catch(err => alert(err.message));
@@ -92,27 +88,13 @@
                 this.isActive = !this.isActive;
                 if(this.isActive) {
                     $(" #app ").css("position", "fixed");
-                    if(this.isPostCreate) {
-                        $(" #modal-editor ").html("<div id='editor'></div>");
-                        editor = new Quill('#editor', {
-                            modules: { toolbar: true },
-                            theme: 'snow'
-                        });
-                    } else {
-                        $(" #modal-editor-"+this.post._id).html("<div class='update-editor' id='update-editor-"+this.post._id+"'>" + this.post.body + "</div>");
-                        editor = new Quill('#update-editor-'+this.post._id, {
-                            modules: { toolbar: true },
-                            theme: 'snow'
-                        });
-                    }
+
                 } else {
                     $(" #app ").css("position", "static");
-                    editor = null;
-                    $("#modal-editor").html("");
                 }
             },
             handleChange() {
-                let id = getAuthorByName(this.author);
+                let id = getAuthorByName(this.byline);
             }
         },
         mounted() {

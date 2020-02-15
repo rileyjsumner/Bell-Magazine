@@ -1,10 +1,12 @@
 <template>
     <div class="field">
         <div class="control">
-            <label>Upload Image
-                <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
-            </label>
-            <button v-on:click="submitFile()">Submit</button>
+            <p v-if="error">{{ message }}</p>
+            <form @submit.prevent="submitFile()" enctype="multipart/form-data">
+                <label for="file">Upload Image</label>
+                <input id="file" type="file" ref="file" @change="handleFileUpload()"/>
+                <button>Submit</button>
+            </form>
         </div>
     </div>
 </template>
@@ -16,7 +18,9 @@
         name: "FileUpload",
         data() {
             return {
-                file: ''
+                file: '',
+                error: false,
+                message: ""
             }
         },
         methods: {
@@ -28,7 +32,17 @@
                 uploadAuthorImage(formData);
             },
             handleFileUpload() {
-                this.file = this.$refs.file.files[0];
+                const file = this.$refs.file.files[0];
+                const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+                const MAX_SIZE = 1000000;
+
+                if(allowedTypes.includes(file.type) && !(file.size > MAX_SIZE)) {
+                    this.file = file;
+                    this.error = false;
+                } else {
+                    this.error = true;
+                    this.message = (file.size > MAX_SIZE) ? "too big" : "wrong type";
+                }
             }
         }
     }

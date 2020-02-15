@@ -37,6 +37,7 @@
                 <input id="create-photo" v-model="photo" class="input" type="text" placeholder="photo link"/>
             </div>
         </div>
+        <MultipleFileUpload></MultipleFileUpload>
         <div class="field full">
             <div id="modal-editor" class="control">
                 <div id="editor"></div>
@@ -49,6 +50,7 @@
 <script>
 
     import {createPost, getAuthorByName, getAuthors} from "../../repository";
+    import MultipleFileUpload from '../MultipleFileUpload.vue';
     import $ from 'jquery';
 
     let editor;
@@ -56,7 +58,7 @@
 
     export default {
         name: "CreatePostModal",
-        components: {  },
+        components: { MultipleFileUpload },
         data() {
             return {
                 title: "",
@@ -98,7 +100,6 @@
             },
             handleChange() {
                 let id = getAuthorByName(this.author);
-                console.log(id);
             }
         }
     }

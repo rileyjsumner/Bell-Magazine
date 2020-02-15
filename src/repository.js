@@ -91,11 +91,8 @@ export function updateAuthor(data, id) {
 }
 
 export function uploadAuthorImage(formData) {
-    axios.post( `${BASE_URL}/api/author/upload/profile`, { formData },
-        {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            } }
+    console.log(formData);
+    axios.post( `${BASE_URL}/api/author/upload/photo`,  formData
     ).then(function(){
 
         console.log('SUCCESS!!');
@@ -104,12 +101,7 @@ export function uploadAuthorImage(formData) {
 }
 
 export function uploadArticleImages(formData) {
-    axios.post( `${BASE_URL}/api/post/upload/images`, formData,
-        {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            } }
+    axios.post( `${BASE_URL}/api/post/upload/images`, formData
     ).then(function(){ console.log('SUCCESS!!');
-    })
-        .catch(function(){ console.log('FAILURE!!'); });
+    }).catch(function(){ console.log('FAILURE!!'); });
 }

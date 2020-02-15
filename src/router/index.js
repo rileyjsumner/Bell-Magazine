@@ -14,6 +14,7 @@ export default new Router({
         { path: '/Admin', component: require('../components/admin/AdminPanel').default, name: 'Admin'},
         { path: '/Login', component: require('../views/admin/Login').default, name: 'Login'},
         { path: '/author/:name', component: require('../components/Author').default, name: 'Author'},
+        { path: '/404', component: require('../views/PageNotFound').default, name: 'NotFound'},
         { path: '/:category', component: require('../components/Category').default, name: 'Category',
             children: [
                 {
@@ -22,6 +23,7 @@ export default new Router({
                 }
             ]
         },
+        { path: '*', component: require('../views/PageNotFound').default, name: '404'}
     ],
     mode: 'history'
 });

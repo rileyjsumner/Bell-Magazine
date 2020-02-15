@@ -68,3 +68,35 @@
     }
   }
 }
+
+.staff-directory {
+
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+
+  .staff-list-item {
+
+    width: 375px;
+    text-align: center;
+    margin: 1rem 0;
+
+    .author-name {
+
+      text-align: center;
+      margin: 0;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 50%;
+      height: auto;
+    }
+
+    .staff-bio {
+      font-size: 1rem;
+      margin: .25rem;
+    }
+  }
+}

@@ -35,14 +35,7 @@
     z-index: 0;
     content: '';
   }
-  &::before {
-
-    border-left: 8px solid $bell-blue-secondary;
-    left: 0;
-  }
   &::after {
-
-    border-right: 8px solid $bell-blue-secondary;
     right: 0;
   }
 
