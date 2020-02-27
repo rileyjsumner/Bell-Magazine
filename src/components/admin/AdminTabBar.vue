@@ -12,7 +12,7 @@
         name: "AdminTabBar",
         data() {
             return {
-                tabs: ["post", "author"]
+                tabs: ["post", "author", "category"]
             }
         },
         methods: {

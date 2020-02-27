@@ -31,6 +31,23 @@ export function getAuthorStories(name) {
     return axios.get(`${BASE_URL}/api/author/search/posts/${name}`)
         .then(response => response.data);
 }
+
+export function getAllCategories() {
+    return axios.get(`${BASE_URL}/api/category/all`)
+        .then(response => response.data);
+}
+
+export function createCategory(data) {
+    return axios.post(`${BASE_URL}/api/category/create`, {
+        name: data.name,
+        type: data.type
+    })
+        .then(response => {
+            return response.data
+        })
+        .catch(err => Promise.reject(err.message));
+}
+
 export function deletePost(id) {
     return axios.post(`${BASE_URL}/api/post/delete/${id}`)
         .then(response => response.data)

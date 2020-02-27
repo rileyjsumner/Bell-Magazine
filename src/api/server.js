@@ -14,7 +14,7 @@ const path = require('path');
 // models
 const Post = require('./Post');
 const Author = require('./Author');
-const Image = require('./Image');
+const Category = require('./Category');
 
 const fileFilter = function(req, file, cb) {
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -96,6 +96,24 @@ app.get('/api/post/search/:link', (req, res) => {
     Post.findOne({ permalink: req.params.link }).exec((err, post) => {
         if (err) return res.status(404).send("Post not found");
         return res.send({post})
+    })
+});
+
+app.get('/api/category/all', (req, res) => {
+    Category.find().exec((err, categories) => {
+        if(err) return res.status(404).send("Categories not found");
+        return res.send(categories);
+    })
+});
+
+app.post('/api/category/new', (req, res) => {
+    const category = new Category({
+        name: req.body.name,
+        type: req.body.type
+    });
+    category.save( (err) => {
+        if(err) return res.status(404).send({ message: err.message });
+        return res.send({ category });
     })
 });
 

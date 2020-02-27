@@ -13,6 +13,9 @@
                 <Author v-for="(author, index) in authors" :author="author" :key="index" @deleteAuthor="deleteAuthor" @updateAuthor="updateAuthor"></Author>
             </div>
         </div>
+        <div id="tab-category" class="tab category-list" v-if="categories">
+
+        </div>
     </div>
 </template>
 
