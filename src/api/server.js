@@ -86,6 +86,13 @@ app.get('/api/author/search/name/:name', (req, res) => {
     });
 });
 
+app.get('/api/category/search/name/:name', (req, res) => {
+    Category.findOne({ name: req.params.name }).exec((err, category) => {
+        if (err) return res.status(404).send("Category not found");
+        return res.send({category})
+    });
+});
+
 app.get('/api/author/search/posts/:name', (req, res) => {
     Post.find({ author: req.params.name }).exec((err, posts) => {
         if (err) return res.status(404).send("Stories not found");
@@ -99,17 +106,18 @@ app.get('/api/post/search/:link', (req, res) => {
     })
 });
 
-app.get('/api/category/all', (req, res) => {
-    Category.find().exec((err, categories) => {
-        if(err) return res.status(404).send("Categories not found");
-        return res.send(categories);
-    })
+app.get('/api/category/list', (req, res) => {
+    Category.find({}).sort({updatedAt: 'descending'}).exec((err, categories) => {
+        if (err) return res.status(404).send('Error while getting categories!');
+        return res.send({categories})
+    });
 });
 
-app.post('/api/category/new', (req, res) => {
+app.post('/api/category/create', (req, res) => {
     const category = new Category({
         name: req.body.name,
-        type: req.body.type
+        type: req.body.type,
+        parent: req.body.parent
     });
     category.save( (err) => {
         if(err) return res.status(404).send({ message: err.message });
@@ -161,6 +169,14 @@ app.post('/api/author/update/:id', (req, res) => {
     })
 });
 
+app.post('/api/category/update/:id', (req, res) => {
+    let options = { new: true};
+    Category.findByIdAndUpdate(req.params.id, req.body.data, options, (err, category) => {
+        if (err) return res.status(404).send({message: err.message});
+        return res.send({ message: 'category updated! ', category});
+    })
+});
+
 app.post('/api/post/delete/:id', (req, res) => {
     Post.findByIdAndRemove(req.params.id, (err) => {
         if (err) return res.status(404).send({message: err.message});
@@ -171,6 +187,13 @@ app.post('/api/author/delete/:id', (req, res) => {
     Author.findByIdAndRemove(req.params.id, (err) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ message: 'author deleted!'});
+    });
+});
+
+app.post('/api/category/delete/:id', (req, res) => {
+    Category.findByIdAndRemove(req.params.id, (err) => {
+        if (err) return res.status(404).send({message: err.message});
+        return res.send({ message: 'category deleted!'});
     });
 });
 

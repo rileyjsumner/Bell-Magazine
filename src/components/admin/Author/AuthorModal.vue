@@ -25,7 +25,7 @@
 
 <script>
 
-    import {createAuthor, getAuthorByName, getAuthors, updateAuthor} from "../../repository";
+    import {createAuthor, getAuthorByName, getAuthors, updateAuthor} from "../../../repository";
     import $ from 'jquery';
     import CreateAuthorModal from "./CreateAuthorModal";
     import UpdateAuthorModal from "./UpdateAuthorModal";

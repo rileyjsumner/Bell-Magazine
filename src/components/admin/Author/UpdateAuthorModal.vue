@@ -67,7 +67,7 @@
 
 <script>
 
-    import { updateAuthor } from "../../repository";
+    import { updateAuthor } from "../../../repository";
 
     export default {
         name: "UpdateAuthorModal",

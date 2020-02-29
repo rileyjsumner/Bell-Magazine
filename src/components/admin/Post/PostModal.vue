@@ -25,7 +25,7 @@
 
 <script>
 
-    import {createPost, getAuthorByName, getAuthors, updatePost} from "../../repository";
+    import {createPost, getAuthorByName, getAuthors, updatePost} from "../../../repository";
     import Quill from 'quill';
     import $ from 'jquery';
     import CreatePostModal from "./CreatePostModal";

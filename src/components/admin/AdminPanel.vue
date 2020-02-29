@@ -14,27 +14,33 @@
             </div>
         </div>
         <div id="tab-category" class="tab category-list" v-if="categories">
-
+            <CategoryModal :isCategoryCreate=true @createCategory="createCategory"></CategoryModal>
+            <div class="listings">
+                <Category v-for="(category, index) in categories" :category="category" :key="index" @deleteCategory="deleteCategory" @updateCategory="updateCategory"></Category>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 
-    import Post from './Post.vue'
-    import Author from './Author.vue';
-    import PostModal from './PostModal.vue'
-    import AuthorModal from './AuthorModal.vue'
-    import { getPosts, getAuthors } from '../../repository'
+    import Post from './Post/Post.vue'
+    import Author from './Author/Author.vue';
+    import Category from './Category/Category.vue';
+    import PostModal from './Post/PostModal.vue'
+    import AuthorModal from './Author/AuthorModal.vue'
+    import CategoryModal from './Category/CategoryModal'
+    import {getPosts, getAuthors, getCategories} from '../../repository'
     import AdminTabBar from "./AdminTabBar";
 
     export default {
         name: "AdminPanel",
-        components: {AdminTabBar, Post, Author, PostModal, AuthorModal },
+        components: {AdminTabBar, Post, Author, Category, PostModal, AuthorModal, CategoryModal },
         data() {
             return {
                 posts: {},
                 authors: {},
+                categories: {},
                 authenticated: false
             }
         },
@@ -58,7 +64,17 @@
             },
             createAuthor(author) {
                 this.authors = [author, ...this.authors];
-            }
+            },
+            deleteCategory(id) {
+                this.categories = this.categories.filter(categories => categories._id !== id);
+            },
+            updateCategory(category) {
+                this.deleteCategory(category._id);
+                this.createCategory(category);
+            },
+            createCategory(category) {
+                this.categories = [category, ...this.categories];
+            },
         },
         mounted() {
             // if(!this.authenticated) { // logic broken rn
@@ -69,6 +85,9 @@
                     .catch((err => alert(err)));
                 getAuthors()
                     .then(data => this.authors = data.authors)
+                    .catch((err => alert(err)));
+                getCategories()
+                    .then(data => this.categories = data.categories)
                     .catch((err => alert(err)));
             // }
         }

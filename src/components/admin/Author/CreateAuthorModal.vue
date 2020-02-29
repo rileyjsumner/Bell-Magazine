@@ -52,8 +52,8 @@
 
 <script>
 
-    import {createAuthor, getAuthorByName} from "../../repository";
-    import FileUpload from "../FileUpload";
+    import {createAuthor, getAuthorByName} from "../../../repository";
+    import FileUpload from "../../FileUpload";
 
     export default {
         name: "CreateAuthorModal",

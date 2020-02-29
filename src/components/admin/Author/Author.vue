@@ -21,7 +21,7 @@
 
 <script>
 
-    import { deleteAuthor } from '../../repository';
+    import { deleteAuthor } from '../../../repository';
     import UpdateAuthorModal from './UpdateAuthorModal.vue';
     import Moment from 'moment';
 

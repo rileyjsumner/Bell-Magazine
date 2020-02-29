@@ -49,8 +49,8 @@
 
 <script>
 
-    import {createPost, getAuthorByName, getAuthors} from "../../repository";
-    import MultipleFileUpload from '../MultipleFileUpload.vue';
+    import {createPost, getAuthorByName, getAuthors} from "../../../repository";
+    import MultipleFileUpload from '../../MultipleFileUpload.vue';
     import $ from 'jquery';
 
     let editor;

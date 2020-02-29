@@ -61,39 +61,14 @@
     import AuthorList from './AuthorList';
     import ArticleRow from "./ArticleRow";
     import AuthorRow from './AuthorRow';
-    import {getAuthors, getPosts} from "../repository";
 
-
-    let stories;
-    let authorList;
 
     export default {
         name: "ArticleGrid",
         components: {ArticleRow, Article, ArticleList, AuthorList, AuthorRow },
-        data() {
-            return {
-                posts: {},
-                authors: {}
-            }
-        },
-        methods: {
-            loadPosts() {
-                stories = getPosts();
-                stories.then(response => {
-                    this.posts = response.posts;
-                });
-
-            },
-            loadAuthors() {
-                authorList = getAuthors();
-                authorList.then(response => {
-                    this.authors = response;
-                })
-            }
-        },
-        mounted() {
-            this.loadPosts();
-            this.loadAuthors();
+        props: {
+            posts: {},
+            authors: {}
         }
     }
 </script>

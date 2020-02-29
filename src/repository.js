@@ -33,7 +33,7 @@ export function getAuthorStories(name) {
 }
 
 export function getAllCategories() {
-    return axios.get(`${BASE_URL}/api/category/all`)
+    return axios.get(`${BASE_URL}/api/category/list`)
         .then(response => response.data);
 }
 
@@ -47,6 +47,23 @@ export function createCategory(data) {
         })
         .catch(err => Promise.reject(err.message));
 }
+export function updateCategory(data, id) {
+    return axios.post(`${BASE_URL}/api/category/update/${id}`, { data })
+        .then(response => {
+            return response.data
+        })
+        .catch(err => Promise.reject(err.message));
+}
+
+export function getCategories() {
+    return axios.get(`${BASE_URL}/api/category/list`)
+        .then(response => response.data);
+}
+
+export function getCategoryByName(name) {
+    return axios.get(`${BASE_URL}/api/category/search/name/${name}`)
+        .then(response => response.data);
+}
 
 export function deletePost(id) {
     return axios.post(`${BASE_URL}/api/post/delete/${id}`)
@@ -55,6 +72,12 @@ export function deletePost(id) {
 }
 export function deleteAuthor(id) {
     return axios.post(`${BASE_URL}/api/author/delete/${id}`)
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
+}
+
+export function deleteCategory(id) {
+    return axios.post(`${BASE_URL}/api/category/delete/${id}`)
         .then(response => response.data)
         .catch(err => Promise.reject(err.message));
 }

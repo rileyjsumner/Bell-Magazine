@@ -21,7 +21,7 @@
 
 <script>
 
-    import { deletePost } from '../../repository';
+    import { deletePost } from '../../../repository';
     import PostModal from './PostModal.vue';
     import Moment from 'moment';
 

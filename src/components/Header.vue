@@ -21,7 +21,6 @@
         },
         mounted() {
             let categories = getAllCategories();
-            console.log(categories);
         }
     }
 </script>

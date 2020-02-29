@@ -48,7 +48,7 @@
 
 <script>
 
-    import { updatePost } from "../../repository";
+    import { updatePost } from "../../../repository";
     import $ from 'jquery';
 
     let editor;
