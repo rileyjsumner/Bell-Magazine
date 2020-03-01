@@ -28,7 +28,6 @@
                 let formData = new FormData();
                 formData.append('file', this.file);
                 // insert validation here
-                console.log(this.file);
                 uploadAuthorImage(formData);
             },
             handleFileUpload() {

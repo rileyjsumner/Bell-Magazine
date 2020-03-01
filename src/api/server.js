@@ -19,9 +19,10 @@ const Category = require('./Category');
 const fileFilter = function(req, file, cb) {
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
 
-
-    if(!allowedTypes.includes(file.mimeType)) {
+    console.log(file);
+    if(!allowedTypes.includes(file.mimetype)) {
         const error = new Error("Wrong file type");
+        console.log(file.mimetype);
         error.code = "LIMIT_FILE_TYPES";
         return cb(error, false);
     }
@@ -205,9 +206,9 @@ app.post('/api/author/upload/photo', upload.single('file'), async (req, res) => 
             .embed()
             .toFile(`./static/${req.file.originalname}`);
 
-        fs.unlink(req.file.path, () => {
-            res.json({ file: `./static/${req.file.originalname}`})
-        })
+        // fs.unlink(req.file.path, () => {
+        //     res.json({ file: `./static/${req.file.originalname}`})
+        // })
     } catch(err) {
         res.status(422).json({ err });
     }
@@ -222,9 +223,9 @@ app.post('/api/author/upload/images', upload.array('files'), async (req, res) =>
             .embed()
             .toFile(`./static/${req.file.originalname}`);
 
-        fs.unlink(req.file.path, () => {
-            res.json({ file: `./static/${req.file.originalname}`})
-        })
+        // fs.unlink(req.file.path, () => {
+        //     res.json({ file: `./static/${req.file.originalname}`})
+        // })
     } catch(err) {
         res.status(422).json({ err });
     }

@@ -21,7 +21,6 @@
         },
         mounted() {
             getAuthors().then(response => {
-                console.log(response);
                 this.authors = response.authors;
             })
         },

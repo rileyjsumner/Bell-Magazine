@@ -32,7 +32,8 @@
             return {
                 name: this.name,
                 type: this.type,
-                parent: this.parent
+                parent: this.parent,
+                isActive: false
             }
         },
         props: [ 'category' ],

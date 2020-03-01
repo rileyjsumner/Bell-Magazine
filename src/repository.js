@@ -131,7 +131,6 @@ export function updateAuthor(data, id) {
 }
 
 export function uploadAuthorImage(formData) {
-    console.log(formData);
     axios.post( `${BASE_URL}/api/author/upload/photo`,  formData
     ).then(function(){
 
