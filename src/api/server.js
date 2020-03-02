@@ -12,9 +12,9 @@ const sharp = require('sharp');
 const path = require('path');
 
 // models
-const Post = require('./Post');
-const Author = require('./Author');
-const Category = require('./Category');
+const Post = require('./Schema/Post');
+const Author = require('./Schema/Author');
+const Category = require('./Schema/Category');
 
 const fileFilter = function(req, file, cb) {
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -223,7 +223,6 @@ app.post('/api/author/upload/photo', upload.single('file'), async (req, res) => 
     } catch(err) {
         res.status(422).json({ err });
     }
-    res.json({file: req.file});
 });
 
 app.post('/api/author/upload/images', upload.array('files'), async (req, res) => {
