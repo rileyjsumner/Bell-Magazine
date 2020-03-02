@@ -13,6 +13,7 @@
 
 <script>
     import {uploadAuthorImage} from "../repository";
+    import $ from 'jquery';
 
     export default {
         name: "FileUpload",
@@ -29,6 +30,8 @@
                 formData.append('file', this.file);
                 // insert validation here
                 uploadAuthorImage(formData);
+
+                $("#photo").val("/static/"+this.file.name);
             },
             handleFileUpload() {
                 const file = this.$refs.file.files[0];

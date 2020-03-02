@@ -4,7 +4,7 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <h1>Create Article</h1>
+                    <h1>Create Author</h1>
                 </header>
                 <section class="modal-card-body">
                     <CreateAuthorModal v-if="isAuthorCreate"></CreateAuthorModal>

@@ -156,14 +156,20 @@ app.post('/api/author/create', (req, res) => {
 });
 
 app.post('/api/post/update/:id', (req, res) => {
-    let options = { new: true};
+    let options = {
+        new: true,
+        useFindAndModify: false
+    };
     Post.findByIdAndUpdate(req.params.id, req.body.data, options, (err, post) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ message: 'post updated! ', post});
     })
 });
 app.post('/api/author/update/:id', (req, res) => {
-    let options = { new: true};
+    let options = {
+        new: true,
+        useFindAndModify: false
+    };
     Author.findByIdAndUpdate(req.params.id, req.body.data, options, (err, author) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ message: 'author updated! ', author});
@@ -171,7 +177,10 @@ app.post('/api/author/update/:id', (req, res) => {
 });
 
 app.post('/api/category/update/:id', (req, res) => {
-    let options = { new: true};
+    let options = {
+        new: true,
+        useFindAndModify: false
+    };
     Category.findByIdAndUpdate(req.params.id, req.body.data, options, (err, category) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ message: 'category updated! ', category});
@@ -206,9 +215,11 @@ app.post('/api/author/upload/photo', upload.single('file'), async (req, res) => 
             .embed()
             .toFile(`./static/${req.file.originalname}`);
 
-        // fs.unlink(req.file.path, () => {
-        //     res.json({ file: `./static/${req.file.originalname}`})
-        // })
+        let path = req.file.originalname;
+        fs.unlink(req.file.path, () => {
+            console.log(`./static/${req.file.originalname}`);
+            res.json({ file: `./static/${path}`})
+        })
     } catch(err) {
         res.status(422).json({ err });
     }

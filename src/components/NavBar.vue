@@ -4,7 +4,7 @@
             <img class="nav-logo" src="../assets/pics/bell_logo_small.svg" height="29" alt="small logo"/>
             <ul class="nav-links">
                 <li class="link" v-bind:key="link" v-for="link in links">
-                    <router-link :to=link>{{ link }}</router-link>
+                    <router-link :to="'/'+link">{{ link }}</router-link>
                 </li>
                 <li id="search-bar" class="link link-search"><a v-on:click="handleSearch()"><i class="fas fa-search"></i></a></li>
                 <li class="link link-search-input"><input type="text"/></li>

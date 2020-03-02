@@ -41,8 +41,7 @@
         </div>
         <div class="field">
             <div class="control">
-                <label for="photo">Photo:</label>
-                <input id="photo" v-model="photo" class="input" type="text" placeholder="photo url"/>
+                <input id="photo" v-model="photo" class="input" type="hidden" value="" placeholder="photo url"/>
             </div>
         </div>
         <FileUpload></FileUpload>
