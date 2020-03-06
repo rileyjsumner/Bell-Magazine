@@ -59,7 +59,7 @@ app.use(function(err, req, res, next) {
     }
 });
 
-app.use("/static", express.static("/Users/riley/bell-magazine/static")); // need to move static folder
+app.use("/static", express.static(path.join(__dirname, "/static"))); // need to move static folder
 // get all posts
 app.get('/api/post/list', (req, res) => {
     Post.find({}).sort({updatedAt: 'descending'}).exec((err, posts) => {
