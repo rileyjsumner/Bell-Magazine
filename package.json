@@ -6,10 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "api": "nodemon src/api/server.js",
+    "api": "nodemon server.js",
     "deploy": "npm run build && git commit -am 'deploy' && git push",
     "watch-scss": "node-sass -w src/assets/styles/ -o src/assets/css/",
-    "start": "node src/api/deploy.js",
+    "start": "node deploy.js",
     "postinstall": "npm run build"
   },
   "engines": {

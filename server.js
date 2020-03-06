@@ -12,9 +12,9 @@ const sharp = require('sharp');
 const path = require('path');
 
 // models
-const Post = require('./Schema/Post');
-const Author = require('./Schema/Author');
-const Category = require('./Schema/Category');
+const Post = require('./src/api/Schema/Post');
+const Author = require('./src/api/Schema/Author');
+const Category = require('./src/api/Schema/Category');
 
 const fileFilter = function(req, file, cb) {
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -59,7 +59,7 @@ app.use(function(err, req, res, next) {
     }
 });
 
-app.use("/static", express.static(path.join(__dirname, "static")));
+app.use("/static", express.static("/Users/riley/bell-magazine/static")); // need to move static folder
 // get all posts
 app.get('/api/post/list', (req, res) => {
     Post.find({}).sort({updatedAt: 'descending'}).exec((err, posts) => {
@@ -217,8 +217,8 @@ app.post('/api/author/upload/photo', upload.single('file'), async (req, res) => 
 
         let path = req.file.originalname;
         fs.unlink(req.file.path, () => {
-            console.log(`./static/${req.file.originalname}`);
-            res.json({ file: `./static/${path}`})
+            console.log(`/static/${req.file.originalname}`);
+            res.json({ file: `/static/${path}`})
         })
     } catch(err) {
         res.status(422).json({ err });
