@@ -9,7 +9,7 @@
     "api": "nodemon server.js",
     "deploy": "npm run build && git commit -am 'deploy' && git push",
     "watch-scss": "node-sass -w src/assets/styles/ -o src/assets/css/",
-    "start": "node deploy.js",
+    "start": "node server.js",
     "postinstall": "npm run build"
   },
   "engines": {

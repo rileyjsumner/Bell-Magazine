@@ -10,6 +10,7 @@ const fs = require('fs');
 const multer = require('multer');
 const sharp = require('sharp');
 const path = require('path');
+const serveStatic = require("serve-static");
 
 // models
 const Post = require('./src/api/Schema/Post');
@@ -59,7 +60,10 @@ app.use(function(err, req, res, next) {
     }
 });
 
-app.use("/static", express.static(path.join(__dirname, "static"))); // need to move static folder
+app.use("/static", express.static(path.join(__dirname, "static")));
+
+app.use(serveStatic(path.join(__dirname, 'dist')));
+
 // get all posts
 app.get('/api/post/list', (req, res) => {
     Post.find({}).sort({updatedAt: 'descending'}).exec((err, posts) => {
