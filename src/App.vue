@@ -65,5 +65,21 @@
         src: url("./assets/fonts/Satisfy-Regular.ttf") format('truetype');
     }
 
+    @font-face {
+        font-family: Fira Sans;
+        src: url("./assets/fonts/FiraSansExtraCondensed-ExtraBold.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: Open Sans;
+        src: url("./assets/fonts/OpenSans-Regular.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: Rubik Mono One;
+        src: url("./assets/fonts/RubikMonoOne-Regular.ttf") format('truetype');
+    }
+
+
     @import "assets/styles/global.scss";
 </style>

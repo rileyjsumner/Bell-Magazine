@@ -1,16 +1,22 @@
 <template>
     <div class="container">
-        <h1>Admin Panel</h1>
-        <div class="post-list" v-if="posts">
-            <CreatePostModal @createPost="createPost"></CreatePostModal>
-            <div class="posts">
+        <AdminTabBar></AdminTabBar>
+        <div id="tab-post" class="tab tab-active post-list" v-if="posts">
+            <PostModal :isPostCreate=true @createPost="createPost"></PostModal>
+            <div class="listings">
                 <Post v-for="(post, index) in posts" :post="post" :key="index" @deletePost="deletePost" @updatePost="updatePost"></Post>
             </div>
         </div>
-        <div class="author-list" v-if="authors">
-            <CreateAuthorModal @createAuthor="createAuthor"></CreateAuthorModal>
-            <div class="authors">
+        <div id="tab-author" class="tab author-list" v-if="authors">
+            <AuthorModal :isAuthorCreate=true @createAuthor="createAuthor"></AuthorModal>
+            <div class="listings">
                 <Author v-for="(author, index) in authors" :author="author" :key="index" @deleteAuthor="deleteAuthor" @updateAuthor="updateAuthor"></Author>
+            </div>
+        </div>
+        <div id="tab-category" class="tab category-list" v-if="categories">
+            <CategoryModal :isCategoryCreate=true @createCategory="createCategory"></CategoryModal>
+            <div class="listings">
+                <Category v-for="(category, index) in categories" :category="category" :key="index" @deleteCategory="deleteCategory" @updateCategory="updateCategory"></Category>
             </div>
         </div>
     </div>
@@ -18,19 +24,23 @@
 
 <script>
 
-    import Post from './Post.vue'
-    import Author from './Author.vue';
-    import CreatePostModal from './CreatePostModal.vue'
-    import CreateAuthorModal from './CreateAuthorModal.vue'
-    import { getPosts, getAuthors } from '../../repository'
+    import Post from './Post/Post.vue'
+    import Author from './Author/Author.vue';
+    import Category from './Category/Category.vue';
+    import PostModal from './Post/PostModal.vue'
+    import AuthorModal from './Author/AuthorModal.vue'
+    import CategoryModal from './Category/CategoryModal'
+    import {getPosts, getAuthors, getCategories} from '../../repository'
+    import AdminTabBar from "./AdminTabBar";
 
     export default {
         name: "AdminPanel",
-        components: { Post, Author, CreatePostModal, CreateAuthorModal },
+        components: {AdminTabBar, Post, Author, Category, PostModal, AuthorModal, CategoryModal },
         data() {
             return {
-                posts: [],
-                authors: [],
+                posts: {},
+                authors: {},
+                categories: {},
                 authenticated: false
             }
         },
@@ -54,19 +64,32 @@
             },
             createAuthor(author) {
                 this.authors = [author, ...this.authors];
-            }
+            },
+            deleteCategory(id) {
+                this.categories = this.categories.filter(categories => categories._id !== id);
+            },
+            updateCategory(category) {
+                this.deleteCategory(category._id);
+                this.createCategory(category);
+            },
+            createCategory(category) {
+                this.categories = [category, ...this.categories];
+            },
         },
         mounted() {
-            if(!this.authenticated) { // logic broken rn
-                this.$router.replace({ name: "Admin"});
-            } else {
+            // if(!this.authenticated) { // logic broken rn
+                // this.$router.replace({ name: "Admin"});
+            // } else {
                 getPosts()
                     .then(data => this.posts = data.posts)
                     .catch((err => alert(err)));
                 getAuthors()
                     .then(data => this.authors = data.authors)
                     .catch((err => alert(err)));
-            }
+                getCategories()
+                    .then(data => this.categories = data.categories)
+                    .catch((err => alert(err)));
+            // }
         }
     }
 </script>

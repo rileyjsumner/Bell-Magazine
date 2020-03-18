@@ -1,0 +1,102 @@
+@import "./utilities/_imports.scss";
+
+.author-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-top: 2rem;
+
+  div.author-data {
+    width: 40%;
+
+    h1 {
+      margin: 0;
+    }
+  }
+  div.author-stories {
+    width: 50%;
+
+    .author-story {
+
+      margin: 1rem 0;
+
+      .article {
+        padding: .5rem;
+      }
+
+      img {
+        width: 80%;
+      }
+
+      .tagline {
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .title {
+        text-transform: uppercase;
+        font-weight: bolder;
+        font-size: 1.5rem;
+        margin: .25rem 0;
+      }
+
+      .byline {
+        font-weight: bold;
+        font-size: 1rem;
+        color: $bell-dark-grey;
+        font-style: italic;
+        margin: 0;
+
+        &::before {
+          content: "By: ";
+        }
+
+        &.author-byline {
+          font-size: 1rem;
+          color: $bell-black-accent;
+          font-style: normal;
+
+          &::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.staff-directory {
+
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+
+  .staff-list-item {
+
+    width: 375px;
+    text-align: center;
+    margin: 1rem 0;
+
+    .author-name {
+
+      text-align: center;
+      margin: 0;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 50%;
+      height: auto;
+    }
+
+    .staff-bio {
+      font-size: 1rem;
+      margin: .25rem;
+    }
+  }
+}

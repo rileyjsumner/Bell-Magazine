@@ -29,7 +29,7 @@ div .article-grid div.article.dark {
 
 nav.nav.dark {
 
-  background-color: $bell-blue-secondary;
+  background-color: $bell-accent-primary;
 }
 
 a.dark {
@@ -41,10 +41,16 @@ a.dark {
   }
 }
 
-h1.dark {
+h1.dark,
+h2.dark {
 
   color: $bell-blue-secondary;
 
+}
+
+p.dark,
+label.dark {
+  color: $bell-white-accent !important;
 }
 
 .admin-dropdown-menu li a {

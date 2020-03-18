@@ -1,20 +1,22 @@
 <template>
     <div class="article-list">
         <ListArticle
-            title="Sample Article"
-            author="Author McAuthorson"
-            description="Check out this article about news"
+            :title="articles[0].title"
+            :author="articles[0].author"
+            :tagline="articles[0].description"
+            :url="'/' + articles[0].category + '/' + articles[0].permalink"
         ></ListArticle>
         <ListArticle
-                title="Sample Article"
-                author="Author McAuthorson"
-                description="Check out this article about news"
+            :title="articles[1].title"
+            :author="articles[1].author"
+            :tagline="articles[1].description"
+            :url="'/' + articles[1].category + '/' + articles[1].permalink"
         ></ListArticle>
-        <ListArticle
-                title="Sample Article"
-                author="Author McAuthorson"
-                description="Check out this article about news"
-                :isShort=isShort
+        <ListArticle v-if="!isShort"
+             :title="articles[2].title"
+             :author="articles[2].author"
+             :tagline="articles[2].description"
+             :url="'/' + articles[2].category + '/' + articles[2].permalink"
         ></ListArticle>
     </div>
 </template>
@@ -26,6 +28,7 @@
         components: {ListArticle},
         props: {
             isShort: Boolean,
+            articles: Array,
         }
     }
 </script>

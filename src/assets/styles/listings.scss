@@ -1,0 +1,46 @@
+@import "./utilities/_imports.scss";
+
+div.post-list,
+div.author-list {
+
+  div.listings {
+
+    display: block;
+    padding: 1rem 0;
+    margin: 1rem 0;
+    width: 100%;
+    border: 1px solid $bell-black-accent;
+
+    article.data {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .data-header {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 0;
+
+        h2 {
+          margin: 0;
+          align-self: flex-start;
+          width: 90%;
+          font-size: 1.5rem;
+        }
+        div {
+          align-self: flex-end;
+        }
+      }
+      .data-body {
+        width: 90%;
+        p {
+          margin: .5rem;
+        }
+      }
+      .data-details {
+        width: 10%;
+      }
+    }
+  }
+}

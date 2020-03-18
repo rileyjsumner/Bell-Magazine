@@ -4,8 +4,10 @@
             <img class="nav-logo" src="../assets/pics/bell_logo_small.svg" height="29" alt="small logo"/>
             <ul class="nav-links">
                 <li class="link" v-bind:key="link" v-for="link in links">
-                    <router-link :to="{name: link}">{{ link }}</router-link>
+                    <router-link :to="'/'+link">{{ link }}</router-link>
                 </li>
+                <li id="search-bar" class="link link-search"><a v-on:click="handleSearch()"><i class="fas fa-search"></i></a></li>
+                <li class="link link-search-input"><input type="text"/></li>
             </ul>
             <span id="nav-toggle">&#8801;</span>
         </div>
@@ -55,6 +57,23 @@
         name: "NavBar",
         props: {
             links: Array
+        },
+        methods: {
+            handleSearch() {
+                if(!$(".link-search").hasClass("search-active")) {
+                    $(".link-search-input input").css("width", "250px");
+                    $(".link-search-input input").css("background-color", "#FDFDF9");
+                    $(".link-search").css("right", "16.93rem");
+                    $(".link-search").addClass("search-active");
+                } else {
+                    $(".link-search-input input").css("width", "0px");
+                    $(".link-search-input input").css("background-color", "#04070D");
+                    $(".link-search").css("right", ".25rem");
+                    $(".link-search").removeClass("search-active");
+                }
+
+
+            }
         }
     }
 </script>
@@ -66,13 +85,6 @@
         top: 0;
         width: 100%;
         z-index: 100;
-    }
-
-    .nav-logo {
-        left: 1rem;
-        transform: translateX(-200%);
-        transition: transform .5s ease-in-out;
-        position: absolute;
     }
 
 </style>

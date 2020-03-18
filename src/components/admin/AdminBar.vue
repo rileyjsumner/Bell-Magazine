@@ -55,6 +55,8 @@
                 $(".footer").removeClass("dark");
                 $(".article").removeClass("dark");
                 $(" a ").removeClass("dark");
+                $(" p ").removeClass("dark");
+                $(" label ").removeClass("dark");
                 $(" h1 ").removeClass("dark");
                 $(" h2 ").removeClass("dark");
                 $(" h3 ").removeClass("dark");
@@ -74,6 +76,8 @@
                 $(".footer").addClass("dark");
                 $(".article").addClass("dark");
                 $(" a ").addClass("dark");
+                $(" p ").addClass("dark");
+                $(" label ").addClass("dark");
                 $(" h1 ").addClass("dark");
                 $(" h2 ").addClass("dark");
                 $(" h3 ").addClass("dark");
