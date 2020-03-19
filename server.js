@@ -39,9 +39,9 @@ const upload = multer({
         }
     });
 //connect server to mongoDB
-
+// mongodb://localhost:27017/bell_local
 +mongoose.connect(
-    'mongodb://localhost:27017/bell_local',
+    'mongodb+srv://rsumner:admin@bell-3p24o.mongodb.net/test?retryWrites=true&w=majority',
     { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
