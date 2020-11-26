@@ -94,9 +94,14 @@ div.article-grid {
         font-size: 1rem;
         font-style: italic;
         margin: 0;
+        transition: .25s ease-in-out;
 
         &::before {
           content: "By: ";
+        }
+
+        &:hover {
+          color: $bell-dark-grey;
         }
 
         &.author-byline {

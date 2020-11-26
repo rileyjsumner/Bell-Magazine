@@ -1,5 +1,5 @@
 <template>
-    <div class="article-grid">
+    <div v-if="posts" class="article-grid">
         <ArticleList :articles="[posts[1], posts[2], posts[3]]"></ArticleList>
         <Article :title="posts[0].title"
                  :byline="posts[0].author"

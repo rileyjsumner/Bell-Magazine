@@ -39,9 +39,9 @@ const upload = multer({
         }
     });
 //connect server to mongoDB
-
+// mongodb://localhost:27017/bell_local
 +mongoose.connect(
-    'mongodb://localhost:27017/bell_local',
+    'mongodb+srv://bell_root_usr:bellmag2018@bell-magazine.aiweg.mongodb.net/bell-magazine?retryWrites=true&w=majority',
     { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
@@ -248,4 +248,3 @@ app.post('/api/author/upload/images', upload.array('files'), async (req, res) =>
 
 const PORT = 5000;
 app.listen(PORT);
-console.log('api running on port ' + PORT);

@@ -9,7 +9,6 @@
     "api": "nodemon server.js",
     "deploy": "npm run build && git commit -am 'deploy' && git push",
     "watch-scss": "node-sass -w src/assets/styles/ -o src/assets/css/",
-    "start": "node server.js",
     "postinstall": "npm run build"
   },
   "engines": {
@@ -49,7 +48,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.12.0",
-    "nodemon": "^2.0.2",
+    "nodemon": "^2.0.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "vue-template-compiler": "^2.6.10",

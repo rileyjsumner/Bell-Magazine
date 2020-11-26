@@ -140,7 +140,7 @@ export function uploadAuthorImage(formData) {
 }
 
 export function uploadArticleImages(formData) {
-    axios.post( `${BASE_URL}/api/post/upload/images`, formData
-    ).then(function(){ console.log('SUCCESS!!');
-    }).catch(function(){ console.log('FAILURE!!'); });
+    // axios.post( `${BASE_URL}/api/post/upload/images`, formData
+    // ).then(function(){ console.log('SUCCESS!!');
+    // }).catch(function(){ console.log('FAILURE!!'); });
 }
