@@ -3,8 +3,8 @@
         <div class="control">
             <p v-if="error">{{ message }}</p>
             <form @submit.prevent="submitFile()" enctype="multipart/form-data">
-                <label for="file">Upload Image</label>
-                <input id="file" type="file" ref="file" @change="handleFileUpload()"/>
+                <label>Upload Image</label>
+                <input type="file" ref="file" @change="handleFileUpload()"/>
                 <button>Submit</button>
             </form>
         </div>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import {uploadAuthorImage} from "../repository";
+    import {uploadAuthorImage} from '@/repository';
     import $ from 'jquery';
 
     export default {

@@ -2,42 +2,42 @@
     <div class="modal-card-body-inner">
         <div class="field">
             <div class="control">
-                <label for="create-title">Title:</label>
-                <input id="create-title" v-model="title" class="input" type="text" placeholder="title"/>
+                <label>Title:</label>
+                <input v-model="title" class="input" type="text" placeholder="title"/>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="create-category">Category:</label>
-                <input id="create-category" v-model="category" class="input" type="text" placeholder="category"/>
+                <label>Category:</label>
+                <input v-model="category" class="input" type="text" placeholder="category"/>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="create-permalink">Permalink:</label>
-                <input id="create-permalink" v-model="permalink" class="input" type="text" placeholder="permalink"/>
+                <label>Permalink:</label>
+                <input v-model="permalink" class="input" type="text" placeholder="permalink"/>
                 <p class="permalink">https://www.bell.com/</p>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="create-author">Author:</label>
-                <input id="create-author" v-model="author" class="input" type="text" placeholder="author"/>
+                <label>Author:</label>
+                <input v-model="author" class="input" type="text" placeholder="author"/>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="create-description">Description:</label>
-                <input id="create-description" v-model="description" class="input" type="text" placeholder="description"/>
+                <label>Description:</label>
+                <input v-model="description" class="input" type="text" placeholder="description"/>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="create-photo">Photo Link:</label>
-                <input id="create-photo" v-model="photo" class="input" type="text" placeholder="photo link"/>
+                <label>Photo Link:</label>
+                <input v-model="photo" class="input" type="text" placeholder="photo link"/>
             </div>
         </div>
-        <MultipleFileUpload></MultipleFileUpload>
+        <FileUpload></FileUpload>
         <div class="field full">
             <div id="modal-editor" class="control">
                 <div id="editor"></div>
@@ -49,16 +49,16 @@
 
 <script>
 
-    import {createPost, getAuthorByName, getAuthors} from "../../../repository";
-    import MultipleFileUpload from '../../MultipleFileUpload.vue';
+    import {createPost, getAuthorByName, getAuthors} from '@/repository';
     import $ from 'jquery';
+    import FileUpload from '@/components/FileUpload';
 
     let editor;
     let authorList = [];
 
     export default {
         name: "CreatePostModal",
-        components: { MultipleFileUpload },
+        components: { FileUpload },
         data() {
             return {
                 title: "",

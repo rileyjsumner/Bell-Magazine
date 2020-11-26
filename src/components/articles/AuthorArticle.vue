@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import {getAuthorByName} from "../../repository";
+    import {getAuthorByName} from '@/repository';
 
     export default {
         name: "AuthorArticle",

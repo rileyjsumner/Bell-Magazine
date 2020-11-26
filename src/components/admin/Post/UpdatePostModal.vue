@@ -2,44 +2,44 @@
     <div class="modal-card-body-inner">
         <div class="field">
             <div class="control">
-                <label for="update-title">Title:</label>
-                <input id="update-title" v-model="title" class="input" type="text" placeholder="title"/>
+                <label>Title:</label>
+                <input v-model="title" class="input" type="text" placeholder="title"/>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="update-category">Category:</label>
-                <input id="update-category" v-model="category" class="input" type="text" placeholder="category"/>
+                <label>Category:</label>
+                <input v-model="category" class="input" type="text" placeholder="category"/>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="update-link">Permalink:</label>
-                <input id="update-link" v-model="permalink" class="input" type="text" placeholder="permalink"/>
+                <label>Permalink:</label>
+                <input v-model="permalink" class="input" type="text" placeholder="permalink"/>
                 <p class="permalink">https://www.bell.com/</p>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="update-author">Author:</label>
-                <input id="update-author" v-model="author" class="input" type="text" placeholder="author"/>
+                <label>Author:</label>
+                <input v-model="author" class="input" type="text" placeholder="author"/>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="update-description">Description:</label>
-                <input id="update-description" v-model="description" class="input" type="text" placeholder="description"/>
+                <label>Description:</label>
+                <input v-model="description" class="input" type="text" placeholder="description"/>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="update-photo">Description:</label>
-                <input id="update-photo" v-model="photo" class="input" type="text" placeholder="photo link"/>
+                <label>Description:</label>
+                <input v-model="photo" class="input" type="text" placeholder="photo link"/>
             </div>
         </div>
         <div class="field full">
             <div :id="'modal-editor-' + updateId" class="control">
-                <div class='update-editor' id="update-editor"></div>
+                <div class='update-editor'></div>
             </div>
         </div>
         <button @click="update" class="button">Update</button>

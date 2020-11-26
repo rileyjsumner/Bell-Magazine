@@ -14,7 +14,7 @@
 <script>
 
     import JQuery from 'jquery'
-    import {getAuthorByName} from "../../repository";
+    import {getAuthorByName} from '@/repository';
     let $ = JQuery;
 
     export default {
