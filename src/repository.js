@@ -3,38 +3,46 @@ const BASE_URL = 'http://localhost:5000';
 
 export function getPosts() {
     return axios.get(`${BASE_URL}/api/post/list`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 export function getAuthors() {
     return axios.get(`${BASE_URL}/api/author/list`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 
 export function getArticleFromUrl(link) {
     return axios.get(`${BASE_URL}/api/post/search/${link}`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 
 export function getAuthorById(id) {
     return axios.get(`${BASE_URL}/api/author/search/${id}`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 export function getAuthorByName(name) {
     return axios.get(`${BASE_URL}/api/author/search/name/${name}`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 export function getAuthorByUrl(url) {
     return axios.get(`${BASE_URL}/api/author/search/url/${url}`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 export function getAuthorStories(name) {
     return axios.get(`${BASE_URL}/api/author/search/posts/${name}`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 
 export function getAllCategories() {
     return axios.get(`${BASE_URL}/api/category/list`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 
 export function createCategory(data) {
@@ -57,12 +65,14 @@ export function updateCategory(data, id) {
 
 export function getCategories() {
     return axios.get(`${BASE_URL}/api/category/list`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 
 export function getCategoryByName(name) {
     return axios.get(`${BASE_URL}/api/category/search/name/${name}`)
-        .then(response => response.data);
+        .then(response => response.data)
+        .catch(err => Promise.reject(err.message));
 }
 
 export function deletePost(id) {
@@ -139,8 +149,8 @@ export function uploadAuthorImage(formData) {
     .catch(function(){ console.log('FAILURE!!'); });
 }
 
-export function uploadArticleImages(formData) {
-    // axios.post( `${BASE_URL}/api/post/upload/images`, formData
-    // ).then(function(){ console.log('SUCCESS!!');
-    // }).catch(function(){ console.log('FAILURE!!'); });
-}
+// export function uploadArticleImages(formData) {
+//     // axios.post( `${BASE_URL}/api/post/upload/images`, formData
+//     // ).then(function(){ console.log('SUCCESS!!');
+//     // }).catch(function(){ console.log('FAILURE!!'); });
+// }

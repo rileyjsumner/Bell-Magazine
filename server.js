@@ -247,4 +247,4 @@ app.post('/api/author/upload/images', upload.array('files'), async (req, res) =>
 });
 
 const PORT = 5000;
-app.listen(PORT);
+app.listen(process.env.PORT || PORT);
