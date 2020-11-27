@@ -37,7 +37,7 @@
         components: {UpdateCategoryModal, CreateCategoryModal  },
         props: {
             isCategoryCreate: Boolean,
-            category: String,
+            category: Object,
         },
         data() {
             return {

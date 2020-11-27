@@ -2,10 +2,10 @@
     <div class="article author-article article-shadow">
         <div class="article-content author-content">
             <div class="author-profile">
-                <img class="profile" alt="profile" :src="data_photo" v-on:click="goToStory(url)" />
+                <img v-for="author in authorList" :key="author.name" class="profile" alt="profile" :src="author.photo" v-on:click="goToStory(url)" />
             </div>
             <div class="author-body">
-                <h2 class="title author-title" v-on:click="goToStory(url)">{{ author }}</h2>
+                <h3 v-for="author in authorList" :key="author.name" class="title author-title" v-on:click="goToStory(url)">{{ author.name }}</h3>
                 <p class="byline author-byline" v-on:click="goToStory(url)">{{ title }}</p>
             </div>
         </div>
@@ -19,16 +19,14 @@
         name: "AuthorArticle",
         props: {
             title: String,
-            author: String,
+            authors: Array,
             url: String,
         },
         data() {
             return {
                 data_title: this.title,
-                data_author: this.author,
                 data_url: this.url,
-                data_author_url: "",
-                data_photo: this.photo
+                authorList: []
             }
         },
         methods: {
@@ -37,10 +35,12 @@
             }
         },
         mounted() {
-            getAuthorByName(this.data_author).then(author_data => {
-                this.data_photo = author_data.author.photo;
-                this.data_author_url = author_data.author.url;
-            });
+            for(let i = 0; i < this.authors.length; i++) {
+              getAuthorByName(this.authors[i]).then(author_data => {
+                this.authorList.push({name: this.authors[i], photo: author_data.author.photo_url, slug: author_data.author.slug});
+              });
+            }
+
         }
     }
 </script>

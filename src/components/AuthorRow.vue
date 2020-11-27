@@ -3,22 +3,22 @@
         <AuthorArticle
             :title="articles[0].title"
             :author="articles[0].author"
-            :url="articles[0].category + '/' + articles[0].permalink"
+            :url="articles[0].category + '/' + articles[0].slug"
         ></AuthorArticle>
         <AuthorArticle
             :title="articles[1].title"
             :author="articles[1].author"
-            :url="articles[1].category + '/' + articles[1].permalink"
+            :url="articles[1].category + '/' + articles[1].slug"
         ></AuthorArticle>
         <AuthorArticle
             :title="articles[2].title"
             :author="articles[2].author"
-            :url="articles[2].category + '/' + articles[2].permalink"
+            :url="articles[2].category + '/' + articles[2].slug"
         ></AuthorArticle>
         <AuthorArticle
             :title="articles[3].title"
             :author="articles[3].author"
-            :url="articles[3].category + '/' + articles[3].permalink"
+            :url="articles[3].category + '/' + articles[3].slug"
         ></AuthorArticle>
     </div>
 </template>

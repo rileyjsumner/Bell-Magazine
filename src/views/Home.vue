@@ -36,7 +36,6 @@
 
                 authorList.then(response => {
                     this.authors = response;
-                    console.log(this.authors);
                 })
             }
         },
