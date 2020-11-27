@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import {updateCategory} from "../../../repository";
+    import {updateCategory} from '@/repository';
 
     export default {
         name: "UpdateCategoryModal",

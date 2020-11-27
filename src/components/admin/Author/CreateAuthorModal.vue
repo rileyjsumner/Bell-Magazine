@@ -4,15 +4,12 @@
             <div class="control">
                 <label for="name">Name:</label>
                 <input id="name" v-model="name" class="input" type="text" placeholder="name"/>
-<!--                <div class="author-search">-->
-<!--                    <ul id="author-search-list"></ul>-->
-<!--                </div>-->
             </div>
         </div>
         <div class="field">
             <div class="control">
                 <label for="url">www.bell.com/author/:</label>
-                <input id="url" v-model="url" class="input" type="text" placeholder="url">
+                <input id="url" v-model="slug" class="input" type="text" placeholder="url">
             </div>
         </div>
         <div class="field">
@@ -51,7 +48,7 @@
 
 <script>
 
-    import {createAuthor, getAuthorByName} from "../../../repository";
+import { createAuthor } from '@/repository';
     import FileUpload from "../../FileUpload";
 
     export default {
@@ -60,7 +57,7 @@
         data() {
             return {
                 name: "",
-                url: "",
+                slug: "",
                 staff_bio: "",
                 long_bio: "",
                 social_handle: "",
@@ -73,7 +70,7 @@
             create() {
                 let data = {
                     name: this.name,
-                    url: this.url,
+                    slug: this.slug,
                     staff_bio: this.staff_bio,
                     long_bio: this.long_bio,
                     social_handle: this.social_handle,
@@ -93,6 +90,7 @@
             }
         },
         mounted() {
+
         }
     }
 </script>

@@ -48,7 +48,8 @@ export function getAllCategories() {
 export function createCategory(data) {
     return axios.post(`${BASE_URL}/api/category/create`, {
         name: data.name,
-        type: data.type
+        slug: data.type,
+        parent: data.parent
     })
         .then(response => {
             return response.data
@@ -97,11 +98,12 @@ export function createPost(data) {
         {
             title: data.title,
             body: data.body,
+            publish_date: data.publish_date,
             category: data.category,
             author: data.author,
             description: data.description,
-            photo: data.photo,
-            permalink: data.permalink
+            photo_url: data.photo_url,
+            slug: data.slug
         })
         .then(response => {
             return response.data
@@ -112,12 +114,14 @@ export function createAuthor(data) {
     return axios.post(`${BASE_URL}/api/author/create`,
         {
             name: data.name,
-            url: data.url,
+            slug: data.slug,
             staff_bio: data.staff_bio,
             long_bio: data.long_bio,
-            social_handle: data.social_handle,
+            facebook_url: data.facebook_url,
+            twitter_username: data.twitter_username,
+            instagram_username: data.instagram_username,
             email: data.email,
-            photo: data.photo
+            photo_url: data.photo_url
         })
         .then(response => {
             return response.data
@@ -144,7 +148,6 @@ export function uploadAuthorImage(formData) {
     axios.post( `${BASE_URL}/api/author/upload/photo`,  formData
     ).then(function(){
 
-        console.log('SUCCESS!!');
     })
     .catch(function(){ console.log('FAILURE!!'); });
 }

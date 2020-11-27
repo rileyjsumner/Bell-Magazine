@@ -8,7 +8,7 @@
                 </header>
                 <section class="modal-card-body">
                     <CreateCategoryModal v-if="isCategoryCreate"></CreateCategoryModal>
-<!--                    <UpdateCategoryModal v-else :category="category" :updateId="category._id"></UpdateCategoryModal>-->
+                    <UpdateCategoryModal v-else :category="category" :updateId="category._id"></UpdateCategoryModal>
                     <div class="field full">
                         <div id="modal-editor" class="control">
                             <div id="editor"></div>
@@ -42,7 +42,7 @@
         data() {
             return {
                 name: "",
-                type: "",
+                slug: "",
                 parent: "",
                 isActive: false
             }
@@ -51,13 +51,13 @@
             create() {
                 let data = {
                     name: this.name,
-                    type: this.type,
+                    slug: this.slug,
                     parent: this.parent,
                 };
                 createCategory(data)
                     .then(data => {
                         this.$emit('createCategory', data.name);
-                        this.name = this.type = this.parent =  '';
+                        this.name = this.slug = this.parent =  '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));
@@ -65,7 +65,7 @@
             update() {
                 let data = {
                     name: this.name,
-                    type: this.type,
+                    slug: this.slug,
                     parent: this.parent,
                 };
                 updateCategory(data, this.category._id)

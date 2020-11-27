@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const CategorySchema = Schema(
     {
         name: {type: String, required: true},
-        type: {type: String, required: true},
+        slug: {type: String, required: true},
         parent: {type: String, required: false}
     }
 );
