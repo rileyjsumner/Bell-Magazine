@@ -30,7 +30,7 @@
     import PostModal from './Post/PostModal.vue'
     import AuthorModal from './Author/AuthorModal.vue'
     import CategoryModal from './Category/CategoryModal'
-    import {getPosts, getAuthors, getCategories} from '../../repository'
+    import {getPosts, getAuthors, getCategories} from '@/repository'
     import AdminTabBar from "./AdminTabBar";
 
     export default {

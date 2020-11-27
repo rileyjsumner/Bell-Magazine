@@ -4,11 +4,11 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <h1>Create Article</h1>
+                    <h1>Create Category</h1>
                 </header>
                 <section class="modal-card-body">
                     <CreateCategoryModal v-if="isCategoryCreate"></CreateCategoryModal>
-                    <UpdateCategoryModal :category="category" :updateId="category._id" v-if="!isCategoryCreate"></UpdateCategoryModal>
+                    <UpdateCategoryModal v-else :category="category" :updateId="category._id"></UpdateCategoryModal>
                     <div class="field full">
                         <div id="modal-editor" class="control">
                             <div id="editor"></div>
@@ -19,13 +19,13 @@
             <button @click="toggle" class="modal-close btn-close" aria-label="close"></button>
         </div>
         <button v-if="isCategoryCreate" @click="toggle" class="button">Create Category</button>
-        <button v-if="!isCategoryCreate" @click="toggle" class="button">Update</button>
+        <button v-else @click="toggle" class="button">Update</button>
     </div>
 </template>
 
 <script>
 
-    import {createCategory, getCategories, getCategoryByName, updateCategory} from "../../../repository";
+    import {createCategory, getCategories, getCategoryByName, updateCategory} from '@/repository';
     import $ from 'jquery';
     import CreateCategoryModal from "./CreateCategoryModal";
     import UpdateCategoryModal from "./UpdateCategoryModal";
@@ -37,12 +37,12 @@
         components: {UpdateCategoryModal, CreateCategoryModal  },
         props: {
             isCategoryCreate: Boolean,
-            category: '',
+            category: String,
         },
         data() {
             return {
                 name: "",
-                type: "",
+                slug: "",
                 parent: "",
                 isActive: false
             }
@@ -51,13 +51,13 @@
             create() {
                 let data = {
                     name: this.name,
-                    type: this.type,
+                    slug: this.slug,
                     parent: this.parent,
                 };
                 createCategory(data)
                     .then(data => {
                         this.$emit('createCategory', data.name);
-                        this.name = this.type = this.parent =  '';
+                        this.name = this.slug = this.parent =  '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));
@@ -65,7 +65,7 @@
             update() {
                 let data = {
                     name: this.name,
-                    type: this.type,
+                    slug: this.slug,
                     parent: this.parent,
                 };
                 updateCategory(data, this.category._id)

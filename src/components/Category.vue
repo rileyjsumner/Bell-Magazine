@@ -13,7 +13,7 @@
         name: "Category",
         components: { CategoryGrid },
         mounted() {
-            let categories = ["Perspectives", "Dispatches"];
+            let categories = ["perspectives", "womens studies", "dispatches"];
             if(!categories.includes(this.$route.params.category)) {
                 this.$router.replace("/404");
             }

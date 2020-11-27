@@ -8,24 +8,24 @@
         </div>
         <div class="data-body">
             <p><strong>Type: </strong>{{ category.type }}</p>
-            <p><strong>Parent: </strong>{{ category.parent }}</p>
+            <p><strong>Slug: </strong>{{ category.slug }}</p>
         </div>
         <div class="data-details">
-            <UpdateCategoryModal :category="category" @updateCategory="updateCategory" :key="category._id"></UpdateCategoryModal>
+            <CategoryModal :isCategoryCreate=false :category="category" @updateCategory="updateCategory" :key="category._id"></CategoryModal>
         </div>
     </article>
 </template>
 
 <script>
 
-    import { deleteCategory } from '../../../repository';
+    import { deleteCategory } from '@/repository';
     import Moment from 'moment';
-    import UpdateCategoryModal from "./UpdateCategoryModal";
+    import CategoryModal from "./CategoryModal";
 
     export default {
         name: "Category",
         props: [ 'category' ],
-        components: {UpdateCategoryModal },
+        components: { CategoryModal },
         methods: {
             deleteCategory(e) {
                 e.preventDefault();

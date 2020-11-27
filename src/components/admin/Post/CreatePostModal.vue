@@ -34,7 +34,7 @@
         <div class="field">
             <div class="control">
                 <label>Photo Link:</label>
-                <input v-model="photo" class="input" type="text" placeholder="photo link"/>
+                <input id="create-photo-link" v-model="photo" class="input" type="text" placeholder="photo link"/>
             </div>
         </div>
         <FileUpload></FileUpload>

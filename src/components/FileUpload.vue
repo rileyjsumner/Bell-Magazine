@@ -31,7 +31,7 @@
                 // insert validation here
                 uploadAuthorImage(formData);
 
-                $("#photo").val("/static/"+this.file.name);
+                $("#create-photo-link").val("/static/"+this.file.name);
             },
             handleFileUpload() {
                 const file = this.$refs.file.files[0];

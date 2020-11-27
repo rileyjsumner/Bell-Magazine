@@ -20,10 +20,8 @@ const Category = require('./src/api/Schema/Category');
 const fileFilter = function(req, file, cb) {
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
 
-    console.log(file);
     if(!allowedTypes.includes(file.mimetype)) {
         const error = new Error("Wrong file type");
-        console.log(file.mimetype);
         error.code = "LIMIT_FILE_TYPES";
         return cb(error, false);
     }
@@ -121,7 +119,7 @@ app.get('/api/category/list', (req, res) => {
 app.post('/api/category/create', (req, res) => {
     const category = new Category({
         name: req.body.name,
-        type: req.body.type,
+        slug: req.body.slug,
         parent: req.body.parent
     });
     category.save( (err) => {
@@ -134,11 +132,12 @@ app.post('/api/post/create', (req, res) => {
     const post = new Post({
         body: req.body.body,
         title: req.body.title,
+        publish_date: req.body.publish_date,
         category: req.body.category,
         author: req.body.author,
         description: req.body.description,
-        photo: req.body.photo,
-        permalink: req.body.permalink });
+        photo_url: req.body.photo_url,
+        slug: req.body.slug });
     post.save( (err) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ post });
@@ -147,12 +146,14 @@ app.post('/api/post/create', (req, res) => {
 app.post('/api/author/create', (req, res) => {
     const author = new Author({
         name: req.body.name,
-        url: req.body.url,
+        slug: req.body.slug,
         staff_bio: req.body.staff_bio,
         long_bio: req.body.long_bio,
-        social_handle: req.body.social_handle,
+        facebook_url: req.body.facebook_url,
+        twitter_username: req.body.twitter_username,
+        instagram_username: req.body.instagram_username,
         email: req.body.email,
-        photo: req.body.photo });
+        photo_url: req.body.photo_url });
     author.save( (err) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ author });
@@ -247,4 +248,4 @@ app.post('/api/author/upload/images', upload.array('files'), async (req, res) =>
 });
 
 const PORT = 5000;
-app.listen(PORT);
+app.listen(process.env.PORT || PORT);
