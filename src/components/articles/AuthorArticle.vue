@@ -1,46 +1,50 @@
 <template>
     <div class="article author-article article-shadow">
-        <div class="article-content author-content">
-            <div class="author-profile">
-                <img class="profile" alt="profile" :src="data_photo" v-on:click="goToStory(url)" />
-            </div>
-            <div class="author-body">
-                <h2 class="title author-title" v-on:click="goToStory(url)">{{ author }}</h2>
-                <p class="byline author-byline" v-on:click="goToStory(url)">{{ title }}</p>
-            </div>
-        </div>
+        <AuthorArticleContents :key="toggleUpdate" :authors="authorList" :title="title" :url="url"/>
     </div>
 </template>
 
 <script>
+    import Vue from 'vue';
     import {getAuthorByName} from '@/repository';
+    import AuthorArticleContents from "@/components/articles/AuthorArticleContents";
 
     export default {
-        name: "AuthorArticle",
-        props: {
+      name: "AuthorArticle",
+      components: {AuthorArticleContents},
+      props: {
             title: String,
-            author: String,
+            authors: Array,
             url: String,
+
         },
         data() {
             return {
                 data_title: this.title,
-                data_author: this.author,
                 data_url: this.url,
-                data_author_url: "",
-                data_photo: this.photo
+                authorList: [],
+                toggleUpdate: 0,
             }
         },
         methods: {
             goToStory(url) {
-                window.location.replace(url);
+                window.location.href = url;
             }
         },
-        mounted() {
-            getAuthorByName(this.data_author).then(author_data => {
-                this.data_photo = author_data.author.photo;
-                this.data_author_url = author_data.author.url;
-            });
+        created() {
+          console.log(this.title);
+          if(this.authors !== undefined) {
+              for(let i = 0; i < this.authors.length; i++) {
+                console.log(this.authors[i]);
+                getAuthorByName(this.authors[i]).then(author_data => {
+                  this.authorList.push({name: this.authors[i], photo: author_data.author.photo, slug: author_data.author.url});
+                }).finally(() => {
+                  this.toggleUpdate += 1;
+                  console.log("toggle update");
+                  console.log(this.authorList);
+                });
+              }
+          }
         }
     }
 </script>

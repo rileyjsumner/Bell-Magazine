@@ -9,7 +9,7 @@
 
 <script>
     import ArticleGrid from "../components/ArticleGrid";
-    import {getAuthors, getPosts} from "../repository";
+    import {getAuthors, getPosts} from "@/repository";
 
     let stories;
     let authorList;
@@ -24,23 +24,19 @@
             }
         },
         methods: {
-            loadPosts() {
-                stories = getPosts();
-                stories.then(response => {
+            async loadPosts() {
+                stories = await getPosts().then(response => {
                     this.posts = response.posts;
                 });
 
             },
-            loadAuthors() {
-                authorList = getAuthors();
-
-                authorList.then(response => {
+            async loadAuthors() {
+                authorList = await getAuthors().then(response => {
                     this.authors = response;
-                    console.log(this.authors);
                 })
             }
         },
-        beforeMount() {
+        created() {
             this.loadPosts();
             this.loadAuthors();
         }

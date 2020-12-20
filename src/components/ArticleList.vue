@@ -1,18 +1,18 @@
 <template>
     <div class="article-list">
-        <ListArticle
+        <ListArticle v-if="articles[0]"
             :title="articles[0].title"
             :author="articles[0].author"
             :tagline="articles[0].description"
             :url="'/' + articles[0].category + '/' + articles[0].permalink"
         ></ListArticle>
-        <ListArticle
+        <ListArticle v-if="articles[1]"
             :title="articles[1].title"
             :author="articles[1].author"
             :tagline="articles[1].description"
             :url="'/' + articles[1].category + '/' + articles[1].permalink"
         ></ListArticle>
-        <ListArticle v-if="!isShort"
+        <ListArticle v-if="!isShort && articles[2]"
              :title="articles[2].title"
              :author="articles[2].author"
              :tagline="articles[2].description"

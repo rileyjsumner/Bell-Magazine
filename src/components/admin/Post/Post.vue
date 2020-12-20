@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="data-body">
-            <p><strong>Author:</strong> {{ post.author }}</p>
+            <p><strong>Author:</strong><span :key="author" v-for="author in post.author"> {{author}},</span></p>
             <p class="article-html" v-if="post.body.length < 500">{{ post.body }}</p>
             <p class="article-html" v-else>{{ post.body.substring(0,500).trim() + "... " }}</p>
 <!--            <p>Created: {{ post.createdAt | moment }}</p>-->

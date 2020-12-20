@@ -25,21 +25,20 @@
 
 <script>
 
-    import {createPost, getAuthorByName, getAuthors, updatePost} from "../../../repository";
+    import {createPost, getAuthorByName, getAuthors, updatePost} from '@/repository';
     import Quill from 'quill';
     import $ from 'jquery';
     import CreatePostModal from "./CreatePostModal";
     import UpdatePostModal from "./UpdatePostModal";
 
     let editor;
-    let authorList = [];
 
     export default {
         name: "PostModal",
         components: {UpdatePostModal, CreatePostModal  },
         props: {
             isPostCreate: Boolean,
-            post: '',
+            post: Object,
         },
         data() {
             return {
@@ -116,8 +115,6 @@
             }
         },
         mounted() {
-            authorList = getAuthors();
-
         }
     }
 </script>
