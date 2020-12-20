@@ -7,24 +7,31 @@
             </div>
         </div>
         <div class="field">
+          <div class="control">
+            <label>Author:</label>
+            <input v-model="author" class="input" type="text" placeholder="author(s), separated by a comma"/>
+          </div>
+        </div>
+        <div class="field">
             <div class="control">
                 <label>Category:</label>
                 <input v-model="category" class="input" type="text" placeholder="category"/>
             </div>
         </div>
+      <div class="field">
+        <div class="control">
+          <label>Publish Date</label>
+          <input v-model="publish_date" class="input" type="datetime-local" placeholder="Publish Date"/>
+        </div>
+      </div>
         <div class="field">
             <div class="control">
                 <label>Slug:</label>
-                <input v-model="slug" class="input create-post-slug" type="text" placeholder="permalink"/>
+                <input v-model="slug" class="input create-post-slug" type="text" placeholder="slug"/>
                 <p class="permalink">https://www.bell.com/</p>
             </div>
         </div>
-        <div class="field">
-            <div class="control">
-                <label>Author:</label>
-                <input v-model="author" class="input" type="text" placeholder="author(s), separated by a comma"/>
-            </div>
-        </div>
+
         <div class="field">
             <div class="control">
                 <label>Description:</label>
@@ -49,7 +56,7 @@
 
 <script>
 
-import { createPost, getAuthorByName, getAuthors } from '@/repository';
+    import { createPost, getAuthorByName } from '@/repository';
     import $ from 'jquery';
     import FileUpload from '@/components/FileUpload';
 
@@ -63,6 +70,7 @@ import { createPost, getAuthorByName, getAuthors } from '@/repository';
                 title: "",
                 author: [],
                 category: "",
+                publish_date: "",
                 slug: "",
                 photo: "",
                 description: "",
@@ -77,6 +85,7 @@ import { createPost, getAuthorByName, getAuthors } from '@/repository';
                     body: body,
                     author: this.author.split(","),
                     slug: this.slug,
+                    publish_date: this.publish_date,
                     category: this.category,
                     photo: this.photo,
                     description: this.description
@@ -84,7 +93,7 @@ import { createPost, getAuthorByName, getAuthors } from '@/repository';
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
-                        this.title  = this.author = this.permalink = this.category = this.description = this.photo = '';
+                        this.title = this.author = this.permalink = this.category = this.description = this.photo = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));

@@ -22,7 +22,7 @@
 
   .modal-card {
     z-index: 2;
-    top: 15%;
+    top: 5%;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -44,6 +44,7 @@
     position: absolute;
     top: 10%;
     right: 10%;
+    z-index: 99;
   }
 
   .modal-card-body {

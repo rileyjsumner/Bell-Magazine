@@ -27,7 +27,7 @@
         },
         methods: {
             goToStory(url) {
-                window.location.replace(url);
+                window.location.href = url;
             }
         },
         mounted() {

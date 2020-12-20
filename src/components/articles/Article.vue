@@ -4,9 +4,9 @@
             <img :src=img :alt=alt v-on:click="goToStory(slug)" />
         </div>
         <div class="article-heading">
-            <h2 class="title" v-on:click="goToStory(slug)">{{ title }}</h2>
-            <p v-for="author in authors" :key="author.slug" class="byline" v-on:click="goToStory('/author/' + author.slug)">{{ author.byline }}</p>
-            <p class="tagline" v-on:click="goToStory(slug)">{{ tagline }}</p>
+          <h2 class="title" v-on:click="goToStory(slug)">{{ title }}</h2>
+          <p v-for="author in authors" :key="author.slug" class="byline" v-on:click="goToStory('/author/' + author.slug)">{{ author.byline }}</p>
+          <p class="tagline" v-on:click="goToStory(slug)">{{ tagline }}</p>
         </div>
     </div>
 </template>
@@ -26,7 +26,7 @@
         },
         methods: {
             goToStory(url) {
-                window.location.replace(url);
+                window.location.href = url;
             },
             isDark() {
                 if ($("#app").hasClass("dark")) {
