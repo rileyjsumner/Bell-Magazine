@@ -6,7 +6,7 @@
                  :byline="posts[0].author"
                  :img="posts[0].photo"
                  alt="Sample Image"
-                 :url="posts[0].category + '/' + posts[0].permalink"
+                 :slug="posts[0].category + '/' + posts[0].permalink"
                  :tagline="posts[0].description"
                  :featured="true"
         ></Article>
@@ -18,7 +18,7 @@
                  :byline="posts[11].author"
                  :img="posts[11].photo"
                  alt="Sample Image"
-                 :url="posts[11].category + '/' + posts[11].permalink"
+                 :slug="posts[11].category + '/' + posts[11].permalink"
                  :tagline="posts[11].description"
                  :featured="false"
         ></Article>
@@ -27,7 +27,7 @@
                  :byline="posts[12].author"
                  :img="posts[12].photo"
                  alt="Sample Image"
-                 :url="posts[12].category + '/' + posts[12].permalink"
+                 :slug="posts[12].category + '/' + posts[12].permalink"
                  :tagline="posts[12].description"
                  :featured="false"
         ></Article>
@@ -37,7 +37,7 @@
                  :byline="posts[19].author"
                  :img="posts[19].photo"
                  alt="Sample Image"
-                 :url="posts[19].category + '/' + posts[19].permalink"
+                 :slug="posts[19].category + '/' + posts[19].permalink"
                  :tagline="posts[19].description"
                  :featured="false"
         ></Article>
@@ -46,7 +46,7 @@
                  :byline="posts[20].author"
                  :img="posts[20].photo"
                  alt="Sample Image"
-                 :url="posts[20].category + '/' + posts[20].permalink"
+                 :slug="posts[20].category + '/' + posts[20].permalink"
                  :tagline="posts[20].description"
                  :featured="false"
         ></Article>

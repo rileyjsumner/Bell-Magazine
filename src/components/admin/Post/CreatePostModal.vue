@@ -44,7 +44,7 @@
                 <input id="create-photo-link" v-model="photo" class="input" type="text" placeholder="photo link"/>
             </div>
         </div>
-        <FileUpload></FileUpload>
+        <FileUpload linkref="create-photo-link"></FileUpload>
         <div class="field full">
             <div id="modal-editor" class="control">
                 <div id="editor"></div>
