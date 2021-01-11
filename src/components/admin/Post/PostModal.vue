@@ -4,7 +4,8 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <h1>Create Article</h1>
+                    <h1 v-if="isPostCreate">Create Article</h1>
+                    <h1 v-else>Update Article</h1>
                 </header>
                 <section class="modal-card-body">
                     <CreatePostModal v-if="isPostCreate"></CreatePostModal>

@@ -62,6 +62,10 @@ app.use("/static", express.static(path.join(__dirname, "static")));
 
 app.use(serveStatic(path.join(__dirname, 'dist')));
 
+
+app.get('/', (req, res) => {
+    res.send("Welcome to the api");
+})
 // get all posts
 app.get('/api/post/list', (req, res) => {
     Post.find({}).sort({updatedAt: 'descending'}).exec((err, posts) => {
@@ -139,6 +143,7 @@ app.post('/api/post/create', (req, res) => {
         photo_url: req.body.photo_url,
         slug: req.body.slug });
     post.save( (err) => {
+        console.log(err);
         if (err) return res.status(404).send({message: err.message});
         return res.send({ post });
     });
@@ -153,7 +158,8 @@ app.post('/api/author/create', (req, res) => {
         twitter_username: req.body.twitter_username,
         instagram_username: req.body.instagram_username,
         email: req.body.email,
-        photo_url: req.body.photo_url });
+        photo_url: req.body.photo_url,
+        rank: req.body.rank});
     author.save( (err) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ author });
@@ -165,6 +171,7 @@ app.post('/api/post/update/:id', (req, res) => {
         new: true,
         useFindAndModify: false
     };
+    console.log("update");
     Post.findByIdAndUpdate(req.params.id, req.body.data, options, (err, post) => {
         if (err) return res.status(404).send({message: err.message});
         return res.send({ message: 'post updated! ', post});
@@ -230,6 +237,26 @@ app.post('/api/author/upload/photo', upload.single('file'), async (req, res) => 
     }
 });
 
+app.post('/api/post/upload/photo', upload.single('file'), async (req, res) => {
+    try {
+        await sharp(req.file.path)
+            .resize(300)
+            .background('white')
+            .embed()
+            .toFile(`./static/${req.file.originalname}`);
+        console.log("sharp");
+        let path = req.file.originalname;
+        console.log(path);
+        fs.unlink(req.file.path, () => {
+            console.log(`/static/${req.file.originalname}`);
+            res.json({ file: `/static/${path}`})
+        })
+    } catch(err) {
+        console.log(err);
+        res.status(422).json({ err });
+    }
+});
+
 app.post('/api/author/upload/images', upload.array('files'), async (req, res) => {
     try {
         await sharp(req.file.path)
@@ -247,5 +274,6 @@ app.post('/api/author/upload/images', upload.array('files'), async (req, res) =>
     res.json({files: req.files});
 });
 
-const PORT = 5000;
-app.listen(process.env.PORT || PORT);
+const PORT = process.env.API_PORT || 8088;
+console.log("listening on port: " + PORT);
+app.listen(PORT);

@@ -24,3 +24,5 @@ yarn-error.log*
 
 # Protected files
 db-pass.js
+
+.env

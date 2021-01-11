@@ -8,8 +8,8 @@
         </div>
         <div class="field">
             <div class="control">
-                <label for="type">Type:</label>
-                <input id="type" v-model="type" class="input" type="text" placeholder="type">
+                <label for="slug">Slug:</label>
+                <input id="slug" v-model="slug" class="input" type="text" placeholder="slug">
             </div>
         </div>
         <div class="field">
@@ -30,21 +30,23 @@
         name: "UpdateCategoryModal",
         data() {
             return {
-                name: this.name,
-                type: this.type,
-                parent: this.parent,
+                name: this.category.name,
+                slug: this.category.slug,
+                parent: this.category.parent,
                 isActive: false
             }
         },
         props: [ 'category' ],
         methods: {
             update() {
-                let data = { name: this.name,
-                    type: this.type,
+                let data = {
+                  name: this.name,
+                    slug: this.slug,
                     parent: this.parent };
-                updateCategory(data, this.author._id)
+                console.log(data);
+                updateCategory(data, this.category._id)
                     .then(data => {
-                        this.$emit('updateCategory', data.author);
+                        this.$emit('updateCategory', data.category);
                         this.toggle();
                     })
                     .catch(err => alert(err.message));

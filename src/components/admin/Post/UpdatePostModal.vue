@@ -41,7 +41,7 @@
         <div class="field">
           <div class="control">
             <label>Photo Link:</label>
-            <input id="create-photo-link" v-model="photo" class="input" type="text" placeholder="photo link"/>
+            <input id="create-photo-link" v-model="photo_url" class="input" type="text" placeholder="photo link"/>
           </div>
         </div>
         <FileUpload></FileUpload>
@@ -74,7 +74,7 @@
                 publish_date: this.post.publish_date,
                 slug: this.post.slug,
                 description: this.post.description,
-                photo: this.post.photo,
+                photo_url: this.post.photo_url,
                 isActive: false
             }
         },
@@ -82,13 +82,14 @@
         methods: {
             update() {
                 let body = $(".ql-editor").html();
-                let data = { title: this.title,
+                let data = {
+                    title: this.title,
                     body: body,
                     author: this.author,
                     slug: this.slug,
                     publish_date: this.publish_date,
                     category: this.category,
-                    photo: this.photo,
+                    photo_url: this.photo_url,
                     description: this.description };
                 updatePost(data, this.post._id)
                     .then(data => {

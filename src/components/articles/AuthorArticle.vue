@@ -5,7 +5,6 @@
 </template>
 
 <script>
-    import Vue from 'vue';
     import {getAuthorByName} from '@/repository';
     import AuthorArticleContents from "@/components/articles/AuthorArticleContents";
 
@@ -32,16 +31,12 @@
             }
         },
         created() {
-          console.log(this.title);
           if(this.authors !== undefined) {
               for(let i = 0; i < this.authors.length; i++) {
-                console.log(this.authors[i]);
                 getAuthorByName(this.authors[i]).then(author_data => {
                   this.authorList.push({name: this.authors[i], photo: author_data.author.photo, slug: author_data.author.url});
                 }).finally(() => {
                   this.toggleUpdate += 1;
-                  console.log("toggle update");
-                  console.log(this.authorList);
                 });
               }
           }

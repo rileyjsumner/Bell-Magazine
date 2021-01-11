@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="data-body">
-            <p><strong>Type: </strong>{{ category.type }}</p>
+            <p><strong>Parent: </strong>{{ category.parent }}</p>
             <p><strong>Slug: </strong>{{ category.slug }}</p>
         </div>
         <div class="data-details">

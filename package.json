@@ -9,7 +9,9 @@
     "api": "nodemon server.js",
     "deploy": "npm run build && git commit -am 'deploy' && git push",
     "watch-scss": "node-sass -w src/assets/styles/ -o src/assets/css/",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "start": "node server.js && npm run serve",
+    "start-dev": "npm run serve && nodemon server.js"
   },
   "engines": {
     "node": "10.16.0"

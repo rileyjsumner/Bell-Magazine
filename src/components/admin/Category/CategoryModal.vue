@@ -4,7 +4,8 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <h1>Create Category</h1>
+                    <h1 v-if="isCategoryCreate">Create Category</h1>
+                    <h1 v-else>Update Category</h1>
                 </header>
                 <section class="modal-card-body">
                     <CreateCategoryModal v-if="isCategoryCreate"></CreateCategoryModal>

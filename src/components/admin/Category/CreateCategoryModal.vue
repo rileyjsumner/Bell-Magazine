@@ -8,8 +8,8 @@
         </div>
         <div class="field">
             <div class="control">
-                <label for="type">Type:</label>
-                <input id="type" v-model="type" class="input" type="text" placeholder="type">
+                <label for="slug">Slug:</label>
+                <input id="slug" v-model="slug" class="input" type="text" placeholder="slug">
             </div>
         </div>
         <div class="field">
@@ -31,7 +31,7 @@
         data() {
             return {
                 name: "",
-                type: "",
+                slug: "",
                 parent: "",
                 isActive: false
             }
@@ -40,13 +40,13 @@
             create() {
                 let data = {
                     name: this.name,
-                    type: this.type,
+                    slug: this.slug,
                     parent: this.parent,
                 };
                 createCategory(data)
                     .then(data => {
                         this.$emit('createCategory', data.category);
-                        this.name = this.type = this.parent = '';
+                        this.name = this.slug = this.parent = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));

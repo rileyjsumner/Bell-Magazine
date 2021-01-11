@@ -14,7 +14,7 @@
         </div>
         <div class="field">
             <div class="control">
-                <label for="staff_bio">Short Bio:</label>
+                <label for="staff_bio">Staff Bio:</label>
                 <input id="staff_bio" v-model="staff_bio" class="input" type="text" placeholder="staff bio"/>
             </div>
         </div>
@@ -26,9 +26,21 @@
         </div>
         <div class="field">
             <div class="control">
-                <label for="social_handle">Social Handle:</label>
-                <input id="social_handle" v-model="social_handle" class="input" type="text" placeholder="social handle"/>
+                <label for="facebook_url">Facebook URL:</label>
+                <input id="facebook_url" v-model="facebook_url" class="input" type="text" placeholder="facebook handle"/>
             </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label for="twitter_username">Twitter Username:</label>
+            <input id="twitter_username" v-model="twitter_username" class="input" type="text" placeholder="twitter handle"/>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label for="instagram_username">Instagram Username:</label>
+            <input id="instagram_username" v-model="instagram_username" class="input" type="text" placeholder="insta handle"/>
+          </div>
         </div>
         <div class="field">
             <div class="control">
@@ -37,8 +49,15 @@
             </div>
         </div>
         <div class="field">
+          <div class="control">
+            <label for="rank">Rank:</label>
+            <input id="rank" v-model="rank" class="input" type="number" placeholder="rank"/>
+          </div>
+        </div>
+        <div class="field">
             <div class="control">
-                <input id="photo" v-model="photo" class="input" type="hidden" value="" placeholder="photo url"/>
+                <label for="photo">Photo URL:</label>
+                <input id="photo" v-model="photo_url" class="input" type="text" value="" placeholder="photo url"/>
             </div>
         </div>
         <FileUpload></FileUpload>
@@ -60,9 +79,12 @@ import { createAuthor } from '@/repository';
                 slug: "",
                 staff_bio: "",
                 long_bio: "",
-                social_handle: "",
+                facebook_url: "",
+                twitter_username: "",
+                instagram_username: "",
                 email: "",
-                photo: "",
+                photo_url: "",
+                rank: 0,
                 isActive: false
             }
         },
@@ -73,14 +95,17 @@ import { createAuthor } from '@/repository';
                     slug: this.slug,
                     staff_bio: this.staff_bio,
                     long_bio: this.long_bio,
-                    social_handle: this.social_handle,
+                    facebook_url: this.facebook_url,
+                    twitter_username: this.twitter_username,
+                    instagram_username: this.instagram_username,
                     email: this.email,
-                    photo: this.photo
+                    rank: this.rank,
+                    photo_url: this.photo_url
                 };
                 createAuthor(data)
                     .then(data => {
                         this.$emit('createAuthor', data.author);
-                        this.name = this.url = this.staff_bio = this.long_bio = this.social_handle = this.email = this.photo = '';
+                        this.name = this.slug = this.staff_bio = this.rank = this.long_bio = this.facebook_url = this.instagram_username = this.twitter_username = this.email = this.photo_url = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));

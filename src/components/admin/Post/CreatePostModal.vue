@@ -41,10 +41,10 @@
         <div class="field">
             <div class="control">
                 <label>Photo Link:</label>
-                <input id="create-photo-link" v-model="photo" class="input" type="text" placeholder="photo link"/>
+                <input id="create-photo-link" v-model="photo_url" class="input" type="text" placeholder="photo link"/>
             </div>
         </div>
-        <FileUpload linkref="create-photo-link"></FileUpload>
+        <ArticleFileUpload linkref="create-photo-link"></ArticleFileUpload>
         <div class="field full">
             <div id="modal-editor" class="control">
                 <div id="editor"></div>
@@ -58,13 +58,13 @@
 
     import { createPost, getAuthorByName } from '@/repository';
     import $ from 'jquery';
-    import FileUpload from '@/components/FileUpload';
+    import ArticleFileUpload from '@/components/ArticleFileUpload';
 
     let editor;
 
     export default {
         name: "CreatePostModal",
-        components: { FileUpload },
+        components: { ArticleFileUpload },
         data() {
             return {
                 title: "",
@@ -72,13 +72,14 @@
                 category: "",
                 publish_date: "",
                 slug: "",
-                photo: "",
+                photo_url: "",
                 description: "",
                 isActive: false
             }
         },
         methods: {
             create() {
+                console.log(this.photo_url);
                 let body = $(".ql-editor").html();
                 let data = {
                     title: this.title,
@@ -87,13 +88,13 @@
                     slug: this.slug,
                     publish_date: this.publish_date,
                     category: this.category,
-                    photo: this.photo,
+                    photo_url: this.photo_url,
                     description: this.description
                 };
                 createPost(data)
                     .then(data => {
                         this.$emit('createPost', data.post);
-                        this.title = this.author = this.permalink = this.category = this.description = this.photo = '';
+                        this.title = this.author = this.slug = this.category = this.description = this.photo_url = '';
                         this.toggle();
                     })
                     .catch(err => alert(err.message));

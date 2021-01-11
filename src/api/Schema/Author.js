@@ -11,7 +11,7 @@ const AuthorSchema = Schema(
         facebook_url: {type: String, required: false},
         twitter_username: {type: String, required: false},
         instagram_username: {type: String, required: false},
-
+        rank: {type: Number, required: false},
     },
     { timestamps: true }
 );
